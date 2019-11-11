@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# +-------------------------------------------------------------------------+
+# | Name of the Script                                                      |
+# +-------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                      |
+# |                  waldemar.schroeer(at)rz-amper.de                       |
+# +-------------------------------------------------------------------------+
+
+# /bin/pkill compton
+/bin/xfreerdp --ignore-certificate -g 2400x1400 -d de.ttiinc.com -u username -p password $1 &
+# ~/.local/bin/compton &
