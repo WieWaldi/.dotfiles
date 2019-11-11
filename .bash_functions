@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # +-------------------------------------------------------------------------+
-# | Name of the Script                                                      |
+# | .bash_functions                                                         |
 # +-------------------------------------------------------------------------+
 # | Copyright © 2019 Waldemar Schroeer                                      |
 # |                  waldemar.schroeer(at)rz-amper.de                       |
