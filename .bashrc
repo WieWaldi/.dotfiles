@@ -48,8 +48,9 @@ case ${TERM} in
 esac
 
 # User specific aliases and functions
+# alias l='LC_ALL=C /bin/ls --color=auto --group-directories-first -lah' 2>/dev/null
 alias vi='TERM=xterm /usr/bin/vim -X' 2>/dev/null
-alias l='LC_ALL=C /bin/ls --color=auto --group-directories-first -lah' 2>/dev/null
+alias l='~/.local/bin/exa -laghmuH --group-directories-first --git' 2>/dev/null
 alias ll='/bin/ls --color=auto --group-directories-first -lah | more' 2>/dev/null
 alias grep='grep -i --color=auto' 2>/dev/null
 alias s='su - root' 2>/dev/null
