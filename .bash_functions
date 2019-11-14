@@ -7,6 +7,24 @@
 # |                  waldemar.schroeer(at)rz-amper.de                       |
 # +-------------------------------------------------------------------------+
 
+get_bash_w() {
+  # Returns the same working directory that the \W bash prompt command
+  echo $(pwd | sed 's@'"$HOME"'@~@')
+}
+
+split_pwd() {
+  # Split pwd into the first element, elipsis (...) and the last subfolder
+  # /usr/local/share/doc --> /usr/.../doc
+  # ~/project/folder/subfolder --> ~/project/../subfolder
+  split=4
+  W=$(get_bash_w)
+  if [ $(echo $W | grep -o '/' | wc -l) -gt $split ]; then
+    echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}"
+  else
+    echo $W
+  fi
+}
+
 function parse_git_branch {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }

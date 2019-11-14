@@ -38,7 +38,8 @@ case ${TERM} in
         ;;
     urxvt|st|st-256color|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
         pacman_fancy
-        export PS1="\[\e[38;5;255;48;5;53m\] \u@\h\[\e[38;5;53;48;5;91m\]\[\e[38;5;255;48;5;91m\] \w\$(parse_git_branch)\[\e[38;5;91;48;5;140m\]\[\e[38;5;256;48;5;140m\]\@\[\e[0m\[\e[38;5;140m\[\e[m\] "
+        # export PS1="\[\e[38;5;255;48;5;53m\] \u@\h\[\e[38;5;53;48;5;91m\]\[\e[38;5;255;48;5;91m\] \w\$(parse_git_branch)\[\e[38;5;91;48;5;140m\]\[\e[38;5;256;48;5;140m\]\@\[\e[0m\[\e[38;5;140m\[\e[m\] "
+        export PS1="\[\e[38;5;255;48;5;53m\] \u@\h\[\e[38;5;53;48;5;91m\]\[\e[38;5;255;48;5;91m\] \$(split_pwd)\$(parse_git_branch)\[\e[38;5;91;48;5;140m\]\[\e[38;5;256;48;5;140m\]\@\[\e[0m\[\e[38;5;140m\[\e[m\] "
         ;;
     linux|screen*)
         pacman_tiny
