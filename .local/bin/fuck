@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# +-------------------------------------------------------------------------+
+# | ~/.local/bin/fuck                                                       |
+# +-------------------------------------------------------------------------+
+# | Simple script to produce different exit codes                           |
+# |                                                                         |
+# | Copyright © 2019 Waldemar Schroeer                                      |
+# |                  waldemar.schroeer(at)rz-amper.de                       |
+# +-------------------------------------------------------------------------+
+
+exitcode=1
+
+if [[ "$1" == "" ]]; then
+    exitcode=0
+    exit ${exitcode}
+else
+    exitcode=127
+    exit ${exitcode}
+fi
+
+exit ${exitcode}
