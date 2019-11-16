@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # +-------------------------------------------------------------------------+
 # | .bash_functions                                                         |
@@ -7,29 +7,47 @@
 # |                  waldemar.schroeer(at)rz-amper.de                       |
 # +-------------------------------------------------------------------------+
 
-get_bash_w() {
-  # Returns the same working directory that the \W bash prompt command
-  echo $(pwd | sed 's@'"$HOME"'@~@')
+function prompt_command_fancy() {
+    local exitcode="$?"
+    local split=4
+    local workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
+    local git=$(/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
+
+    if [[ ${exitcode} -eq 0 ]]; then
+        local exitsymbol=" "
+    else
+        local exitsymbol=" "
+    fi
+
+    if [[ $(/bin/id -u) = 0 ]]; then
+        local usersymbol=" "
+    else
+        local usersymbol=" "
+    fi
+
+    W=${workingdir}
+    if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
+        workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
+    fi
+
+    PS1="\[\e[38;5;255;48;5;53m\]${usersymbol}\u@\h\[\e[38;5;53;48;5;91m\]\[\e[38;5;255;48;5;91m\]${workingdir}${git}\[\e[38;5;91;48;5;140m\]\[\e[38;5;256;48;5;140m\] \A${exitsymbol}\[\e[0m\[\e[38;5;140m\[\e[m\]"
+    # PS1="${exitsymbol}${usersymbol} ${workingdir} ${git}"
 }
 
-split_pwd() {
-  # Split pwd into the first element, elipsis (...) and the last subfolder
-  # /usr/local/share/doc --> /usr/.../doc
-  # ~/project/folder/subfolder --> ~/project/../subfolder
-  split=4
-  W=$(get_bash_w)
-  if [ $(echo $W | grep -o '/' | wc -l) -gt $split ]; then
-    echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}"
-  else
-    echo $W
-  fi
+function prompt_command_tiny() {
+    local exitcode="$?"
+    local split=2
+    local workingdir="$(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
+    local git="$(/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')"
+    W=${workingdir}
+    if [[ $(echo ${W} | /bin/grep -o '/' | wc -l) -gt ${split} ]]; then
+        workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
+    fi
+    PS1="\n┌[\u@\h]──[${workingdir}${git}]──[\@]\n└────╼ "
+
 }
 
-function parse_git_branch {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-
-function pacman_fancy {
+function pacman_fancy() {
     f=3 b=4
     for j in f b; do
       for i in {0..7}; do
@@ -58,7 +76,7 @@ $rst
 EOF
 }
 
-function pacman_small {
+function pacman_small() {
     f=3 b=4
     for j in f b; do
       for i in {0..7}; do
@@ -87,7 +105,7 @@ $rst
 EOF
 }
 
-function pacman_tiny {
+function pacman_tiny() {
     f=3 b=4
     for j in f b; do
       for i in {0..7}; do
@@ -109,9 +127,7 @@ $rst
 EOF
 }
 
-
-
-function hostfetch-tti {
+function hostfetch-tti() {
     host="$(/bin/hostname)"
     os="$(/bin/uname)"
     kernel="$(uname -sr | cut -d - -f 1)"
