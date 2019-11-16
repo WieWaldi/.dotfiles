@@ -1,0 +1,19 @@
++-------------------------------------------------------------------------+
+| WieWaldi's .dotfiles                                                    |
++-------------------------------------------------------------------------+
+| Copyright © 2019 Waldemar Schroeer                                      |
+|                  waldemar.schroeer(at)rz-amper.de                       |
++-------------------------------------------------------------------------+
+|                                                                         |
+| __      __             _                                                |
+| \ \    / /_ _ _ _ _ _ (_)_ _  __ _                                      |
+|  \ \/\/ / _` | '_| ' \| | ' \/ _` |                                     |
+|   \_/\_/\__,_|_| |_||_|_|_||_\__, |                                     |
+|                              |___/                                      |
+|   This setup script will put WieWaldi's .dotfiles into your home        |
+|   directory. Don't be scared to loose any of your personal dotfiles.    |
+|   Every file that gets replaced will be backed up.                      |
+|                                                                         |
+|   However, since this script will copy binaries to ~/.local it may      |
+|   happen to replace some of yours. You have been warned.                |
++-------------------------------------------------------------------------+
