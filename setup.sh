@@ -32,6 +32,7 @@ do
             printf "\n Installing .local and binaries directory to your home directory."
             mkdir -p ~/.local
             cp -r ${cdir}/.local/* ~/.local
+            printf "\n\n I'm done.\n"
             break
             ;;
         [nN] | [n|N][O|o] )
