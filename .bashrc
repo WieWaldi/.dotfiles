@@ -25,15 +25,15 @@ if [[ $- == *i* ]]; then
 
         case ${TERM} in
             sshd|putty)
-                pacman_small
+                # pacman_small
                 export PROMPT_COMMAND=prompt_command_tiny
                 ;;
             urxvt|st|st-256color|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-                pacman_fancy
+                # pacman_fancy
                 export PROMPT_COMMAND=prompt_command_fancy
                 ;;
             linux|screen*)
-                pacman_tiny
+                # pacman_tiny
                 printf "\n\n [Oh Boy, get on a graphical shell!]\n"
                 export PROMPT_COMMAND=prompt_command_tiny
                 ;;
@@ -57,6 +57,6 @@ if [[ $- == *i* ]]; then
 
     else
         /bin/printf "Go get me my goods! I'm missing my functions\n"
-        /bin/printf "I rely on ~/.bash_functions. Don't expect me to work correctly.\n\nYou have been warned.\n\n"
+        /bin/printf "I rely on ~/.bash_functions. Don't expect me to work correctly.\n\n"
     fi
 fi
