@@ -27,6 +27,7 @@ function Display_Warning() {
 }
 
 function Install_Dotfiles() {
+    mkdir -p ${backupdir}
     for i in "${dotfiles[@]}"; do
         if [ -f ~/${i} ]; then
             printf "\n Moving ${i} to $backupdir"
