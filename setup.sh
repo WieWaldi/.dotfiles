@@ -19,7 +19,7 @@ do
         [yY] | [yY][Ee][Ss] )
             printf "\n Your current .dotfiles will be moved to $backupdir"
             mkdir $backupdir
-            declare -a files=( ".vimrc" ".bashrc" ".bash_profile" ".bash_logout" ".bash_functions" ".screenrc" ".tmuxrc" ".motd" "template.sh" "template.php" )
+            declare -a files=( ".vimrc" ".bashrc" ".bash_profile" ".bash_logout" ".bash_functions" ".screenrc" ".motd" "template.sh" "template.php" )
             for i in "${files[@]}"
             do
                 if [ -f ~/$i ]; then
