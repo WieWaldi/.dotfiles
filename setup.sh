@@ -10,38 +10,57 @@
 backupdir=~/Backup.dotfiles.$$
 cdir=$(pwd)
 
-while :
-do
-    /bin/clear && /bin/cat ${cdir}/setup-warning.txt
-    printf "\n Proceed installing .dotfiles? (Yes|No) >> "
+declare -a dotfiles=(
+    ".vimrc"
+    ".bashrc"
+    ".bash_profile"
+    ".bash_logout"
+    ".bash_functions"
+    ".screenrc"
+    ".motd"
+    "template.sh"
+    "template.php"
+    )
+
+function Display_Warning() {
+    clear && cat ${cdir}/setup-warning.txt
+}
+
+function Install_Dotfiles() {
+    for i in "${dotfiles[@]}"; do
+        if [ -f ~/${i} ]; then
+            printf "\n Moving ${i} to $backupdir"
+            mv ~/${i} $backupdir
+        fi
+        printf "\n Creating $i"
+        cp ${cdir}/${i} ~
+    done
+}
+
+function Install_Binaries() {
+    printf "\n Installing .local directory and binaries to your home directory."
+    mkdir -p ~/.local
+    cp -r ${cdir}/.local/* ~/.local
+}
+
+while true; do
+    Display_Warning
+    printf "\n\n Go ahead? (Yes|No) >> "
     read antwoord
     case $antwoord in
         [yY] | [yY][Ee][Ss] )
-            printf "\n Your current .dotfiles will be moved to $backupdir"
-            mkdir $backupdir
-            declare -a files=( ".vimrc" ".bashrc" ".bash_profile" ".bash_logout" ".bash_functions" ".screenrc" ".motd" "template.sh" "template.php" )
-            for i in "${files[@]}"
-            do
-                if [ -f ~/$i ]; then
-                    printf "\n Moving $i to $backupdir"
-                    mv ~/$i $backupdir
-                fi
-                printf "\n Creating $i"
-                cp ${cdir}/${i} ~
-            done
-            printf "\n Installing .local and binaries directory to your home directory."
-            mkdir -p ~/.local
-            cp -r ${cdir}/.local/* ~/.local
-            printf "\n\n I'm done.\n"
+            Install_Dotfiles
+            Install_Binaries
+            printf "\n I'm done\n\n"
             break
             ;;
         [nN] | [n|N][O|o] )
-            printf "\n Oh Boy, you should reconsider your decision.\n\n"
+            printf "\n Oh Boy, you should reconsider your decision."
             break
             ;;
         *)
-            printf "\n Wut?\n\n"
-            ;;
+            printf "  Wut?"
     esac
 done
+
 exit 0
