@@ -12,6 +12,7 @@ if [[ $- == *i* ]]; then
     if [[ -f ~/.bash_functions ]]; then
         . ~/.bash_functions
         umask 002
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib64
         export PATH=$HOME/.local/bin:/usr/lib64/qt-3.3/bin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin
         export EDITOR=vi
         export HISTSIZE=1000
