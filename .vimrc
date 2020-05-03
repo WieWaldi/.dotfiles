@@ -1,4 +1,10 @@
-"==============================================================================
+" +-------------------------------------------------------------------------+
+" | .vimrc                                                                  |
+" +-------------------------------------------------------------------------+
+" | Copyright © 2020 Waldemar Schroeer                                      |
+" |                  waldemar.schroeer(at)rz-amper.de                       |
+" +-------------------------------------------------------------------------+
+
 "======== Color Theme =========================================================
 " color solarized_flat_light
 " color solarized_flat_dark
@@ -26,10 +32,24 @@ set listchars=eol:¬,tab:▸-
 highlight ColorColumn ctermbg=254
 
 "======== Default Indent Settings =============================================
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+let my_tab=4
+execute "set shiftwidth=".my_tab
+execute "set softtabstop=".my_tab
+execute "set tabstop=".my_tab
 set expandtab
+" allow toggling between local and default mode
+function! TabToggle()
+  if &expandtab
+    execute "set shiftwidth=".g:my_tab
+    execute "set softtabstop=0"
+    set noexpandtab
+  else
+    execute "set shiftwidth=".g:my_tab
+    execute "set softtabstop=".g:my_tab
+    set expandtab
+  endif
+endfunction
+no T  mz:execute TabToggle()<CR>'z
 
 "======== Vertical/Horizontal scroll off settings =============================
 set nowrap                                  "dont wrap lines
