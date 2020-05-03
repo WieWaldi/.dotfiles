@@ -3,6 +3,13 @@
 " color solarized_flat_light
 " color solarized_flat_dark
 
+" set cursorline
+" set cursorcolumn
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=255
+
 "======== Default Settings ====================================================
 syntax on
 filetype indent plugin off
@@ -10,10 +17,13 @@ filetype indent off
 set backspace=2
 set incsearch                               "find the next match as we type the search
 set nohlsearch                              "no hilight of search string
+set noswapfile
 set ruler
 set colorcolumn=81
-highlight ColorColumn ctermbg=254
 set t_Co=256                                "tell the term has 256 colors
+set list
+set listchars=eol:¬,tab:▸-
+highlight ColorColumn ctermbg=254
 
 "======== Default Indent Settings =============================================
 set tabstop=4
@@ -37,6 +47,7 @@ highlight LineNr ctermfg=133 ctermbg=53
 "======== Custom Mappings =====================================================
 no <down> ddp
 no <up> ddkP
+no H :set cursorline! cursorcolumn!<CR>
 
 nmap G Gzz
 nmap n nzz
