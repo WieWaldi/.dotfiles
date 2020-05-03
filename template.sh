@@ -9,7 +9,8 @@
 # 塚 﨑 晴 﨓  
 # ﱮ          
 #    
-#  
+#               
+#  
 
 # /bin/pkill compton
 /bin/xfreerdp --ignore-certificate -g 2400x1400 -d domain.com -u username -p password $1 &
