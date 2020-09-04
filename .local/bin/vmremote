@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# +-------------------------------------------------------------------------+
+# | vmremote (wrapper to start VMware Remote Console)                       |
+# +-------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                      |
+# |                  waldemar.schroeer(at)rz-amper.de                       |
+# +-------------------------------------------------------------------------+
+
+/bin/vmrc --user=username@domain.com --password=password --host=host.domain.com
+

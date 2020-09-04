@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# +-------------------------------------------------------------------------+
+# | rdp (wrapper for xfreerdp)                                              |
+# +-------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                      |
+# |                  waldemar.schroeer(at)rz-amper.de                       |
+# +-------------------------------------------------------------------------+
+
+# /bin/pkill compton
+
+# /bin/xfreerdp --ignore-certificate -g 2400x1400 -d domain.com -u username -p password $1 &
+# /bin/xfreerdp --ignore-certificate -g 2400x1400 -a 8 -D -x m -z -u username -p password -t 3391 host.domain.com &
+
+# ~/.local/bin/compton &
