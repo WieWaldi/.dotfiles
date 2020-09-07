@@ -29,6 +29,7 @@ set colorcolumn=81
 set t_Co=256                                "tell the term has 256 colors
 set list
 set listchars=eol:¬,tab:▸-
+set t_ti= t_te=
 highlight ColorColumn ctermbg=254
 
 "======== Default Indent Settings =============================================
