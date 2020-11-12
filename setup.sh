@@ -11,22 +11,23 @@ backupdir=~/Backup.dotfiles.$$
 cdir=$(pwd)
 
 declare -a dotfiles=(
-    ".vimrc"
-    ".bashrc"
-    ".bash_profile"
-    ".bash_logout"
     ".bash_functions"
-    ".screenrc"
+    ".bash_logout"
+    ".bash_profile"
+    ".bashrc"
+    ".inputrc"
     ".motd"
+    ".screenrc"
+    ".vimrc"
     "template.sh"
     "template.php"
     )
 
-function Display_Warning() {
+Display_Warning() {
     clear && cat ${cdir}/setup-warning.txt
 }
 
-function Install_Dotfiles() {
+Install_Dotfiles() {
     mkdir -p ${backupdir}
     for i in "${dotfiles[@]}"; do
         if [ -f ~/${i} ]; then
@@ -38,7 +39,7 @@ function Install_Dotfiles() {
     done
 }
 
-function Install_Binaries() {
+Install_Binaries() {
     printf "\n Installing .local directory and binaries to your home directory."
     mkdir -p ~/.local
     cp -r ${cdir}/.local/* ~/.local
