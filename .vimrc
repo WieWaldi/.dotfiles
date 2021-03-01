@@ -17,18 +17,19 @@ autocmd WinLeave * setlocal nocursorline
 highlight CursorLine guibg=#303000 ctermbg=255
 
 "======== Default Settings ====================================================
-syntax on
+setlocal cm=blowfish2                       "Sets encryption method to blowfish2
+syntax on                                   "Sets syntax highlighting on
 filetype indent plugin off
 filetype indent off
 set backspace=2
 set incsearch                               "find the next match as we type the search
 set nohlsearch                              "no hilight of search string
-set noswapfile
-set ruler
-set colorcolumn=81
+set noswapfile                              "Don't create swap files
+set ruler                                   "Show ruler on the left side
+set colorcolumn=81                          "Show color column on the right side
 set t_Co=256                                "tell the term has 256 colors
 set list
-set listchars=eol:¬,tab:▸-
+set listchars=eol:¬,tab:▸-                  "Visualize tabs and end of lines
 set t_ti= t_te=
 highlight ColorColumn ctermbg=254
 
