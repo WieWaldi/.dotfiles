@@ -5,57 +5,65 @@
 # |                  waldemar.schroeer(at)rz-amper.de                       |
 # +-------------------------------------------------------------------------+
 
+# Check for alias file and source it.
 if [[ -f ${HOME}/.alias ]]; then
     source ${HOME}/.alias
 else
     echo "Could not find ${HOME}/.alias"
 fi
 
-# if [[ -f ${HOME}/.zsh_functions ]]; then
-#     source ${HOME}/.zsh_functions
-# else
-#     echo "Could not find ${HOME}/.zsh_functions"
-# fi
-
-
-zmodload zsh/system
+# Auto/Tab Completion
+autoload -U compinit
+zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/wiewaldi/.zshrc'
+zmodload zsh/complist
+zmodload zsh/system
+compinit
+_comp_options+=(globdots)
 
-autoload -Uz compinit
-autoload -U colors && colors
+# Git Info for RPROMPT
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-# zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
-zstyle ':vcs_info:git*' formats "%{$fg[grey]%}%s %{$reset_color%}%r/%S%{$fg[grey]%} %{$fg[blue]%}%b%{$reset_color%}%m%u%c%{$reset_color%} "
-zstyle ':vcs_info:git*' actionformats "%s  %r/%S %b %m%u%c "
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '!'
+zstyle ':vcs_info:*' stagedstr '+'
+zstyle ':vcs_info:git*' formats "%b %F{green}%m%u%c"
+zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
++vi-git-untracked() {
+  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
+     git status --porcelain | grep -m 1 '^??' &>/dev/null
+  then
+    hook_com[misc]='?'
+  fi
+}
 
-
-compinit
-ZLE_RPROMPT_INDENT=0
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory autocd extendedglob notify
+
+# Other stuff
 setopt prompt_subst
 unsetopt beep
 bindkey -e
 
-
+# Different PROMPT for different terminal
 case ${TERM} in
     sshd|putty)
-        prompt_command_tiny
+        PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
     linux|screen*)
         printf "\n\n [Oh Boy, get on a graphical shell!]\n"
-        prompt_command_tiny
+        PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
     urxvt|st|st-256color|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
         printf "Fuck yeah!\n"
         precmd() {
             exitcode="$?"
             split=3
-            workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
+            workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
             
             if [[ ${exitcode} -eq 0 ]]; then
                 exitsymbol=" "
@@ -85,8 +93,12 @@ case ${TERM} in
             PROMPT+="%F{140}%k%f%k "
 
             vcs_info
-            RPROMPT='${vcs_info_msg_0_}%# '
+            RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91}%B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53} %E'
         }
+        ;;
+    *)
+        printf "\n\n [Oh Boy, something's wrong.]\n"
+        PROMPT="> "
         ;;
 esac
 

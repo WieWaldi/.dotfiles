@@ -11,6 +11,7 @@ backupdir=~/Backup.dotfiles.$$
 cdir=$(pwd)
 
 declare -a dotfiles=(
+    ".alias"
     ".bash_functions"
     ".bash_logout"
     ".bash_profile"
@@ -19,6 +20,7 @@ declare -a dotfiles=(
     ".motd"
     ".screenrc"
     ".vimrc"
+    ".zshrc"
     "template.sh"
     "template.php"
     )

@@ -7,7 +7,7 @@ put everything in place. Next time you open your shell, you'll be amazed. The
 setup script will create a backup folder and move existing files to it.
 ```
 git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
-./dotfiles/setup.sh
+~/.dotfiles/setup.sh
 ```
 
 #### Links/URLs
