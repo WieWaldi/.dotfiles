@@ -59,7 +59,6 @@ case ${TERM} in
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
     urxvt|st|st-256color|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-        printf "Fuck yeah!\n"
         precmd() {
             exitcode="$?"
             split=3
