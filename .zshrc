@@ -16,7 +16,7 @@ fi
 autoload -U compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle :compinstall filename '/home/wiewaldi/.zshrc'
+# zstyle :compinstall filename '/home/wiewaldi/.zshrc'      # ! is this even needed?
 zmodload zsh/complist
 zmodload zsh/system
 compinit
@@ -39,10 +39,13 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 }
 
 # History
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+export HISTTIMEFORMAT="[%F %T] "
 setopt appendhistory autocd extendedglob notify
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
 
 # Other stuff
 setopt prompt_subst

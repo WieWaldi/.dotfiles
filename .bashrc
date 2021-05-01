@@ -18,6 +18,7 @@ if [[ $- == *i* ]]; then
         export HISTSIZE=1000
         export HISTFILESIZE=2000
         export HISTFILE=~/.bash_history
+        export HISTTIMEFORMAT="[%F %T] "
         export GIT_AUTHOR_NAME="Waldemar Schroeer"
         export GIT_COMMITTER_NAME="Waldemar Schroeer"
         shopt -s histappend
