@@ -48,6 +48,7 @@ setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 
 # Other stuff
+export EDITOR=vi
 setopt prompt_subst
 unsetopt beep
 bindkey -e
