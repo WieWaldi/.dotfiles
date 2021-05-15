@@ -42,9 +42,10 @@ Install_Dotfiles() {
 }
 
 Install_Binaries() {
-    printf "\n Installing .local directory and binaries to your home directory."
-    mkdir -p ~/.local
-    cp -r ${cdir}/.local/* ~/.local
+    printf "\n Installing directories and binaries to your home directory."
+    cp -r ${cdir}/.local ~
+    cp -r ${cdir}/.ssh ~
+    cp -r ${cdir}/.vim ~
 }
 
 while true; do
