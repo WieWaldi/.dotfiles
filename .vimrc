@@ -14,6 +14,7 @@ syntax on                                   " Sets syntax highlighting on
 set path=.,,**                              " Set path to current directory
 set undodir=~/.vim/undodir                  " Undo directory
 set undofile                                " Create undo file
+set mouse+=a                                " Enable the use of the mouse
 set number                                  " Show relative line numbers
 set cursorline                              " Highlight current line
 set smartindent                             " Do smart autoindenting when starting a new line
@@ -62,6 +63,7 @@ autocmd WinLeave * setlocal nocursorline
 
 "======== Custom Mappings =====================================================
 nnoremap T  mz:execute TabToggle()<CR>'z
+nnoremap # :s/^/# /<CR>
 nnoremap <down> ddp
 nnoremap <up> ddkP
 nnoremap <F2> :set cursorline! <CR>
@@ -70,11 +72,11 @@ nnoremap <leader>t :tabfind
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 
-nmap G Gzz
-nmap n nzz
-nmap N Nzz
-nmap } }zz
-nmap { {zz
+" nmap G Gzz
+" nmap n nzz
+" nmap N Nzz
+" nmap } }zz
+" nmap { {zz
 
 "======== Status Line =========================================================
 let g:currentmode={
