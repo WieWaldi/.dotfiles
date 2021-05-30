@@ -14,7 +14,7 @@ syntax on                                   " Sets syntax highlighting on
 set path=.,,**                              " Set path to current directory
 set undodir=~/.vim/undodir                  " Undo directory
 set undofile                                " Create undo file
-set mouse+=a                                " Enable the use of the mouse
+" set mouse+=a                                " Enable the use of the mouse
 set number                                  " Show relative line numbers
 set cursorline                              " Highlight current line
 set smartindent                             " Do smart autoindenting when starting a new line
