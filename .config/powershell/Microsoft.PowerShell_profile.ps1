@@ -64,9 +64,6 @@ if (Get-Module -ListAvailable -Name "PSReadline") {
     }
 }
 
-# Aliases
-Set-Alias -Name dir -Value "Get-ChildItem . -Force"
-
 # Colorful PowerShell Prompt
 function prompt
 {  
