@@ -42,9 +42,9 @@ if [[ $- == *i* ]]; then
         esac
 
         # User specific aliases and functions
-        alias vi='TERM=xterm /usr/bin/vim -X' 2>/dev/null
-        alias l='~/.local/bin/exa -laghm --group-directories-first --git' 2>/dev/null
-        alias ll='LC_ALL=C /bin/ls --color=auto --group-directories-first -lah' 2>/dev/null
+        alias vi='TERM=xterm vim -X' 2>/dev/null
+        alias l='exa -laghm --group-directories-first --git' 2>/dev/null
+        alias ll='LC_ALL=C ls --color=auto --group-directories-first -lah' 2>/dev/null
         alias grep='grep -i --color=auto' 2>/dev/null
         alias s='su - root' 2>/dev/null
         alias cp='cp -ir' 2>/dev/null
