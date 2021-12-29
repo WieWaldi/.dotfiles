@@ -8,7 +8,7 @@
 # |                                                                         |
 # +-------------------------------------------------------------------------+
 
-alias vi='TERM=xterm vi -X'
+alias vi='TERM=xterm vim -X'
 alias l='exa -lghm --icons --group-directories-first --git'
 alias ll='exa -laghm --icons --group-directories-first --git'
 alias ls='LC_ALL=C /bin/ls --color=auto --group-directories-first -lah'
