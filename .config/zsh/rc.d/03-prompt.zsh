@@ -1,28 +1,15 @@
+#!/usr/bin/env zsh
+#
 # +-------------------------------------------------------------------------+
-# | ~/.zshrc                                                                |
+# | ~/config/zsh/rc.d/03-prompt.zsh                                         |
 # +-------------------------------------------------------------------------+
 # | Copyright © 2021 Waldemar Schroeer                                      |
 # |                  waldemar.schroeer(at)rz-amper.de                       |
+# |                                                                         |
 # +-------------------------------------------------------------------------+
 
-# Check for alias file and source it.
-if [[ -f ${HOME}/.alias ]]; then
-    source ${HOME}/.alias
-else
-    echo "Could not find ${HOME}/.alias"
-fi
-
-# Auto/Tab Completion
-autoload -U compinit
-zstyle ':completion:*' menu select
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-# zstyle :compinstall filename '/home/wiewaldi/.zshrc'      # ! is this even needed?
-zmodload zsh/complist
-zmodload zsh/system
-compinit
-_comp_options+=(globdots)
-
 # Git Info for RPROMPT
+setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
@@ -38,22 +25,6 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
-# History
-export HISTFILE=~/.zsh_history
-export HISTSIZE=1000000000
-export SAVEHIST=1000000000
-export HISTTIMEFORMAT="[%F %T] "
-setopt appendhistory autocd extendedglob notify
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-
-# Other stuff
-export EDITOR=vi
-setopt prompt_subst
-unsetopt beep
-bindkey -e
-
-# Different PROMPT for different terminal
 case ${TERM} in
     sshd|putty)
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
@@ -66,7 +37,7 @@ case ${TERM} in
         precmd() {
             exitcode="$?"
             split=3
-            workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
+            workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
             
             if [[ ${exitcode} -eq 0 ]]; then
                 exitsymbol=" "
@@ -74,21 +45,19 @@ case ${TERM} in
                 exitsymbol=" "
             fi
         
-            if [[ $(id -u) = 0 ]]; then
+            if [[ $(/bin/id -u) = 0 ]]; then
                 usersymbol=" "
             else
                 usersymbol=" "
             fi
         
             W=${workingdir}
-            if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${split} ]]; then
+            if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
                 workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
             fi
         
             PROMPT="%F{255}%K{53}${usersymbol}"
-            if [[ -n "${SSH_CLIENT}" ]]; then
-                PROMPT+="%n@%m"
-            fi
+            PROMPT+="%n@%m"
             PROMPT+="%F{53}%K{91}"
             PROMPT+="%F{255}%K{91}${workingdir}"
             PROMPT+="%F{91}%K{140}"
@@ -104,11 +73,3 @@ case ${TERM} in
         PROMPT="> "
         ;;
 esac
-
-
-
-
-
-
-
-
