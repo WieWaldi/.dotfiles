@@ -20,7 +20,7 @@ declare -a dotfiles=(
     ".motd"
     ".screenrc"
     ".vimrc"
-    ".zshrc"
+    ".zshenv"
     "template.sh"
     "template.php"
     )
@@ -29,7 +29,7 @@ Display_Warning() {
     clear && cat ${cdir}/setup-warning.txt
 }
 
-Install_Dotfiles() {
+Copy_Directories() {
     mkdir -p ${backupdir}
     for i in "${dotfiles[@]}"; do
         if [ -f ~/${i} ]; then
@@ -43,6 +43,7 @@ Install_Dotfiles() {
 
 Install_Binaries() {
     printf "\n Installing directories and binaries to your home directory."
+    cp -r ${cdir}/.config ~
     cp -r ${cdir}/.local ~
     cp -r ${cdir}/.ssh ~
     cp -r ${cdir}/.vim ~
@@ -55,7 +56,7 @@ while true; do
     case $antwoord in
         [yY] | [yY][Ee][Ss] )
             Install_Dotfiles
-            Install_Binaries
+            Copy_Directories
             printf "\n I'm done\n\n"
             break
             ;;
