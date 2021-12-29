@@ -43,6 +43,7 @@ Install_Dotfiles() {
 
 Copy_Directories() {
     printf "\n Installing directories and binaries to your home directory."
+    cp -r ${cdir}/.config ~
     cp -r ${cdir}/.local ~
     cp -r ${cdir}/.ssh ~
     cp -r ${cdir}/.vim ~
