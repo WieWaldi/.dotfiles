@@ -14,7 +14,7 @@
 # You can use this ~name anywhere you would specify a dir, not just with `cd`!
 hash -d z=$ZDOTDIR
 hash -d g=$gitdir
-hash -d R=~/Repos/WieWaldi
+hash -d r=~/Repos/WieWaldi
 #
 # Change dirs without `cd`. Just type the dir and press enter.
 # Note: This will misfire if there is an alias, function, builtin or command

@@ -33,11 +33,11 @@ case ${TERM} in
         printf "\n\n [Oh Boy, get on a graphical shell!]\n"
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
-    urxvt|st|st-256color|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+    urxvt|st|st-256color|tmux*|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
         precmd() {
             exitcode="$?"
             split=3
-            workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
+            workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
             
             if [[ ${exitcode} -eq 0 ]]; then
                 exitsymbol=" "
@@ -45,14 +45,14 @@ case ${TERM} in
                 exitsymbol=" "
             fi
         
-            if [[ $(id -u) = 0 ]]; then
+            if [[ $(/bin/id -u) = 0 ]]; then
                 usersymbol=" "
             else
                 usersymbol=" "
             fi
         
             W=${workingdir}
-            if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${split} ]]; then
+            if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
                 workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
             fi
         
