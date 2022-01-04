@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # +-------------------------------------------------------------------------+
-# | Name of the Script                                                      |
+# | .bash_logout                                                            |
 # +-------------------------------------------------------------------------+
 # | Copyright © 2019 Waldemar Schroeer                                      |
 # |                  waldemar.schroeer(at)rz-amper.de                       |
