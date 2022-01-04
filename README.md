@@ -1,9 +1,12 @@
 <img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
 ### .dotfiles by WieWaldi
-> *for bash,Zsh,tmux,screen,Vim and even PowerShell*
+> *My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
+
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)
+
+<br />
 
 My personal set of .dotfiles for bash, Vim and other stuff like precompiled
 binaries.
