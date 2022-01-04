@@ -19,6 +19,7 @@ declare -a dotfiles=(
     ".inputrc"
     ".motd"
     ".screenrc"
+    ".tmux.conf"
     ".vimrc"
     ".zshenv"
     "template.sh"
