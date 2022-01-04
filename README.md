@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
+<img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
 ### .dotfiles by WieWaldi
 > *for bash,Zsh,tmux,screen,Vim and even PowerShell*
