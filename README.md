@@ -8,9 +8,6 @@
 
 <br />
 
-My personal set of .dotfiles for bash, Vim and other stuff like precompiled
-binaries.
-
 ## Setup
 You may hand pick the parts you like or simply run the setup script. It will
 put everything in place. Next time you open your shell, you'll be amazed. The
@@ -22,4 +19,5 @@ git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
 
 #### Links/URLs
 [AWESOME SHELL](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line stuff
+
 [Z Shell Launchpad](https://github.com/marlonrichert/zsh-launchpad) - A simple dotfiles template to kick-start/bootstrap your zsh config
