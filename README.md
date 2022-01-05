@@ -20,3 +20,5 @@ git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
 #### Links/URLs
 [AWESOME SHELL](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line stuff  
 [Z Shell Launchpad](https://github.com/marlonrichert/zsh-launchpad) - A simple dotfiles template to kick-start/bootstrap your zsh config  
+[Tmux Configuration](https://github.com/samoshkin/tmux-config) - Samoshkin's Tmux Configuration  
+
