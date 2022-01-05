@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # +-------------------------------------------------------------------------+
 # | ~/.local/bin/showcolor-pac-man-3.sh                                     |
@@ -7,7 +7,7 @@
 # |                  waldemar.schroeer(at)rz-amper.de                       |
 # +-------------------------------------------------------------------------+
  
- function pacman_fancy() {
+pacman_fancy() {
     f=3 b=4
     for j in f b; do
       for i in {0..7}; do
