@@ -22,8 +22,6 @@ declare -a dotfiles=(
     ".tmux.conf"
     ".vimrc"
     ".zshenv"
-    "template.sh"
-    "template.php"
     )
 
 Display_Warning() {
@@ -48,6 +46,7 @@ Copy_Directories() {
     cp -r ${cdir}/.local ~
     cp -r ${cdir}/.ssh ~
     cp -r ${cdir}/.vim ~
+    cp -r ${cdir}/Templates ~
 }
 
 while true; do
