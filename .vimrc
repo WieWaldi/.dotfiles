@@ -36,6 +36,11 @@ set scrolloff=25                            " Minimal number of screen lines to 
 set sidescrolloff=7                         " The minimal number of screen columns to keep to the left
 set sidescroll=1                            " Scroll one character at a time
 set showtabline=2                           " Always show tab line
+set updatetime=100                          " Keep me updated (see :help updatetime)
+
+let g:indent_guides_enable_on_vim_startup = 1
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 "======== Toggle Soft Tabs ====================================================
 let my_tab=4
@@ -66,6 +71,8 @@ nnoremap T  mz:execute TabToggle()<CR>'z
 nnoremap # :s/^/# /<CR>
 nnoremap <down> ddp
 nnoremap <up> ddkP
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
 nnoremap <leader>t :tabfind
@@ -119,5 +126,4 @@ set statusline+=%8*                                     " Separator
 set statusline+=%2*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
 set statusline+=%7*                                     " Separator 
 set statusline+=%1*\ %{toupper(g:currentmode[mode()])}\  " The current mode
-"
 "======== EOF =================================================================
