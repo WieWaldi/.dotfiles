@@ -37,7 +37,7 @@ case ${TERM} in
         precmd() {
             exitcode="$?"
             split=3
-            workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
+            workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
             
             if [[ ${exitcode} -eq 0 ]]; then
                 exitsymbol=" "
@@ -45,14 +45,14 @@ case ${TERM} in
                 exitsymbol=" "
             fi
         
-            if [[ $(/bin/id -u) = 0 ]]; then
+            if [[ $(id -u) = 0 ]]; then
                 usersymbol=" "
             else
                 usersymbol=" "
             fi
         
             W=${workingdir}
-            if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
+            if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${split} ]]; then
                 workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
             fi
         

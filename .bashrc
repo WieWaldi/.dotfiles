@@ -54,7 +54,7 @@ if [[ $- == *i* ]]; then
         alias ...='cd ../..' 2>/dev/null
 
         if [[ -f ~/.motd ]]; then
-            /bin/cat ~/.motd
+            cat ~/.motd
         fi
 
     else

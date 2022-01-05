@@ -10,8 +10,8 @@
 function prompt_command_fancy() {
     local exitcode="$?"
     local split=4
-    local workingdir=" $(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
-    local git=$(/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
+    local workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
+    local git=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')
 
     if [[ ${exitcode} -eq 0 ]]; then
         local exitsymbol=" "
@@ -19,14 +19,14 @@ function prompt_command_fancy() {
         local exitsymbol=" "
     fi
 
-    if [[ $(/bin/id -u) = 0 ]]; then
+    if [[ $(id -u) = 0 ]]; then
         local usersymbol=" "
     else
         local usersymbol=" "
     fi
 
     W=${workingdir}
-    if [[ $(echo ${W} | /bin/grep -o '/' | /bin/wc -l) -gt ${split} ]]; then
+    if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${split} ]]; then
         workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
     fi
 
@@ -37,10 +37,10 @@ function prompt_command_fancy() {
 function prompt_command_tiny() {
     local exitcode="$?"
     local split=2
-    local workingdir="$(/bin/pwd | /bin/sed 's@'"$HOME"'@~@')"
-    local git="$(/bin/git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')"
+    local workingdir="$(pwd | sed 's@'"$HOME"'@~@')"
+    local git="$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/')"
     W=${workingdir}
-    if [[ $(echo ${W} | /bin/grep -o '/' | wc -l) -gt ${split} ]]; then
+    if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${split} ]]; then
         workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
     fi
     PS1="\n┌[\u@\h]──[${workingdir}${git}]──[\@]\n└────╼ "
