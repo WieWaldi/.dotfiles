@@ -37,6 +37,9 @@ set sidescrolloff=7                         " The minimal number of screen colum
 set sidescroll=1                            " Scroll one character at a time
 set showtabline=2                           " Always show tab line
 set updatetime=100                          " Keep me updated (see :help updatetime)
+set splitright                              " New Windows from a vertical split will be put to the right
+set splitbelow                              " New Windows from a horizontal split will be put to the bottom
+let NERDTreeShowHidden=1                    " Show hidden files in NERDTree
 
 let g:indent_guides_enable_on_vim_startup = 1
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
