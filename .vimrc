@@ -68,6 +68,7 @@ endfunction
 autocmd BufWritePost meeting*.adoc !./meeting.sh <afile>
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "======== Custom Mappings =====================================================
 nnoremap T  mz:execute TabToggle()<CR>'z
