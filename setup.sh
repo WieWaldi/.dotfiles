@@ -14,6 +14,7 @@ width=80
 backupdir=~/.dotfiles.${datetime}
 
 BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
 YN="(Yes|${BRIGHT}No${NORMAL}) >> "
 
 declare -a dotfiles=(
@@ -50,7 +51,7 @@ echo_equals() {
 echo_title() {
     title=$1
     ncols=$(tput cols)
-    nequals=$(((width-${#title})/2-1))
+    nequals=$(((width-${#title})/2))
     tput setaf 4 0 0
     echo_equals "$nequals"
     tput setaf 6 0 0
@@ -65,7 +66,7 @@ echo_Right() {
     text=${1}
     echo
     tput cuu1
-    tput cuf "$((${width} - 1))"
+    tput cuf "${width}"
     tput cub ${#text}
     echo "${text}"
 }
