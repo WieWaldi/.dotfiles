@@ -8,7 +8,7 @@
 
 <br />
 
-[screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
+![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
 #### Links/URLs/Credits
 [AWESOME SHELL](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line stuff  
