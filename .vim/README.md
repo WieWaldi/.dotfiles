@@ -11,7 +11,8 @@
 ![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
 #### Links/URLs/Credits
-[AWESOME SHELL](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line stuff  
-[Z Shell Launchpad](https://github.com/marlonrichert/zsh-launchpad) - A simple dotfiles template to kick-start/bootstrap your zsh config  
-[Tmux Configuration](https://github.com/samoshkin/tmux-config) - Samoshkin's Tmux Configuration  
+[indentLine](https://github.com/Yggdroot/indentLine) - Displaying thin vertical lines at each indentation level.
+[NERDTree](https://github.com/preservim/nerdtree) - The NERDTree is a file system explorer for the Vim editor.
+[vim-devicons](https://github.com/ryanoasis/vim-devicons) - Adds filetype glyphs (icons) to various vim plugins.
+[vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.
 
