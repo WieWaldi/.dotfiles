@@ -8,6 +8,8 @@
 
 <br />
 
+[screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
+
 ## Setup
 You may hand pick the parts you like or simply run the setup script. It will
 put everything in place. Next time you open your shell, you'll be amazed. The
