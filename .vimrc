@@ -6,7 +6,7 @@
 " +-------------------------------------------------------------------------+
 "
 "======== Color Theme =========================================================
-color wiewaldi
+colorscheme wiewaldi
 
 "======== Default Settings ====================================================
 setlocal cm=blowfish2                       " Sets encryption method to blowfish2
@@ -40,8 +40,10 @@ set updatetime=100                          " Keep me updated (see :help updatet
 set splitright                              " New Windows from a vertical split will be put to the right
 set splitbelow                              " New Windows from a horizontal split will be put to the bottom
 let NERDTreeShowHidden=1                    " Show hidden files in NERDTree
-
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indentLine_color_term = 91            " Customize conceal color
+let g:indentLine_conceallevel = 2           " indentLine will not function if conceallevel is not set to 1 or 2.
+let g:indentLine_setConceal = 1             " Keep your conceal setting, put this line to 0
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
