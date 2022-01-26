@@ -15,4 +15,5 @@
 [NERDTree](https://github.com/preservim/nerdtree) - The NERDTree is a file system explorer for the Vim editor.  
 [vim-devicons](https://github.com/ryanoasis/vim-devicons) - Adds filetype glyphs (icons) to various vim plugins.  
 [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.  
+[vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle) - numbertoggle switches to absolute line numbers.
 
