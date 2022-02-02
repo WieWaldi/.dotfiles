@@ -1,12 +1,12 @@
-" 'solarized_flat_light.vim' -- Vim color scheme.
-
-if exists('syntax_on')
-  syntax reset
-endif
+" Name:         Solarized WieWaldi
+" Description:  Solarized Vim Theme based on Ethan Schoonover's Solarized Color Theme
+" Author:       Waldemar Schroeer
+" Website:      https://github.com/WieWaldi/.dotfiles
+" License:      OSI approved MIT license
+" Last Updated: 2022-01-25
 
 let colors_name = 'wiewaldi'
 hi Normal                                  cterm=NONE  ctermfg=11  ctermbg=15  guifg=#657b83  guibg=#fdf6e3  gui=NONE
-set background=light
 hi ColorColumn                             cterm=NONE  ctermbg=254  guibg=#eee8d5  gui=NONE
 hi Comment                                 cterm=NONE  ctermfg=14 guifg=#93a1a1  gui=italic
 hi ConId                                   cterm=NONE  ctermfg=3  guifg=#b58900  gui=NONE
