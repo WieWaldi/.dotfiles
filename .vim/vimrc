@@ -1,23 +1,45 @@
 " +-------------------------------------------------------------------------+
-" | .vimrc                                                                  |
+" | .vim/vimrc                                                                  |
 " +-------------------------------------------------------------------------+
 " | Copyright © 2020 Waldemar Schroeer                                      |
 " |                  waldemar.schroeer(at)rz-amper.de                       |
 " +-------------------------------------------------------------------------+
-"
+
 "======== Color Theme =========================================================
-colorscheme wiewaldi
+function! MyHighlights() abort
+    highlight LineNr        cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
+    highlight TabLine       cterm=NONE  ctermfg=133  ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
+    highlight TabLineFill   cterm=NONE  ctermfg=53  ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
+    highlight TabLineSel    cterm=NONE  ctermfg=255  ctermbg=53  gui=underline,reverse  guifg=#93a1a1  guibg=#073642  guisp=#657b83
+    highlight User0         ctermfg=255 ctermbg=53
+    highlight User1         ctermfg=255 ctermbg=53
+    highlight User2         ctermfg=255 ctermbg=91
+    highlight User7         ctermfg=53 ctermbg=91
+    highlight User8         ctermfg=91 ctermbg=140
+    highlight User9         ctermfg=140 ctermbg=15
+    highlight! link SignColumn LineNr
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
+set background=light
+colorscheme solarized
 
 "======== Default Settings ====================================================
+filetype indent on                          " Respect indent rules based on file types
 setlocal cm=blowfish2                       " Sets encryption method to blowfish2
 syntax on                                   " Sets syntax highlighting on
 set path=.,,**                              " Set path to current directory
-set undodir=~/.vim/undodir                  " Undo directory
+set undodir=~/.vim/undodir                  " Write undo directory to ~/.vim/
 set undofile                                " Create undo file
-" set mouse+=a                                " Enable the use of the mouse
-set number                                  " Show relative line numbers
+set viminfo+=n~/.vim/viminfo                " Write viminfo to ~/.vim/
+set number relativenumber                   " Show hybrid line numbers
+set numberwidth=5                           " Set width of line number column
 set cursorline                              " Highlight current line
-set smartindent                             " Do smart autoindenting when starting a new line
+set autoindent                              " Do autoindenting when starting a new line
 set backspace=2                             " Same as :set backspace=indent,eol,start
 set incsearch                               " Find the next match as we type the search
 set ignorecase                              " Ignore case in search patterns
@@ -30,106 +52,168 @@ set colorcolumn=81                          " Show color column on the right sid
 set t_Co=256                                " Tell the term has 256 colors
 set list                                    " List mode
 set listchars=eol:¬,tab:▸-                  " Strings to use in list mode
-" set t_ti= t_te=                           " Don't reset screen
 set nowrap                                  " Dont wrap lines
 set scrolloff=25                            " Minimal number of screen lines to keep above and below the cursor
 set sidescrolloff=7                         " The minimal number of screen columns to keep to the left
 set sidescroll=1                            " Scroll one character at a time
 set showtabline=2                           " Always show tab line
 set updatetime=100                          " Keep me updated (see :help updatetime)
+set timeoutlen=2000                         " Wait 2 seconds for additional key strokes
 set splitright                              " New Windows from a vertical split will be put to the right
 set splitbelow                              " New Windows from a horizontal split will be put to the bottom
+set laststatus=2                            " Always show status line
+set noshowmode                              " Don't show mode on last line
+set statusline=                             " Clear status line
+
+" set t_ti= t_te=                             " Don't reset screen
+" set mouse+=a                                " Enable the use of the mouse
+" set smartindent                             " Do smart autoindenting when starting a new line
+
+let g:mapleader = "\<Space>"                " <Space> as leader
+let g:maplocalleader = ','                  " , as local leader
 let NERDTreeShowHidden=1                    " Show hidden files in NERDTree
 let g:indentLine_color_term = 91            " Customize conceal color
 let g:indentLine_conceallevel = 2           " indentLine will not function if conceallevel is not set to 1 or 2.
 let g:indentLine_setConceal = 1             " Keep your conceal setting, put this line to 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+"======== Vim Table Mode ======================================================
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 "======== Toggle Soft Tabs ====================================================
-let my_tab=4
-execute "set shiftwidth=".my_tab
-execute "set softtabstop=".my_tab
-execute "set tabstop=".my_tab
+let b:my_tab=4
+execute "set shiftwidth=".b:my_tab
+execute "set softtabstop=".b:my_tab
+execute "set tabstop=".b:my_tab
 set expandtab
 
 function! TabToggle()
-  if &expandtab
-    execute "set shiftwidth=".g:my_tab
-    execute "set softtabstop=0"
-    set noexpandtab
-  else
-    execute "set shiftwidth=".g:my_tab
-    execute "set softtabstop=".g:my_tab
-    set expandtab
-  endif
+    if &expandtab
+        execute "set shiftwidth=".b:my_tab
+        execute "set softtabstop=0"
+        set noexpandtab
+    else
+        execute "set shiftwidth=".b:my_tab
+        execute "set softtabstop=".b:my_tab
+        set expandtab
+    endif
+endfunction
+
+"======== Toggle Surround ======================================================
+let b:mySurround="nosurround"
+function! ToggleSurround()
+    if b:mySurround=="surround"
+        let b:mySurround="nosurround"
+        execute 'iunmap "'
+        execute 'iunmap ('
+        execute 'iunmap ['
+        execute 'iunmap {'
+        execute 'iunmap {<CR>'
+        execute 'iunmap {;<CR>'
+        execute 'iunmap <expr> )'
+    else
+        let b:mySurround="surround"
+        execute 'inoremap " ""<left>'
+        execute 'inoremap ( ()<left>'
+        execute 'inoremap [ []<left>'
+        execute 'inoremap { {}<left>'
+        execute 'inoremap {<CR> {<CR>}<ESC>O'
+        execute 'inoremap {;<CR> {<CR>};<ESC>O'
+        execute 'inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"'
+    endif
 endfunction
 
 "======== Autocommands ========================================================
+autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 autocmd BufWritePost meeting*.adoc !./meeting.sh <afile>
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"======== Custom Mappings =====================================================
-nnoremap T  mz:execute TabToggle()<CR>'z
+augroup CursorLine                          " Toggle cursor line when changing focus
+    autocmd!
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+augroup END
+
+augroup NumberToggle                        " Toggle relative numbers on splits when changing focus
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+    autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+augroup Templates                           " Templates and Skeleton
+    autocmd!
+    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+    autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
+augroup END
+
+"======== Custom Mappings - Normal ============================================
 nnoremap # :s/^/# /<CR>
+nnoremap " :s/^/" /<CR>
 nnoremap <down> ddp
 nnoremap <up> ddkP
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
 nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
-nnoremap <leader>t :tabfind
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
-
-" nmap G Gzz
-" nmap n nzz
-" nmap N Nzz
-" nmap } }zz
-" nmap { {zz
+nnoremap <leader>s :cal ToggleSurround()<CR>
+nnoremap <leader>t :cal TabToggle()<CR>
 
 "======== Status Line =========================================================
 let g:currentmode={
-    \ 'n'  : 'Normal',
-    \ 'no' : 'Normal·Operator Pending',
-    \ 'v'  : 'Visual',
-    \ 'V'  : 'V·Line',
-    \ '^V' : 'V·Block',
-    \ 's'  : 'Select',
-    \ 'S'  : 'S·Line',
-    \ '^S' : 'S·Block',
-    \ 'i'  : 'Insert',
-    \ 'R'  : 'Replace',
-    \ 'Rv' : 'V·Replace',
-    \ 'c'  : 'Command',
-    \ 'cv' : 'Vim Ex',
-    \ 'ce' : 'Ex',
-    \ 'r'  : 'Prompt',
-    \ 'rm' : 'More',
-    \ 'r?' : 'Confirm',
-    \ '!'  : 'Shell',
-    \ 't'  : 'Terminal'
+    \ "n"       : "You're in Normal Mode",
+    \ "no"      : "You're in Normal Mode · Operator Pending",
+    \ "v"       : "You're in Visual Mode",
+    \ "V"       : "You're in V·Line Mode",
+    \ "\<C-V>"  : "You're in V·Block Mode",
+    \ "s"       : "You're in Select Mode",
+    \ "S"       : "You're in S·Line Mode",
+    \ "^S"      : "You're in S·Block Mode",
+    \ "i"       : "You're in Insert Mode",
+    \ "R"       : "You're in Replace Mode",
+    \ "Rv"      : "You're in V·Replace Mode",
+    \ "c"       : "Waiting for your Command",
+    \ "cv"      : "Vim Ex",
+    \ "ce"      : "Ex",
+    \ "r"       : "Prompt",
+    \ "rm"      : "More",
+    \ "r?"      : "Confirm",
+    \ "!"       : "Shell",
+    \ "t"       : "Terminal"
     \}
 
-set laststatus=2
-set noshowmode
-set statusline=
+set statusline+=%1*\ \ :
 set statusline+=%1*\ %n\                                 " Buffer number
 set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
 set statusline+=%7*                                     " Separator 
+set statusline+=%2*\ 
 set statusline+=%2*\ %Y\                                 " FileType
 set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
 set statusline+=%8*                                     " Separator 
-set statusline+=\ (%{&ff})                               " FileFormat (dos/unix..)
+set statusline+=%8*\ 
+set statusline+=\ %{&ff}                               " FileFormat (dos/unix..)
 set statusline+=%9*                                     " Separator 
 set statusline+=%=                                       " Right Side
 set statusline+=%9*                                     " Separator 
-set statusline+=%8*\ col:\ %02v\                         " Colomn number
+set statusline+=%8*\ \ %02v\                         " Colomn number
 set statusline+=%8*                                     " Separator 
-set statusline+=%2*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
+set statusline+=%2*\ \ %02l/%L\ %3p%%\              " Line number / total lines, percentage of document
 set statusline+=%7*                                     " Separator 
 set statusline+=%1*\ %{toupper(g:currentmode[mode()])}\  " The current mode
+
 "======== EOF =================================================================
