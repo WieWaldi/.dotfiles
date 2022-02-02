@@ -1,13 +1,13 @@
 <img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
-### .vim directory by WieWaldi
-> *My personal Vim setup. A Solarized Color Theme and other colorful stuff.*
+### .dotfiles by WieWaldi
+> *My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
 
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 <br />
 
-![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
+![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_dotfiles.png)
 ## Requirements  
 Don't try to run these .dotfiles through a terminal which isn't driven by Ethan Schoonover's Solarized X Resource Fils. I
 can't stress this enough. Vim will look awfull if no solarized theme is applied to the terminal. You my use my .Xresourse
