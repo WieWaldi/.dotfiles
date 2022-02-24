@@ -26,13 +26,13 @@
 
 #### Links/URLs/Credits  
 The following projects are part of this repository.  
-[indentLine](https://github.com/Yggdroot/indentLine) - Displaying thin vertical lines at each indentation level.  
-[NERDTree](https://github.com/preservim/nerdtree) - The NERDTree is a file system explorer for the Vim editor.  
-[vim-devicons](https://github.com/ryanoasis/vim-devicons) - Adds filetype glyphs (icons) to various vim plugins.  
-[vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.  
-[vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle) - numbertoggle switches to absolute line numbers.  
-[vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - An awesome automatic table creator & formatter  
+ - [indentLine](https://github.com/Yggdroot/indentLine) - Displaying thin vertical lines at each indentation level.  
+ - [NERDTree](https://github.com/preservim/nerdtree) - The NERDTree is a file system explorer for the Vim editor.  
+ - [vim-devicons](https://github.com/ryanoasis/vim-devicons) - Adds filetype glyphs (icons) to various vim plugins.  
+ - [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.  
+ - [vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle) - numbertoggle switches to absolute line numbers.  
+ - [vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - An awesome automatic table creator & formatter  
 
 I might add the following projects in the future.  
-[minimap.vim](https://github.com/wfxr/minimap.vim) - Blazing fast minimap for vim  
-[code-minimap](https://github.com/wfxr/code-minimap) - This tool is for generating text minimaps  
+ - [minimap.vim](https://github.com/wfxr/minimap.vim) - Blazing fast minimap for vim  
+ - [code-minimap](https://github.com/wfxr/code-minimap) - This tool is for generating text minimaps  
