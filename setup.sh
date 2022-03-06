@@ -27,7 +27,6 @@ declare -a dotfiles=(
     ".motd"
     ".screenrc"
     ".tmux.conf"
-    ".vimrc"
     ".zshenv"
     )
 
