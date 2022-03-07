@@ -10,8 +10,9 @@
 ![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
 ## Mappings  
- - `<leader>` `<s>` toggles mySurround
- - `<leader>` `<t>` Toggles Soft Tab
+ - `<leader>` `<c>``<p>` Toggles paste mode
+ - `<leader>` `<c>``<s>` Toggles mySurround
+ - `<leader>` `<c>``<t>` Toggles Soft/Hard Tab
  - `<leader>` `<n>` NERDTreeToggle
  - `<leader>` `<f>` NERDTreeFind
  - `<leader>` `<t>` `<m>` Toggle Table Mode

@@ -99,15 +99,17 @@ execute "set softtabstop=".b:my_tab
 execute "set tabstop=".b:my_tab
 set expandtab
 
-function! TabToggle()
+function! ToggleTab()
     if &expandtab
         execute "set shiftwidth=".b:my_tab
         execute "set softtabstop=0"
         set noexpandtab
+        echo "I'm not expanding Tabs from now on."
     else
         execute "set shiftwidth=".b:my_tab
         execute "set softtabstop=".b:my_tab
         set expandtab
+        echo "I'm expanding Tabs from now on."
     endif
 endfunction
 
@@ -123,6 +125,7 @@ function! ToggleSurround()
         execute 'iunmap {<CR>'
         execute 'iunmap {;<CR>'
         execute 'iunmap <expr> )'
+        echo "I'm not surrounding from now on."
     else
         let b:mySurround="surround"
         execute 'inoremap " ""<left>'
@@ -132,6 +135,21 @@ function! ToggleSurround()
         execute 'inoremap {<CR> {<CR>}<ESC>O'
         execute 'inoremap {;<CR> {<CR>};<ESC>O'
         execute 'inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"'
+        echo "I'm surrounding from now on."
+    endif
+endfunction
+
+"======== Toggle Paste ========================================================
+let b:myPaste="nopaste"
+function! TogglePaste()
+    if b:myPaste=="nopaste"
+        let b:myPaste="paste"
+        set paste
+        echo "Paste now."
+    else
+        let b:myPaste="nopaste"
+        set nopaste
+        echo "Don't paste now."
     endif
 endfunction
 
@@ -152,8 +170,10 @@ augroup NumberToggle                        " Toggle relative numbers on splits 
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
-augroup Templates                           " Templates and Skeleton
+augroup Templates                           " Templates and Skeletons
     autocmd!
+    autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
+    autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
     autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
 augroup END
@@ -171,8 +191,9 @@ nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>s :cal ToggleSurround()<CR>
-nnoremap <leader>t :cal TabToggle()<CR>
+nnoremap <leader>cs :cal ToggleSurround()<CR>
+nnoremap <leader>ct :cal ToggleTab()<CR>
+nnoremap <leader>cp :cal TogglePaste()<CR>
 
 "======== Status Line =========================================================
 let g:currentmode={
@@ -197,23 +218,23 @@ let g:currentmode={
     \ "t"       : "Terminal"
     \}
 
-set statusline+=%1*\ \ :
-set statusline+=%1*\ %n\                                 " Buffer number
-set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
-set statusline+=%7*                                     " Separator 
-set statusline+=%2*\ 
-set statusline+=%2*\ %Y\                                 " FileType
-set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
-set statusline+=%8*                                     " Separator 
-set statusline+=%8*\ 
-set statusline+=\ %{&ff}                               " FileFormat (dos/unix..)
-set statusline+=%9*                                     " Separator 
-set statusline+=%=                                       " Right Side
-set statusline+=%9*                                     " Separator 
-set statusline+=%8*\ \ %02v\                         " Colomn number
-set statusline+=%8*                                     " Separator 
-set statusline+=%2*\ \ %02l/%L\ %3p%%\              " Line number / total lines, percentage of document
-set statusline+=%7*                                     " Separator 
-set statusline+=%1*\ %{toupper(g:currentmode[mode()])}\  " The current mode
+set statusline+=%1*\ \ :                                   " Show commitment
+set statusline+=%1*\ %n\                                    " Buffer number
+set statusline+=%1*\ %<%F%m%r%h%w\                          " File path, modified, readonly, helpfile, preview
+set statusline+=%7*                                        " Separator 
+set statusline+=%2*\                                       " Static file icon
+set statusline+=%2*\ %Y\                                    " Print file type
+set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}        " Print encoding type
+set statusline+=%8*                                        " Separator 
+set statusline+=%8*\                                       " Static file icon
+set statusline+=\ %{&ff}                                  " Print file format (dos/unix..)
+set statusline+=%9*                                        " Separator 
+set statusline+=%=                                          " Right Side
+set statusline+=%9*                                        " Separator 
+set statusline+=%8*\ \ %02v\                               " Print colomn number
+set statusline+=%8*                                        " Separator 
+set statusline+=%2*\ \ %02l/%L\ %3p%%\                   " Print line number / total lines and percentage of document
+set statusline+=%7*                                        " Separator 
+set statusline+=%1*\ %{toupper(g:currentmode[mode()])}\     " Print the current mode
 
 "======== EOF =================================================================
