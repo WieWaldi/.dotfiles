@@ -15,7 +15,6 @@ export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 setopt HIST_FCNTL_LOCK
-setopt SHARE_HISTORY
 setopt appendhistory autocd extendedglob notify
 setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
