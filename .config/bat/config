@@ -1,0 +1,14 @@
+# +----------------------------------------------------------------------------+
+# | ~/.config/bat/config                                                       |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# +----------------------------------------------------------------------------+
+
+#  --theme="Solarized (light)"
+#  --theme="GitHub"
+#  --theme="Monokai Extended Light"
+#  --theme="OneHalfLight"
+--theme="ansi-light"
+--paging=auto
+--style=plain
