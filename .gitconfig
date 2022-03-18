@@ -1,0 +1,20 @@
+# +----------------------------------------------------------------------------+
+# | ~/.gitconfig                                                               |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# +----------------------------------------------------------------------------+
+
+
+[user]
+	name = Waldemar Schroeer
+	email = w@ldemar.de
+
+[pull]
+	rebase = false
+
+[core]
+	editor = vim
+
+[push]
+	default = simple
