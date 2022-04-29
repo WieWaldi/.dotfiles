@@ -194,6 +194,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>cs :cal ToggleSurround()<CR>
 nnoremap <leader>ct :cal ToggleTab()<CR>
 nnoremap <leader>cp :cal TogglePaste()<CR>
+nnoremap <leader>f <cmd>.!figlet -f small<cr>
 
 "======== Status Line =========================================================
 let g:currentmode={

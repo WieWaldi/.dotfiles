@@ -14,7 +14,7 @@
  - `<leader>` `<c>``<s>` Toggles mySurround
  - `<leader>` `<c>``<t>` Toggles Soft/Hard Tab
  - `<leader>` `<n>` NERDTreeToggle
- - `<leader>` `<f>` NERDTreeFind
+ - `<leader>` `<f>` Put line to figglet
  - `<leader>` `<t>` `<m>` Toggle Table Mode
  - `<Ctrl>` `<h>` :tabprevious
  - `<Ctrl>` `<l>` :tabnext
