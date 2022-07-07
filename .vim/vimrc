@@ -175,7 +175,6 @@ augroup Templates                           " Templates and Skeletons
     autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
     autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
-    autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
 augroup END
 
 "======== Custom Mappings - Normal ============================================
