@@ -87,29 +87,68 @@ Reloads the website without using the cache.
 
 .SH VIM
 .TP
-.B Ctrl-[w]  R
+.B Ctrl-[w]  [R]
 To rotate windows up/left.
 .TP
-.B Ctrl-[w]  r
+.B Ctrl-[w]  [r]
 To rotate windows down/right.
 .TP
-.B Ctrl-[w]  L
+.B Ctrl-[w]  [L]
 Move the window to the "far right"
 .TP
-.B Ctrl-[w]  H
+.B Ctrl-[w]  [H]
 Move the window to the "far left"
 .TP
-.B Ctrl-[w]  J
+.B Ctrl-[w]  [J]
 Move the window to the "very bottom"
 .TP
-.B Ctrl-[w]  K
+.B Ctrl-[w]  [K]
 Move the window to the "very top"
 .TP
-.B Ctrl-[w]  X   OR   Ctrl-[w]  Ctrl X
+.B Ctrl-[w]  [X]   OR   Ctrl-[w]  Ctrl-[X]
 Rotates the current focused window with the closest window to the right.
 .TP
-.B Ctrl-[w]  |
+.B Ctrl-[w]  [|]
 Maximize current focused window.
 .TP
-.B Ctrl-[w]  =
+.B Ctrl-[w]  [=]
 Rearange all windows.
+.SH VIM Mappings
+.TP
+.B <leader> [c] [p]
+Toggles paste mode
+.TP
+.B <leader> [c] [s]
+Toggles mySurround
+.TP
+.B <leader> [c] [t]
+Toggles Soft/Hard Tab
+.TP
+.B <leader> [c]
+NERDTreeToggle
+.TP
+.B <leader> [f]
+Put line to figglet
+.TP
+.B <leader> [t] [m]
+Toggle Table Mode
+.TP
+.B Ctrl-[h]
+:tabprevious
+.TP
+.B Ctrl-[l]
+:tabnext
+.TP
+.B [F2]
+Toggle cursor line
+.TP
+.B [F3]
+Toggle cursor column
+.TP
+.B [#]
+is mapped to
+.B :s/^/# /<CR>
+.TP
+.B ["]
+is mapped to
+.B :s/^/" /<CR>
