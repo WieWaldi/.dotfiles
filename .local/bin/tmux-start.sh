@@ -7,22 +7,32 @@
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # +----------------------------------------------------------------------------+
 
-set +e; sessions="$(tmux ls 2>&1)"; tmux_exit="$?"; set -e
-
-if [[ $tmux_exit -ne 0 ]]; then
-    echo "No session found. Hold on, I will create one for you."
-    tmux new-session -d -s Login
-    tmux rename-window -t Login:1 'Master'
-    tmux new-window -t Login:2 -n 'Slave'
-    tmux new-window -t Login:3 -n 'Scratch'
-    tmux new-window -t Login:4 -n 'etc'
-    tmux send-keys -t Login:Master '.local/share/fancy-motd/motd.sh' C-m
-    tmux send-keys -t Login:Master '.local/bin/colortest-pac-man-3.sh' C-m
-
-    tmux attach-session -t Login:Master
-else
-    tmux attach-session -t Login:Master
+if [[ "$#" = "0" ]]; then
+    echo "Session name not specified."
+    exit 1
 fi
 
+session=$1
+sessionexist=$(tmux list-session | grep $session)
 
+if [[ "$sessionexist" = "" ]]; then
+    tmux new-session -d -s $session
+    tmux rename-window -t $session:1 'Master'
+    tmux new-window -t $session:2 -n 'Slave'
+    tmux new-window -t $session:3 -n 'Scratch'
+    tmux new-window -t $session:4 -n 'etc'
+
+    if [[ "$session" = "Login" ]]; then
+        tmux send-keys -t $session:Master '.local/share/fancy-motd/motd.sh' C-m
+        tmux send-keys -t $session:Master '.local/bin/colortest-pac-man-3.sh' C-m
+    fi
+    if [[ "$session" = "ScratchPad1" ]]; then
+        tmux send-keys -t $session:Master 'figlet -f small RZ-Amper' C-m
+    fi
+    if [[ "$session" = "ScratchPad2" ]]; then
+        tmux send-keys -t $session:Master 'bpytop' C-m
+    fi
+fi
+
+tmux attach-session -t $session:Master
 exit 0 
