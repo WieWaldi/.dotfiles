@@ -154,6 +154,8 @@ function! TogglePaste()
 endfunction
 
 "======== Autocommands ========================================================
+" autocmd! redhat BufReadPost *
+autocmd! fedora BufReadPost *
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
 autocmd BufWritePost meeting*.adoc !./meeting.sh <afile>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -175,6 +177,7 @@ augroup Templates                           " Templates and Skeletons
     autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
     autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+    autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
 augroup END
 
 "======== Custom Mappings - Normal ============================================
