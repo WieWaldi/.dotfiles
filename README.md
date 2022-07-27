@@ -43,7 +43,7 @@ git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
 [vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.  
 [vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle) - numbertoggle switches to absolute line numbers.  
 [vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - An awesome automatic table creator & formatter  
-[nicknisi/dotfiles](https://github.com/nicknisi/dotfiles) - Good inspiration and starting point.
+[nicknisi/dotfiles](https://github.com/nicknisi/dotfiles) - Good inspiration and starting point.  
 
 ## Version
 The option to create releases on GitHub is pretty nice. I really do like it since it give me easy access to all the files
