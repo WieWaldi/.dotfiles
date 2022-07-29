@@ -9,6 +9,30 @@
 # +-------------------------------------------------------------------------+
 
 # Git Info for RPROMPT
+prompt_prefix=${prompt_prefix:-''}
+vi_mode_ins_symbol=${vi_mode_ins_symbol:-'--INSERT--'}
+vi_mode_nrm_symbol=${vi_mode_nrm_symbol:-'--NORMAL--'}
+vi_mode_vis_symbol=${vi_mode_vis_symbol:-'--VISUAL--'}
+vi_mode_symbol="${vi_mode_ins_sysbol}"
+zle-keymap-select() {
+    if [ "${KEYMAP}" = 'vicmd' ]; then
+        vi_mode_symbol="${vi_mode_nrm_symbol}"
+    else
+        vi_mode_symbol="${vi_mode_ins_symbol}"
+    fi
+    zle reset-prompt
+}
+zle -N zle-keymap-select
+zle-line-finish() {
+    vi_mode_symbol="${vi_mode_ins_symbol}"
+}
+zle -N zle-keymap-select
+
+TRAPIN() {
+    vi_mode_symbol="${vi_mode_ins_symbol}"
+    return $(( 128 + $1 ))
+}
+
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
@@ -63,9 +87,8 @@ case ${TERM} in
             PROMPT+="%F{91}%K{140}"
             PROMPT+="${exitsymbol}"
             PROMPT+="%F{140}%k%f%k "
-
             vcs_info
-            RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91}%B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53} %E'
+            RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91}%B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53}%(?.%F{green}$vi_mode_symbol.%F{red}vi_mode_symbol)  %E'
         }
         ;;
     *)
