@@ -1,16 +1,22 @@
-" +-------------------------------------------------------------------------+
-" | .vim/vimrc                                                                  |
-" +-------------------------------------------------------------------------+
-" | Copyright © 2020 Waldemar Schroeer                                      |
-" |                  waldemar.schroeer(at)rz-amper.de                       |
-" +-------------------------------------------------------------------------+
+" +----------------------------------------------------------------------------+
+" | .vim/vimrc                                                                 |
+" +----------------------------------------------------------------------------+
+" | Copyright © 2020 Waldemar Schroeer                                         |
+" |                  waldemar.schroeer(at)rz-amper.de                          |
+" +----------------------------------------------------------------------------+
 
-"======== Color Theme =========================================================
+"======== Color Theme ============================================={{{
 function! MyHighlights() abort
     highlight LineNr        cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
     highlight TabLine       cterm=NONE  ctermfg=133  ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
-    highlight TabLineFill   cterm=NONE  ctermfg=53  ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
+    highlight TabLineFill   cterm=NONE  ctermfg=53   ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
     highlight TabLineSel    cterm=NONE  ctermfg=255  ctermbg=53  gui=underline,reverse  guifg=#93a1a1  guibg=#073642  guisp=#657b83
+    highlight VertSplit     cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
+    highlight StatusLine    cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
+    highlight StatusLineNC  cterm=NONE  ctermfg=255  ctermbg=53  guifg=#93a1a2  guibg=#eee8d6  gui=NONE
+    highlight CursorLine    cterm=bold,underline
+    highlight CursorLineNR  cterm=bold,italic  ctermfg=255  ctermbg=53
+    highlight EndOfBuffer   cterm=NONE
     highlight User0         ctermfg=255 ctermbg=53
     highlight User1         ctermfg=255 ctermbg=53
     highlight User2         ctermfg=255 ctermbg=91
@@ -27,9 +33,10 @@ augroup END
 
 set background=light
 colorscheme solarized
+" }}}
 
 "======== Default Settings ====================================================
-filetype indent on                                      " Respect indent rules based on file types
+filetype plugin indent on                                      " Respect indent rules based on file types
 setlocal cm=blowfish2                                   " Sets encryption method to blowfish2
 syntax on                                               " Sets syntax highlighting on
 set whichwrap+=<,>,h,l                                  " Specify keys that move cursor to next/previous line
@@ -66,7 +73,7 @@ set splitbelow                                          " New Windows from a hor
 set laststatus=2                                        " Always show status line
 set noshowmode                                          " Don't show mode on last line
 set statusline=                                         " Clear status line
-
+set fillchars=fold:-                                    "Characters to fill the statuslines and vertical separators
 " set t_ti= t_te=                                         " Don't reset screen
 " set mouse+=a                                            " Enable the use of the mouse
 " set smartindent                                         " Do smart autoindenting when starting a new line
@@ -241,6 +248,9 @@ nnoremap <leader>cw :cal ToggleWrap()<CR>
 nnoremap <leader>f <cmd>.!figlet -f small<cr>
 nnoremap <leader>q :bp<cr>:bd #<cr>
 nnoremap <leader>Q :bp<cr>:bd #!<cr>
+nnoremap <leader>vim :e ~/.vim/vimrc<cr>
+
+imap <C-L> <C-X><C-L>
 
 "======== Status Line =========================================================
 let g:currentmode={
@@ -285,3 +295,4 @@ set statusline+=%7*                                        " Separator
 set statusline+=%1*\ %{toupper(g:currentmode[mode()])}\     " Print the current mode
 
 "======== EOF =================================================================
+" vim:foldmethod=marker:foldlevel=0
