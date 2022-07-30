@@ -26,9 +26,9 @@ By default, Zsh will try to find the user’s configuration files in the $HOME
 directory. You can change it by setting the environment variable `$ZDOTDIR`.
 
 Personally, I like to have all my configuration files in $HOME/.config. To do so:
-> 1. I set the variable `$XDG_CONFIG_HOME` as following: `export XDG_CONFIG_HOME="$HOME/.config"`.
-> 2. set the environment variable `$ZDOTDIR`: `export ZDOTDIR="$XDG_CONFIG_HOME/zsh".`
-> 3. I put the file `.zshrc` in the `$ZDOTDIR` directory.
+1. I set the variable `$XDG_CONFIG_HOME` as following: `export XDG_CONFIG_HOME="$HOME/.config"`.
+2. set the environment variable `$ZDOTDIR`: `export ZDOTDIR="$XDG_CONFIG_HOME/zsh".`
+3. I put the file `.zshrc` in the `$ZDOTDIR` directory.
 
 Most software will use the path in `$XDG_CONFIG_HOME` to install their own config
 files. As a result, you’ll have a clean `$HOME` directory.  
@@ -37,10 +37,10 @@ It’s where you’ll set `$ZDOTDIR`. Then, every file read after `.zshenv` can 
 into your `$ZDOTDIR directory`.
 
 ## Links/URLs/Credits  
-[riptotarial.com Getting started with zsh](https://riptutorial.com/zsh)Some Remarks  
+[riptotarial.com Getting started with zsh](https://riptutorial.com/zsh) Some Remarks  
 [reddit.com A Guide to the Zsh Auto-Completion With Examples](https://www.reddit.com/r/zsh/comments/nm2vun/a_guide_to_the_zsh_autocompletion_with_examples/)  
-[The Valuable Dev](https://thevaluable.dev/zsh-install-configure-mouseless/)Configuring Zsh Without Dependencies  
-[flowblok's blog](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html)Shell startup scripts  
+[The Valuable Dev](https://thevaluable.dev/zsh-install-configure-mouseless/) Configuring Zsh Without Dependencies  
+[flowblok's blog](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) Shell startup scripts  
 
 ## Version
 The option to create releases on GitHub is pretty nice. I really do like it since it give me easy access to all the files
