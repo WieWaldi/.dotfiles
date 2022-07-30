@@ -1,0 +1,27 @@
+#!/usr/bin/env zsh
+#
+# +----------------------------------------------------------------------------+
+# | ~/config/zsh/functions/zle_keymap_select                                   |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2021 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# |                                                                            |
+# +----------------------------------------------------------------------------+
+#
+# +----- ZLE Keymap Select-----------------------------------------------------
+vi_mode_nrm_symbol=${vi_mode_nrm_symbol:-'--NORMAL--'}
+vi_mode_ins_symbol=${vi_mode_ins_symbol:-'--INSERT--'}
+vi_mode_opp_symbol=${vi_mode_opp_symbol:-'--OPERAT--'}
+vi_mode_vis_symbol=${vi_mode_vis_symbol:-'--VISUAL--'}
+vi_mode_symbol=${vi_mode_ins_symbol}
+
+if [ "${KEYMAP}" = 'vicmd' ]; then
+    vi_mode_symbol="${vi_mode_nrm_symbol}"
+elif [ "${KEYMAP}" = 'viins' ]; then
+    vi_mode_symbol="${vi_mode_ins_symbol}"
+elif [ "${KEYMAP}" = 'viopp' ]; then
+    vi_mode_symbol="${vi_mode_opp_symbol}"
+elif [ "${KEYMAP}" = 'visual' ]; then
+    vi_mode_symbol="${vi_mode_vis_symbol}"
+fi
+zle reset-prompt

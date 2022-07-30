@@ -7,3 +7,6 @@
 # |                  waldemar.schroeer(at)rz-amper.de                       |
 # |                                                                         |
 # +-------------------------------------------------------------------------+
+
+
+~/.local/bin/tmux-start.sh Login

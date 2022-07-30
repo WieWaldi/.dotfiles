@@ -1,16 +1,23 @@
 #!/usr/bin/env zsh
 #
-# +-------------------------------------------------------------------------+
-# | ~/config/.zshrc                                                         |
-# +-------------------------------------------------------------------------+
-# | Copyright © 2021 Waldemar Schroeer                                      |
-# |                  waldemar.schroeer(at)rz-amper.de                       |
-# |                                                                         |
-# | This file, .zshrc, is sourced by zsh for each interactive shell session.|
-# | Note: For historical reasons, there are other dotfiles, besides .zshenv |
-# | and .zshrc, that zsh reads, but there is really no need to use those.   |
-# |                                                                         |
-# +-------------------------------------------------------------------------+
+# +----------------------------------------------------------------------------+
+# | ~/config/.zshrc                                                            |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2021 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# |                                                                            |
+# | This file, .zshrc, is sourced by zsh for each interactive shell session.   |
+# | Note: For historical reasons, there are other dotfiles, besides .zshenv    |
+# | and .zshrc, that zsh reads, but there is really no need to use those.      |
+# |                                                                            |
+# +----------------------------------------------------------------------------+
+
+# Add your functions to your $fpath, so you can autoload them.
+fpath=(
+    $ZDOTDIR/functions
+    $fpath
+)
+autoload -U $fpath[1]/*(.:t)
 
 # The construct below is what Zsh calls an anonymous function; most other
 # languages would call this a lambda or scope function. It gets called
@@ -18,9 +25,6 @@
 # Here, it enables us to use scoped variables in our dotfiles.
 
 () {
-    # `local` sets the variable's scope to this function and its descendendants.
-    local gitdir=~/Git  # Where to keep repos and plugins
-
     # Load all of the files in rc.d that start with <number>- and end in .zsh
     # (n) sorts the results in numerical order.
     # <-> is an open-ended range. It matches any non-negative integer.

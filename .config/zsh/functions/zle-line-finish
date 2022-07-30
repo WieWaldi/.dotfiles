@@ -1,28 +1,12 @@
 #!/usr/bin/env zsh
 #
 # +----------------------------------------------------------------------------+
-# | ~/config/zsh/functions/precmd                                              |
+# | ~/config/zsh/functions/zle_line_finish                                     |
 # +----------------------------------------------------------------------------+
 # | Copyright © 2021 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
-#
-# +----- precmd ---------------------------------------------------------------
 
-exitcode="$?"
-dirsplit=3
-workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
-
-if [[ ${exitcode} -eq 0 ]]; then
-    exitsymbol=" "
-else
-    exitsymbol=" "
-fi
-
-W=${workingdir}
-if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${dirsplit} ]]; then
-    workingdir=$(echo $W | cut -d'/' -f1-$split | xargs -I{} echo {}"/../${W##*/}")
-fi
-
-vcs_info
+# +----- ZLE Line Finisch -----------------------------------------------------+
+vi_mode_symbol="${vi_mode_ins_symbol}"

@@ -17,12 +17,6 @@ export -UT INFOPATH infopath  # -T creates a "tied" pair; see below.
 # Note that each value in an array is expanded separately. Thus, we can use ~
 # for $HOME in each $path entry.
 path=(
-    $path
     ~/.local/bin
-)
-
-# Add your functions to your $fpath, so you can autoload them.
-fpath=(
-    $ZDOTDIR/functions
-    $fpath
+    $path
 )
