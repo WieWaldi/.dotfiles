@@ -228,10 +228,10 @@ augroup END
 nnoremap Q :qa!<CR>
 nnoremap # :s/^/# /<CR>
 nnoremap " :s/^/" /<CR>
-nnoremap <down> ddp
-nnoremap <up> ddkP
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Down> ddp
+nnoremap <Up> ddkP
+nnoremap <Left> <C-w>h
+nnoremap <Right> <C-w>l
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <C-j> :bnext!<CR>
