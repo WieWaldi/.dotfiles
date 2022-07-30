@@ -14,12 +14,13 @@ To configure Zsh for your user’s session, you can use the following files:
  - $ZDOTDIR/.zshrc
  - $ZDOTDIR/.zlogin
  - $ZDOTDIR/.zlogout
+
 Zsh read these files in the following order:  
-    1. `.zshenv` - Should only contain user’s environment variables.
-    2. `.zprofile` - Can be used to execute commands just after logging in.
-    3. `.zshrc` - Should be used for the shell configuration and for executing commands.
-    4. `.zlogin` - Same purpose than .zprofile, but read just after .zshrc.
-    5. `.zlogout` - Can be used to execute commands when a shell exit.
+1. `.zshenv` - Should only contain user’s environment variables.
+2. `.zprofile` - Can be used to execute commands just after logging in.
+3. `.zshrc` - Should be used for the shell configuration and for executing commands.
+4. `.zlogin` - Same purpose than .zprofile, but read just after .zshrc.
+5. `.zlogout` - Can be used to execute commands when a shell exit.
 ### Zsh Config Path
 By default, Zsh will try to find the user’s configuration files in the $HOME
 directory. You can change it by setting the environment variable `$ZDOTDIR`.
