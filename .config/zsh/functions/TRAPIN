@@ -8,22 +8,6 @@
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 #
-# +----- precmd ----------------------------------------------------------------
-
-exitcode="$?"
-dirsplit=3
-# workingdir=" $(pwd | sed 's@'"$HOME"'@~@')"
-workingdir="$(pwd | sed 's@'"$HOME"'@~@')"
-
-if [[ ${exitcode} -eq 0 ]]; then
-    exitsymbol=" "
-else
-    exitsymbol=" "
-fi
-
-W=${workingdir}
-if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${dirsplit} ]]; then
-    workingdir=$(echo $W | cut -d'/' -f1-$dirsplit | xargs -I{} echo {}"/../${W##*/}")
-fi
-
-vcs_info
+# +----- TRAPIN ---------------------------------------------------------------
+vi_mode_symbol="${vi_mode_ins_symbol}"
+return $(( 128 + $1 ))

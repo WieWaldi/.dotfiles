@@ -9,17 +9,10 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Set Prompt Symbols ---------------------------------------------------+
-vi_mode_symbol=${vi_mode_ins_symbol}
-if [[ $(id -u) = 0 ]]; then
-    usersymbol=" "
-else
-    usersymbol=" "
-fi
+CURRENT_BG='NONE'
+CURRENT_FG='white'
 
-TRAPIN() {
-    vi_mode_symbol="${vi_mode_ins_symbol}"
-    return $(( 128 + $1 ))
-}
+vi_mode_symbol=${vi_mode_ins_symbol}
 
 zle -N zle-keymap-select
 zle -N zle-line-finish
@@ -39,6 +32,24 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
+prompt_userhost () {
+    
+}
+build_prompt_standard() {
+    echo ""
+}
+
+build_prompt_enhanced() {
+    echo ""
+}
+
+build_prompt_fancy() {
+    prompt_usersymbol
+    echo ""
+}
+
+
+
 case ${TERM} in
     sshd|putty)
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
@@ -48,6 +59,7 @@ case ${TERM} in
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
     urxvt|st|st-256color|tmux*|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
+        prompt_usersymbol
         PROMPT="%F{255}%K{53}${usersymbol}"
         PROMPT+='%n@%m'
         PROMPT+='%F{53}%K{91}'
