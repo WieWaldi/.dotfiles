@@ -16,7 +16,9 @@ export -UT INFOPATH infopath  # -T creates a "tied" pair; see below.
 # Modifying one will also modify the other.
 # Note that each value in an array is expanded separately. Thus, we can use ~
 # for $HOME in each $path entry.
-path=(
-    ~/.local/bin
-    $path
-)
+if [[ -d "${HOME}/.local/bin" ]]; then
+    path=(
+        ~/.local/bin
+        $path
+    )
+fi
