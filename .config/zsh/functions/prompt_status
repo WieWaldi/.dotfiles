@@ -1,16 +1,13 @@
 #!/usr/bin/env zsh
 #
 # +----------------------------------------------------------------------------+
-# | ~/config/zsh/functions/prompt_usersymbol                                   |
+# | ~/config/zsh/functions/prompt_status                                       |
 # +----------------------------------------------------------------------------+
 # | Copyright © 2021 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 #
-# +----- prompt_usersymbol ----------------------------------------------------
-if [[ $(id -u) = 0 ]]; then
-    usersymbol=" "
-else
-    usersymbol=" "
-fi
+# +----- prompt_status ---------------------------------------------------------
+
+prompt_segment blue white "${exitsymbol}"

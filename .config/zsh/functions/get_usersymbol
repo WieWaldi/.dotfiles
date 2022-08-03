@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+#
+# +----------------------------------------------------------------------------+
+# | ~/config/zsh/functions/get_usersymbol                                      |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2021 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# |                                                                            |
+# +----------------------------------------------------------------------------+
+#
+# +----- get_usersymbol --------------------------------------------------------
+
+prompt_userhost_symbol_user="${prompt_userhost_symbol_user:-}"
+prompt_userhost_symbol_root="${prompt_userhost_symbol_root:-}"
+
+if [[ $(id -u) = 0 ]]; then
+    prompt_userhost_symbol="${prompt_userhost_symbol_root}"
+else
+    prompt_userhost_symbol="${prompt_userhost_symbol_user}"
+fi

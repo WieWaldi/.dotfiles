@@ -9,4 +9,4 @@
 # +-------------------------------------------------------------------------+
 
 
-~/.local/bin/tmux-start.sh Login
+# ~/.local/bin/tmux-start.sh Login

@@ -32,20 +32,17 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
-prompt_userhost () {
-    
-}
-build_prompt_standard() {
-    echo ""
-}
+get_usersymbol
 
 build_prompt_enhanced() {
     echo ""
 }
 
 build_prompt_fancy() {
-    prompt_usersymbol
-    echo ""
+    prompt_userhost
+    prompt_workingdir
+    prompt_status
+    prompt_segend
 }
 
 
@@ -59,15 +56,17 @@ case ${TERM} in
         PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
         ;;
     urxvt|st|st-256color|tmux*|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-        prompt_usersymbol
-        PROMPT="%F{255}%K{53}${usersymbol}"
-        PROMPT+='%n@%m'
-        PROMPT+='%F{53}%K{91}'
-        PROMPT+='%F{255}%K{91}${workingdir}'
-        PROMPT+='%F{91}%K{140}'
-        PROMPT+='${exitsymbol}'
-        PROMPT+='%F{140}%k%f%k '
-        RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91} %B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53}${vi_mode_symbol}%F{255} %E'
+        PROMPT='%{%f%b%k%}$(build_prompt_fancy)'
+
+        # prompt_usersymbol
+        # PROMPT="%F{255}%K{53}${usersymbol}"
+        # PROMPT+='%n@%m'
+        # PROMPT+='%F{53}%K{91}'
+        # PROMPT+='%F{255}%K{91}${workingdir}'
+        # PROMPT+='%F{91}%K{140}'
+        # PROMPT+='${exitsymbol}'
+        # PROMPT+='%F{140}%k%f%k '
+        # RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91} %B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53}${vi_mode_symbol}%F{255} %E'
         ;;
     *)
         printf "\n\n [Oh Boy, something's wrong.]\n"
