@@ -23,7 +23,8 @@ if [[ "$sessionexist" = "" ]]; then
     tmux new-window -t $session:4 -n 'etc'
 
     if [[ "$session" = "Login" ]]; then
-        tmux send-keys -t $session:Master '.local/share/fancy-motd/motd.sh' C-m
+        tmux send-keys -t $session:Master 'clear' C-m
+        # tmux send-keys -t $session:Master '.local/share/fancy-motd/motd.sh' C-m
         tmux send-keys -t $session:Master '.local/bin/colortest-pac-man-3.sh' C-m
     fi
     if [[ "$session" = "ScratchPad1" ]]; then
