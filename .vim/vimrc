@@ -239,13 +239,14 @@ nnoremap <C-k> :bprevious!<CR>
 nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
 nnoremap <F4> :cal ToggleAppearance()<CR>
+nnoremap <leader>b :ls<CR>:buffer <Space>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>cs :cal ToggleSurround()<CR>
 nnoremap <leader>cp :cal TogglePaste()<CR>
 nnoremap <leader>ct :cal ToggleTab()<CR>
 nnoremap <leader>cw :cal ToggleWrap()<CR>
-nnoremap <leader>f <cmd>.!figlet -f small<cr>
+nnoremap <leader>cf <cmd>.!figlet -f small<cr>
 nnoremap <leader>q :bp<cr>:bd #<cr>
 nnoremap <leader>Q :bp<cr>:bd #!<cr>
 nnoremap <leader>vim :e ~/.vim/vimrc<cr>
