@@ -3,13 +3,18 @@
 # +----------------------------------------------------------------------------+
 # | Name of the Script                                                         |
 # +----------------------------------------------------------------------------+
-# | Synopsis: Template/Skeleton for bash scripts                               |
-# | Usage:    like -p something                                                |
-# | Requires: GNU core utils                                                   |
+# |       Usage: like -p something                                             |
+# | Description: Template/Skeleton for bash scripts                            |
+# |    Requires: GNU core utils                                                |
+# |       Notes:                                                               |
+# |      Author:                                                               |
+# |     Company:                                                               |
+# |     Version:                                                               |
+# |     Created:                                                               |
+# |    Revision:                                                               |
 # |                                                                            |
 # | Copyright © 2019 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
-# |                                                                            |
 # +----------------------------------------------------------------------------+
 
 # +----- Variables ------------------------------------------------------------+
