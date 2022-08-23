@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+#
+# +----------------------------------------------------------------------------+
+# | ~/config/zsh/functions/prompt_segment                                      |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2021 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# |                                                                            |
+# +----------------------------------------------------------------------------+
+#
+# +----- prompt_segment -------------------------------------------------------+
+local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+local bg fg
+SEGMENT_SEPARATOR=$'\ue0b0'
+
+if [[ -n ${1} ]]; then
+    bg="%K{$1}"
+else
+    bg="%k"
+fi
+
+if [[ -n ${2} ]]; then
+    fg="%F{$2}"
+else 
+    fg="%f"
+fi
+
+if [[ ${CURRENT_BG} != 'NONE' && $1 != ${CURRENT_BG} ]]; then
+    echo -n "${bg}%F{${CURRENT_BG}}${SEGMENT_SEPARATOR}${fg}"
+else
+    echo -n "${bg}${fg}"
+fi
+
+CURRENT_BG=${1}
+
+if [[ -n ${3} ]]; then
+    echo -n "${3}"
+fi

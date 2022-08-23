@@ -1,11 +1,20 @@
 #!/usr/bin/env zsh
 #
 # +----------------------------------------------------------------------------+
-# | ~/.zlogout                                                                 |
+# | ~/config/zsh/functions/prompt_segend                                       |
 # +----------------------------------------------------------------------------+
 # | Copyright © 2021 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
+#
+# +----- prompt_segend --------------------------------------------------------+
 
-setopt norcs
+if [[ -n $CURRENT_BG ]]; then
+    echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+else
+    echo -n "%{%k%}"
+fi
+echo -n "%{%f%}"
+
+CURRENT_BG=''

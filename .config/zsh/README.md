@@ -41,6 +41,7 @@ into your `$ZDOTDIR directory`.
 [reddit.com A Guide to the Zsh Auto-Completion With Examples](https://www.reddit.com/r/zsh/comments/nm2vun/a_guide_to_the_zsh_autocompletion_with_examples/)  
 [The Valuable Dev](https://thevaluable.dev/zsh-install-configure-mouseless/) Configuring Zsh Without Dependencies  
 [flowblok's blog](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) Shell startup scripts  
+[github.com/zsh-users](https://github.com/zsh-users/zsh/blob/f9e9dce5443f323b340303596406f9d3ce11d23a/Misc/vcs_info-examples) vcs_info Examples
 
 ## Version
 The option to create releases on GitHub is pretty nice. I really do like it since it give me easy access to all the files

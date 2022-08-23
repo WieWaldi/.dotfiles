@@ -8,20 +8,23 @@
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 #
-# +----- ZLE Keymap Select-----------------------------------------------------
-vi_mode_nrm_symbol=${vi_mode_nrm_symbol:-'--NORMAL--'}
-vi_mode_ins_symbol=${vi_mode_ins_symbol:-'--INSERT--'}
-vi_mode_opp_symbol=${vi_mode_opp_symbol:-'--OPERAT--'}
-vi_mode_vis_symbol=${vi_mode_vis_symbol:-'--VISUAL--'}
-vi_mode_symbol=${vi_mode_ins_symbol}
+# +----- Variables ------------------------------------------------------------+
+prompt_symbol_vimode_nrm="${prompt_symbol_vimode_nrm:-'--NORMAL--'}"
+prompt_symbol_vimode_ins="${prompt_symbol_vimode_ins:-'--INSERT--'}"
+prompt_symbol_vimode_opp="${prompt_symbol_vimode_opp:-'--OPERAT--'}"
+prompt_symbol_vimode_vis="${prompt_symbol_vimode_vis:-'--VISUAL--'}"
 
+# +----- ZLE Keymap Select-----------------------------------------------------+
 if [ "${KEYMAP}" = 'vicmd' ]; then
-    vi_mode_symbol="${vi_mode_nrm_symbol}"
-elif [ "${KEYMAP}" = 'viins' ]; then
-    vi_mode_symbol="${vi_mode_ins_symbol}"
-elif [ "${KEYMAP}" = 'viopp' ]; then
-    vi_mode_symbol="${vi_mode_opp_symbol}"
-elif [ "${KEYMAP}" = 'visual' ]; then
-    vi_mode_symbol="${vi_mode_vis_symbol}"
+    prompt_symbol_vimode="${prompt_symbol_vimode_nrm}"
+fi
+if [ "${KEYMAP}" = 'main' ]; then
+    prompt_symbol_vimode="${prompt_symbol_vimode_ins}"
+fi
+if [ "${KEYMAP}" = 'viopp' ]; then
+    prompt_symbol_vimode="${prompt_symbol_vimode_opp}"
+fi
+if [ "${KEYMAP}" = 'visual' ]; then
+    prompt_symbol_vimode="${prompt_symbol_vimode_vis}"
 fi
 zle reset-prompt

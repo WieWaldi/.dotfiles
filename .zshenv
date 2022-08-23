@@ -40,5 +40,26 @@ export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 
-export vi_mode_nrm_symbol=" "
-export vi_mode_ins_symbol=" "
+# export vi_mode_nrm_symbol=" "
+# export vi_mode_ins_symbol=" "
+
+export prompt_symbol_vimode_ins=""
+export prompt_symbol_vimode_nrm=""
+export prompt_symbol_exit_0=""
+export prompt_symbol_exit_1=""
+
+# Prompt Color Theme: Blue Oyster
+# export prompt_segment1_bg="140"
+# export prompt_segment1_fg="91"
+# export prompt_segment2_bg="91"
+# export prompt_segment2_fg="255"
+# export prompt_segment3_bg="53"
+# export prompt_segment3_fg="255"
+
+# Prompt Color Theme: Solarized light
+export prompt_segment1_bg="14"
+export prompt_segment1_fg="black"
+export prompt_segment2_bg="10"
+export prompt_segment2_fg="white"
+export prompt_segment3_bg="8"
+export prompt_segment3_fg="white"

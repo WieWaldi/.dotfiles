@@ -1,11 +1,31 @@
 #!/usr/bin/env zsh
 #
 # +----------------------------------------------------------------------------+
-# | ~/.zlogout                                                                 |
+# | ~/config/zsh/functions/prompt_rsegment                                     |
 # +----------------------------------------------------------------------------+
 # | Copyright © 2021 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # |                                                                            |
 # +----------------------------------------------------------------------------+
+#
+# +----- prompt_rsegment ------------------------------------------------------+
+local LC_ALL="" LC_CTYPE="en_US.UTF-8"
+local bg fg
+SEGMENT_SEPARATOR=$'\ue0b2'
 
-setopt norcs
+if [[ -n ${1} ]]; then
+    bg="%K{${1}}"
+else
+    bg="%k"
+fi
+
+if [[ -n ${2} ]]; then
+    fg="%F{${2}}"
+else
+    fg="%f"
+fi
+
+echo -n "%F{${1}}${SEGMENT_SEPARATOR}${fg}${bg}"
+if [[ -n ${3} ]]; then
+    echo -n "${3}"
+fi

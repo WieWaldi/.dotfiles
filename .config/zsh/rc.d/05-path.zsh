@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 #
-# +-------------------------------------------------------------------------+
-# | ~/config/zsh/rc.d/05-path.zsh                                           |
-# +-------------------------------------------------------------------------+
-# | Copyright © 2022 Waldemar Schroeer                                      |
-# |                  waldemar.schroeer(at)rz-amper.de                       |
-# |                                                                         |
-# +-------------------------------------------------------------------------+
+# +----------------------------------------------------------------------------+
+# | ~/config/zsh/rc.d/05-path.zsh                                              |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2022 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# |                                                                            |
+# +----------------------------------------------------------------------------+
 
+# +----- Path -----------------------------------------------------------------+
 # -U ensures each entry in these is Unique (that is, discards duplicates).
 export -U PATH path FPATH fpath MANPATH manpath
 export -UT INFOPATH infopath  # -T creates a "tied" pair; see below.
