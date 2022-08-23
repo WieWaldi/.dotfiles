@@ -71,22 +71,24 @@ get_usersymbol() {
     fi
 }
 
+build_prompt_short() {
+    echo -n "%n@%m >"
+}
+
+build_prompt_2line() {
+    echo -n "┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼"
+}
+
 build_prompt_fancy() {
-    # prompt_segment black default "${prompt_symbol_user} %n@%m" 
     prompt_segment ${prompt_segment3_bg} ${prompt_segment3_fg} "${prompt_symbol_user}%n@%m" 
-    # prompt_segment green default "${prompt_symbol_workingdir}${workingdir}"
     prompt_segment ${prompt_segment2_bg} ${prompt_segment2_fg} "${prompt_symbol_workingdir}${workingdir}"
-    # prompt_segment blue white "${prompt_symbol_exit}"
     prompt_segment ${prompt_segment1_bg} ${prompt_segment1_fg} "${prompt_symbol_exit}"
     prompt_segend
 }
 
 build_rprompt_fancy() {
-    # prompt_rsegment blue white " %T"
-    prompt_rsegment ${prompt_segment1_bg} ${prompt_segment1_fg} "%T"
-    # prompt_rsegment green black "${vcs_info_msg_0_}"
+    prompt_rsegment ${prompt_segment1_bg} ${prompt_segment1_fg} " %T"
     prompt_rsegment ${prompt_segment2_bg} ${prompt_segment2_fg} "${vcs_info_msg_0_}"
-    # prompt_rsegment red white "${prompt_symbol_vimode}"
     prompt_rsegment ${prompt_segment3_bg} ${prompt_segment3_fg} "${prompt_symbol_vimode}"
     prompt_rsegend
 }
@@ -95,24 +97,15 @@ build_rprompt_fancy() {
 get_usersymbol
 case ${TERM} in
     sshd|putty)
-        PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
+        PROMPT='$(build_prompt_2line)'
         ;;
     linux|screen*)
-        printf "\n\n [Oh Boy, get on a graphical shell!]\n"
-        PROMPT=$'┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼'
+        printf "\n\n [Oh Boy, get on a graphical terminal!]\n"
+        PROMPT='$(build_prompt_short)'
         ;;
     urxvt|st|st-256color|tmux*|xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
         PROMPT='%{%f%b%k%}$(build_prompt_fancy)'
         RPROMPT='%{%f%b%k%}$(build_rprompt_fancy)'
-        # prompt_usersymbol
-        # PROMPT="%F{255}%K{53}${usersymbol}"
-        # PROMPT+='%n@%m'
-        # PROMPT+='%F{53}%K{91}'
-        # PROMPT+='%F{255}%K{91}${workingdir}'
-        # PROMPT+='%F{91}%K{140}'
-        # PROMPT+='${exitsymbol}'
-        # PROMPT+='%F{140}%k%f%k '
-        # RPROMPT='%F{140}%F{91}%K{140} %T%F{91}%F{255}%K{91} %B${vcs_info_msg_0_}%b%F{53}%F{255}%K{53}${vi_mode_symbol}%F{255} %E'
         ;;
     *)
         printf "\n\n [Oh Boy, something's wrong.]\n"
