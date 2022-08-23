@@ -28,9 +28,11 @@ if [[ "$sessionexist" = "" ]]; then
         tmux send-keys -t $session:Master '.local/bin/colortest-pac-man-3.sh' C-m
     fi
     if [[ "$session" = "ScratchPad1" ]]; then
+        tmux send-keys -t $session:Master 'clear' C-m
         tmux send-keys -t $session:Master 'figlet -f small RZ-Amper' C-m
     fi
     if [[ "$session" = "ScratchPad2" ]]; then
+        tmux send-keys -t $session:Master 'clear' C-m
         tmux send-keys -t $session:Master 'bpytop' C-m
     fi
 fi
