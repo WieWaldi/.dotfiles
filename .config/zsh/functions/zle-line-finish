@@ -9,4 +9,4 @@
 # +----------------------------------------------------------------------------+
 
 # +----- ZLE Line Finisch -----------------------------------------------------+
-vi_mode_symbol="${vi_mode_ins_symbol}"
+prompt_symbol_vimode="${prompt_symbol_vimode_ins}"

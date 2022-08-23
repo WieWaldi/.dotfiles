@@ -8,7 +8,7 @@
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 #
-# +----- precmd ----------------------------------------------------------------
+# +----- precmd ---------------------------------------------------------------+
 
 exitcode="$?"
 dirsplit=3
@@ -16,9 +16,9 @@ dirsplit=3
 workingdir="$(pwd | sed 's@'"$HOME"'@~@')"
 
 if [[ ${exitcode} -eq 0 ]]; then
-    exitsymbol=" "
+    prompt_symbol_exit="${prompt_symbol_exit_0}"
 else
-    exitsymbol=" "
+    prompt_symbol_exit="${prompt_symbol_exit_1}"
 fi
 
 W=${workingdir}
