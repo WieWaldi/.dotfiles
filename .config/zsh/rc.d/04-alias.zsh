@@ -20,6 +20,7 @@ fi
 alias gits='git status'
 alias gitm='git status && git commit -m "Minor changes" && git push'
 alias gitp='git pull'
+alias gitdiff='git diff --no-ext-diff -w "$@" | vim -R –'
 alias vi='TERM=xterm vim -X'
 alias grep='grep -i --color=auto'
 alias s='su - root'

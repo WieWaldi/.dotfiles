@@ -3,6 +3,16 @@
 # +----------------------------------------------------------------------------+
 # | Name of the Script                                                         |
 # +----------------------------------------------------------------------------+
+# |       Usage: like -p something                                             |
+# | Description: Template/Skeleton for bash scripts                            |
+# |    Requires: GNU core utils                                                |
+# |       Notes:                                                               |
+# |      Author:                                                               |
+# |     Company:                                                               |
+# |     Version:                                                               |
+# |     Created:                                                               |
+# |    Revision:                                                               |
+# |                                                                            |
 # | Copyright © 2019 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # +----------------------------------------------------------------------------+
