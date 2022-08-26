@@ -8,18 +8,31 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Include bash-framework.sh --------------------------------------------+
+export BASH_FRMWRK_MINVER=3
 export LANG="en_US.UTF-8"
 export base_dir="$(dirname "$(readlink -f "$0")")"
 export cdir=$(pwd)
 export datetime="$(date "+%Y-%m-%d-%H-%M-%S")"
 export logfile="${cdir}/${datetime}.log"
 export framework_width=80
-export notice=notice.txt
-export bash_framework="${HOME}/.local/bin/bash-framework.sh"
-if [[ ! -f ${bash_framework} ]]; then
-    export bash_framework="${cdir}/bash_framework.sh"
+
+test_file=$(which bash-framework.sh)
+if [[ $? = 0 ]]; then
+    BASH_FRMWK_FILE="${test_file}"
+    echo "Found Framework: ${BASH_FRMWK_FILE}"
+    unset test_file
+else
+    if [[ ! -f "${cdir}"/bash-framework.sh ]]; then
+        echo "No Bash Framework found. Now I'm sad.-("
+        exit 1
+    fi
 fi
-source ${bash_framework}
+
+source "${BASH_FRMWK_FILE}"
+if [[ "${BASH_FRMWRK_VER}" -lt "${BASH_FRMWRK_MINVER}" ]]; then
+    echo "I've found version ${BASH_FRMWRK_VER} of bash_framework.sh, but I'm in need of version ${BASH_FRMWRK_MINVER}."
+    exit 1
+fi
 
 # +----- Variables ------------------------------------------------------------+
 backupdir=~/.dotfiles.${datetime}
@@ -135,8 +148,9 @@ copy_Directories() {
 }
 
 # +----- Main -----------------------------------------------------------------+
-display_Notice ${cdir}/${notice}
-if [[ "${proceed}" = "no" ]]; then
+clear
+display_Text_File black ${cdir}/notice.txt
+if [[ "$(read_Antwoord_YN "Do you want to proceed?")" = "no" ]]; then
     echo -e "\n Oh Boy, you should reconsider your decision."
     exit 1
 fi
