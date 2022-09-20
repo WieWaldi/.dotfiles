@@ -39,7 +39,6 @@ colorscheme solarized
 filetype plugin indent on                                      " Respect indent rules based on file types
 setlocal cm=blowfish2                                   " Sets encryption method to blowfish2
 syntax on                                               " Sets syntax highlighting on
-set whichwrap+=<,>,h,l                                  " Specify keys that move cursor to next/previous line
 set path=.,,**                                          " Set path to current directory
 set undodir=~/.vim/undodir                              " Write undo directory to ~/.vim/
 set undofile                                            " Create undo file
@@ -185,12 +184,14 @@ function! ToggleAppearance()
         let b:myAppearance="slim"
         set list!
         set relativenumber! number! ruler!
+        set conceallevel=0
         redraw!
         echo "Slim View."
     else
         let b:myAppearance="full"
         set list!
         set relativenumber! number! ruler!
+        set conceallevel=2
         redraw!
         echo "Full View."
     endif
