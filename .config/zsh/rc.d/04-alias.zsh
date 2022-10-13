@@ -17,6 +17,10 @@ else
     alias ll='LC_ALL=C ls --color=auto --group-directories-first -lah'
 fi
 
+if command -v bat &> /dev/null; then
+    alias cat='bat'
+fi
+
 alias gits='git status'
 alias gitm='git status && git commit -m "Minor changes" && git push'
 alias gitp='git pull'

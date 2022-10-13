@@ -1,26 +1,15 @@
+#!/usr/bin/env bash
+#
 # +----------------------------------------------------------------------------+
-# | ~/.gitconfig                                                               |
+# | ~/.local/bin/git-diff-wrapper                                              |
 # +----------------------------------------------------------------------------+
 # | Copyright © 2019 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # +----------------------------------------------------------------------------+
 
+# +----- Main -----------------------------------------------------------------+
+vimdiff "$2" "$5"
 
-[user]
-	name = Waldemar Schroeer
-	email = w@ldemar.de
+# +----- End ------------------------------------------------------------------+
+exit 0 
 
-[pull]
-	rebase = false
-
-[core]
-	editor = vim
-
-[push]
-	default = simple
-
-[diff]
-    external = git-diff-wrapper.sh
-
-[pager]
-    diff =
