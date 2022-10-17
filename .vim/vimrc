@@ -60,6 +60,7 @@ set t_Co=256                                            " Tell the term has 256 
 set list                                                " List mode
 " set listchars=eol:↲,tab:▸-,precedes:,extends:         " Strings to use in list mode
 set listchars=eol:↲,tab:▸-                              " Strings to use in list mode
+set fillchars=fold:-                                    " Characters to fill the statuslines and vertical separators
 set nowrap                                              " Dont wrap lines
 set scrolloff=25                                        " Minimal number of screen lines to keep above and below the cursor
 set sidescrolloff=7                                     " The minimal number of screen columns to keep to the left
@@ -72,7 +73,7 @@ set splitbelow                                          " New Windows from a hor
 set laststatus=2                                        " Always show status line
 set noshowmode                                          " Don't show mode on last line
 set statusline=                                         " Clear status line
-set fillchars=fold:-                                    "Characters to fill the statuslines and vertical separators
+set hidden                                              " Hide abandoned buffers
 " set t_ti= t_te=                                         " Don't reset screen
 " set mouse+=a                                            " Enable the use of the mouse
 " set smartindent                                         " Do smart autoindenting when starting a new line
