@@ -37,8 +37,8 @@ file .zshenv needs to be in your home directory. It’s where you’ll set
 directory`.
 
 ## Links/URLs/Credits  
-[riptotarial.com Getting started with zsh](https://riptutorial.com/zsh) Some Remarks  
-[reddit.com A Guide to the Zsh Auto-Completion With Examples](https://www.reddit.com/r/zsh/comments/nm2vun/a_guide_to_the_zsh_autocompletion_with_examples/)  
+[riptotarial.com](https://riptutorial.com/zsh) Getting started with zsh, Some Remarks  
+[reddit.com](https://www.reddit.com/r/zsh/comments/nm2vun/a_guide_to_the_zsh_autocompletion_with_examples/) A Guide to the Zsh Auto-Completion With Examples  
 [The Valuable Dev](https://thevaluable.dev/zsh-install-configure-mouseless/) Configuring Zsh Without Dependencies  
 [flowblok's blog](https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html) Shell startup scripts  
 [github.com/zsh-users](https://github.com/zsh-users/zsh/blob/f9e9dce5443f323b340303596406f9d3ce11d23a/Misc/vcs_info-examples) vcs_info Examples  
