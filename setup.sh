@@ -51,11 +51,11 @@ echo_title() {
     title=$1
     ncols=$(tput cols)
     nequals=$(((width-${#title})/2-1))
-    tput setaf 4 0 0
+    tput setaf 4
     echo_equals "$nequals"
-    tput setaf 6 0 0
+    tput setaf 6
     printf " %s " "$title"
-    tput setaf 4 0 0
+    tput setaf 4
     echo_equals "$nequals"
     tput sgr0
     echo
@@ -71,31 +71,31 @@ echo_Right() {
 }
 
 echo_OK() {
-    tput setaf 2 0 0
+    tput setaf 2
     echo_Right "[ OK ]"
     tput sgr0
 }
 
 echo_Done() {
-    tput setaf 2 0 0
+    tput setaf 2
     echo_Right "[ Done ]"
     tput sgr0
 }
 
 echo_NotNeeded() {
-    tput setaf 3 0 0
+    tput setaf 3
     echo_Right "[ Not Needed ]"
     tput sgr0
 }
 
 echo_Skipped() {
-    tput setaf 3 0 0
+    tput setaf 3
     echo_Right "[ Skipped ]"
     tput sgr0
 }
 
 echo_Failed() {
-    tput setaf 1 0 0
+    tput setaf 1
     echo_Right "[ Failed ]"
     tput sgr0
 }
