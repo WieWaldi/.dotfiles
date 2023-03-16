@@ -11,7 +11,7 @@
 # +----- Aliases --------------------------------------------------------------+
 if command -v exa &> /dev/null; then
     alias l='exa -lghm --icons --group-directories-first --git'
-    alias ll='exa -laghm --icons --group-directories-first --git'
+    alias ll='exa -laghm --icons --group-directories-first --git --color=always | less -X -r --quit-if-one-screen'
 else
     alias l='LC_ALL=C ls --color=auto --group-directories-first -lh'
     alias ll='LC_ALL=C ls --color=auto --group-directories-first -lah'
