@@ -4,43 +4,68 @@
 # | setup.sh                                                                   |
 # +----------------------------------------------------------------------------+
 # |       Usage: ---                                                           |
-# | Description: Template/Skeleton for bash scripts                            |
+# | Description: Setup Script to install .dotfiles into home directory         |
 # |    Requires: GNU core utils                                                |
 # |       Notes: ---                                                           |
 # |      Author: Waldemar Schroeer                                             |
 # |     Company: Rechenzentrum Amper                                           |
 # |     Version: 0.1                                                           |
-# |     Created: 30.08.2022                                                    |
+# |     Created: 29.09.2023                                                    |
 # |    Revision: ---                                                           |
 # |                                                                            |
 # | Copyright © 2019 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # +----------------------------------------------------------------------------+
+#
+#
+#
+#
+#
+#
+# +----- Help and Usage (Must start at line 25 and must stop with "######" ----+
+#
+# example.sh [options]
+#
+# This is an example on how to use functions from bash-framework.sh
+#
+# Options...
+#  -d, --demo           Run the demo, otherwise exit with an error message
+#  -h, --help           Print out help
+#  -w, --width          Width to use
+#  -o, --option         Just an option
+#
+#####
 
 # +----- Include bash-framework.sh --------------------------------------------+
-export BASH_FRMWRK_MINVER=3
+# set -o errexit
+# set -o pipefail
+export BASH_FRMWRK_MINVER=4
 export LANG="en_US.UTF-8"
 export base_dir="$(dirname "$(readlink -f "$0")")"
 export cdir=$(pwd)
+export scriptname="${BASH_SOURCE##*/}"
+export scriptdir="${BASH_SOURCE%/*}"
 export datetime="$(date "+%Y-%m-%d-%H-%M-%S")"
-export logfile="${cdir}/${datetime}.log"
+export logfile="${scriptdir}/${datetime}.log"
 export framework_width=80
 
-test_file=$(which bash-framework.sh)
-if [[ $? = 0 ]]; then
-    BASH_FRMWK_FILE="${test_file}"
-    echo "Found Framework: ${BASH_FRMWK_FILE}"
-    unset test_file
+if [[ -f "${scriptdir}"/bash-framework.sh ]]; then
+    BASH_FRMWRK_FILE="${scriptdir}/bash-framework.sh"
 else
-    if [[ ! -f "${cdir}"/bash-framework.sh ]]; then
-        echo "No Bash Framework found. Now I'm sad.-("
+    test_file=$(which bash-framework.sh 2>/dev/null)
+    if [[ $? = 0 ]]; then
+        BASH_FRMWRK_FILE="${test_file}"
+        unset test_file
+    else
+        echo -e "\nNo Bash Framework found.\n"
         exit 1
     fi
 fi
 
-source "${BASH_FRMWK_FILE}"
+source "${BASH_FRMWRK_FILE}"
 if [[ "${BASH_FRMWRK_VER}" -lt "${BASH_FRMWRK_MINVER}" ]]; then
-    echo "I've found version ${BASH_FRMWRK_VER} of bash_framework.sh, but I'm in need of version ${BASH_FRMWRK_MINVER}."
+    echo -e "\nI've found version ${BASH_FRMWRK_VER} of bash_framework.sh, but I'm in need of version ${BASH_FRMWRK_MINVER}."
+    echo -e "You may get the newest version from https://github.com/WieWaldi/bash-framework.sh\n"
     exit 1
 fi
 
