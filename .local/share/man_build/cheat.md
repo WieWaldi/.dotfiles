@@ -17,13 +17,13 @@ cheat sheet is a simple manual containing short hints about commands and shortcu
 
 # st
 
-**Ctrl-Shift-[PageUp]**
+**Ctrl-[=]**
 : Zoom In.
 
-**Ctrl-Shift-[PageDown]**
+**Ctrl-[-]**
 : Zoom Out.
 
-**Ctrl-Shift-[Home]**
+**Ctrl-[0]**
 : Zoom Reset.
 
 **Shift-[PageUp]**
