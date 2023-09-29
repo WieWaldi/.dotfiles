@@ -1,1 +1,3 @@
 .local/share/man_build/cheat.1
+.ssh.source
+.ssh.source/*
