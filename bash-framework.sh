@@ -17,17 +17,17 @@
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # |                                                                            |
 # +----- List of Functions ----------------------------------------------------+
-# | echo_Equals     read_Antwoord_YN        get_User                           |
-# | echo_Left       read_Antwoord_Secretly  get_OperatingSystem                |
-# | echo_Right      display_Text_File       get_Distribution                   |
-# | echo_Title                                                                 |
-# | echo_OK                                                                    |
-# | echo_Done                                                                  |
-# | echo_NotNeeded                                                             |
-# | echo_Skipped                                                               |
-# | echo_Failed                                                                |
-# | echo_Error_Msg                                                             |
-# | echo_Box                                                                   |
+# | __echo_Equals     __read_Antwoord_YN        __get_User                     |
+# | __echo_Left       __read_Antwoord_Secretly  __get_OperatingSystem          |
+# | __echo_Right      __read_Line               __get_Distribution             |
+# | __echo_Title      __display_Text_File                                      |
+# | __echo_OK                                                                  |
+# | __echo_Done                                                                |
+# | __echo_NotNeeded                                                           |
+# | __echo_Skipped                                                             |
+# | __echo_Failed                                                              |
+# | __echo_Error_Msg                                                           |
+# | __echo_Box                                                                 |
 # |                                                                            |
 # +----- Colors ---------------------------------------------------------------+
 # | Color         #define             Value       RGB                          |
@@ -43,11 +43,11 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Variables ------------------------------------------------------------+
-BASH_FRMWRK_VER=3
+BASH_FRMWRK_VER=4
 RED=$(tput setaf 1)
 BRIGHT=$(tput bold)
 NORMAL=$(tput sgr0)
-YN="(Yes|${BRIGHT}No${NORMAL}) >> "
+YN="(Yes|${BRIGHT}No${NORMAL})"
 
 # +----- Functions ------------------------------------------------------------+
 __exit_Error() {                      # Just output an error condition and exit
@@ -110,11 +110,11 @@ __echo_Title() {
     title=$1
     ncols=$(tput cols)
     nequals=$(((framework_width-${#title})/2-1))
-    tput setaf 4 0 0
+    tput setaf 4
     __echo_Equals "$nequals"
-    tput setaf 6 0 0
+    tput setaf 6
     printf " %s " "$title"
-    tput setaf 4 0 0
+    tput setaf 4
     __echo_Equals "$nequals"
     tput sgr0
     echo
@@ -134,33 +134,42 @@ __echo_Right() {
 }
 
 __echo_OK() {
-    tput setaf 2 0 0
+    tput setaf 2
     __echo_Right "[ OK ]"
     tput sgr0
 }
 
 __echo_Done() {
-    tput setaf 2 0 0
+    tput setaf 2
     __echo_Right "[ Done ]"
     tput sgr0
 }
 
 __echo_NotNeeded() {
-    tput setaf 3 0 0
+    tput setaf 3
     __echo_Right "[ Not Needed ]"
     tput sgr0
 }
 
 __echo_Skipped() {
-    tput setaf 3 0 0
+    tput setaf 3
     __echo_Right "[ Skipped ]"
     tput sgr0
 }
 
 __echo_Failed() {
-    tput setaf 1 0 0
+    tput setaf 1
     __echo_Right "[ Failed ]"
     tput sgr0
+}
+
+__echo_Result() {
+    retVal=$?
+    if [[ "${retVal}" -ne 0 ]]; then
+        __echo_Failed
+    else
+        __echo_Done
+    fi
 }
 
 __echo_Error_Msg() {
@@ -269,7 +278,7 @@ __echo_Box() {
 }
 
 __read_Antwoord_YN() {
-    read -p "${1} ${YN}" antwoord
+    read -p "${1} ${YN} >> " antwoord
         if [[ ${antwoord} == [yY] || ${antwoord} == [yY][Ee][Ss] ]]; then
             echo "yes"
         else
@@ -283,7 +292,7 @@ __read_Antwoord_Secretly() {
     unset charcount
     charcount=0
     prompt="${1}"
-    while IFS= read -p "${prompt}" -r -s -n 1 char
+    while IFS= read -p "${prompt} >> " -r -s -n 1 char
     do
         if [[ $char == $'\0' ]]; then
             break
@@ -305,31 +314,35 @@ __read_Antwoord_Secretly() {
     echo "${secret}"
 }
 
+__read_Line() {
+    read -p "${1}: " read_Line
+    echo "${read_Line}"
+}
 __display_Text_File() {
     case ${1} in
         Black|black)
-            tput setaf 0 0 0
+            tput setaf 0
             ;;
         Red|red)
-            tput setaf 1 0 0
+            tput setaf 1
             ;;
         Green|green)
-            tput setaf 2 0 0
+            tput setaf 2
             ;;
         Yellow|yellow)
-            tput setaf 3 0 0
+            tput setaf 3
             ;;
         Blue|blue)
-            tput setaf 4 0 0
+            tput setaf 4
             ;;
         Magenta|magenta)
-            tput setaf 5 0 0
+            tput setaf 5
             ;;
         Cyan|cyan)
-            tput setaf 6 0 0
+            tput setaf 6
             ;;
         White|white)
-            tput setaf 7 0 0
+            tput setaf 7
             ;;
     esac
     cat ${2}
