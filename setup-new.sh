@@ -119,7 +119,7 @@ install_Dotfiles_Bash() {
     __echo_Left "Installing .dotfiles for Bash"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
-            eval ${file}=${1}
+            eval file=${1}
             # if [[ -f ${HOME}/${i} ]]; then
             if [[ $(__check_File_Name ${file}) = 6 ]]; then
                 echo "mv ${HOME}/${file} ${backupdirectory}"
