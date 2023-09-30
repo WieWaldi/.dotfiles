@@ -211,6 +211,7 @@ get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install Zsh dotfiles?")"
 get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
 get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 
+create_Backup_Directory
 install_Dotfiles_Bash
 
 
