@@ -78,12 +78,12 @@ declare -a dotfiles_etc=(
     ".screenrc"
     )
 
-declare -a directories=(
-    "${HOME}/.config"
-    "${HOME}/.local"
-    "${HOME}/.ssh"
-    "${HOME}/.vim"
-    "${HOME}/Templates"
+declare -a config_directories=(
+    "/.config"
+    "/.local"
+    "/.ssh"
+    "/.vim"
+    "/Templates"
     )
 
 declare -a dotfiles_Zsh=(
@@ -109,10 +109,21 @@ create_Backup_Directory() {
     echo "  ${backupdirectory}"
 }
 
-prepare_Config_Directory() {
+prepare_Directories() {
     __echo_Left "Installing: .config Directory"
-    mkdir -p ${HOME}/.config >> ${logfile} 2>&1
-    __echo_Result
+    if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
+        __echo_Skipped
+    elif [[ $(__check_File_Name ${HOME}/.config) = 7 ]]; then
+        mkdir -p ${HOME}/.config >> ${logfile} 2>&1
+        __echo_Result
+    fi
+    __echo_Left "Installing: .local Directory"
+    if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
+        __echo_Skipped
+    elif [[ $(__check_File_Name ${HOME}/.config) = 7 ]]; then
+        mkdir -p ${HOME}/.local >> ${logfile} 2>&1
+        __echo_Result
+    fi
 }
 
 install_Dotfiles_Bash() {
@@ -120,7 +131,6 @@ install_Dotfiles_Bash() {
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
             eval file=${i}
-            # if [[ -f ${HOME}/${i} ]]; then
             if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
                 echo "mv ${HOME}/${file} ${backupdirectory}"
                 __echo_Left "Backing up: ${file}"
@@ -136,8 +146,12 @@ install_Dotfiles_Bash() {
     fi
 }
 
-# install_Dotfiles_Zsh() {
-# }
+install_Dotfiles_Zsh() {
+    __echo_Left "Installing .dotfiles for Zsh"
+    if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+    fi
+
+}
 # 
 # install_Dotfiles_Vim() {
 # }
