@@ -235,6 +235,7 @@ get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
 get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 
 create_Backup_Directory
+prepare_Directories
 install_Dotfiles_Bash
 
 
