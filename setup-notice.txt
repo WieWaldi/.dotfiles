@@ -6,8 +6,7 @@
 |    \_/\_/ |_\___|\_/\_/\__,_|_\__,_|_| /__/ (_)__,_\___/\__|_| |_|_\___/__/  |
 |                                                                              |
 |   This setup script will put WieWaldi's .dotfiles into your home             |
-|   directory. Don't be scared to loose any of your personal dotfiles.         |
-|   Every file that gets replaced will be backed up.                           |
+|   directory. You should be scared to loose all of your personal dotfiles.    |
 |                                                                              |
 |   However, since this script will copy binaries to ~/.local it may           |
 |   happen to replace some of yours. You have been warned.                     |

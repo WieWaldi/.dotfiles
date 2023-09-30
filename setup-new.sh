@@ -70,21 +70,13 @@ if [[ "${BASH_FRMWRK_VER}" -lt "${BASH_FRMWRK_MINVER}" ]]; then
 fi
 
 # +----- Variables ------------------------------------------------------------+
-backupdir=~/.dotfiles.${datetime}
-
-declare -A check_directory_exists
 
 declare -a dotfiles=(
     ".alias"
-    ".bash_functions"
-    ".bash_logout"
-    ".bash_profile"
-    ".bashrc"
     ".inputrc"
     ".motd"
     ".screenrc"
     ".tmux.conf"
-    ".zshenv"
     )
 
 declare -a directories=(
@@ -102,59 +94,51 @@ declare -a dotfiles_Zsh=(
     ".zlogin"
 )
 
+declare -a dotfiles_Bash=(
+    ".bash_functions"
+    ".bash_logout"
+    ".bash_profile"
+    ".bashrc"
+)
 # +----- Functions ------------------------------------------------------------+
-
-create_BackupDirectory() {
-    echo_Left "Backup directory: ${backupdir}"
-    mkdir -p ${backupdir}
-    echo_Done
+create_Backup_Directory() {
+    __echo_Left "Creating Backup directory"
+    backupdirectory=".dotfiles_backup/${datetime}"
+    mkdir -p "${backupdirectory}" >> ${logfile} 2>&1
+    __echo_Result
+    echo "Your Backup Directory is:"
+    echo "  ${backupdirectory}"
 }
-
-check_Directories_Exists() {
-    for i in "${directories[@]}"; do
-        echo_Left "Checking ${i}"
-        if [[ -d "${i}" ]]; then
-            check_directory_exists["$i"]="yes"
-            echo_OK
-        else
-            check_directory_exists[$i]="no"
-            echo_Failed
-        fi
-    done
-}
-
-# | 1 File Name is a writable directory
-# | 2 File Name is a symbolic link pointing to a directory
-# | 3 File Name does not exist and can be created
-# | 4 File Name is a non writable directory
-# | 5 File Name is a symbolic link not pointing to a directory
-# | 6 File Name is a regular file
-# | 7 File Name does not exist and can not be created
-
-check_File_Name() {
-    if [[ -d S{1} ]]; then
-        if [[ -w ${1} ]]; then
-            echo "1"
-        else
-            echo "4"
-        fi
-    elif [[ -L ${1} ]]; then
-        if [[ -d "$(readlink ${1})" ]]; then
-            echo "2"
-        else
-            echo "5"
-        fi
-    elif [[ -f ${1} ]]; then
-        echo "6"
+install_Dotfiles_Bash() {
+    __echo_Left "Installing .dotfiles for Bash"
+    if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
+        for i in "${dotfiles_Bash[@]}"; do
+            if [[ -f ${HOME}/${i} ]]; then
+                __echo_Left "Backing up: ${i}"
+                mv ${HOME}/${i} ${backupdirectory} >> ${logfile} 2>&1
+                __echo_Result
+            fi
+            __echo_Left "Installing: ${i}"
+            cp -r ${cdir}/${i} ${HOME}/${i} >> ${logfile} 2>&1
+            __echo_Result
+        done
     else
-        if /bin/mkdir -p ${1} &>/dev/null; then
-            echo "3"
-        else
-            echo "7"
-        fi
+        __echo_Skipped
     fi
 }
 
+# install_Dotfiles_Zsh() {
+# }
+# 
+# install_Dotfiles_Vim() {
+# }
+# 
+# install_Dir_config() {
+# }
+# 
+# install_Dir_local() {
+# }
+# 
 install_Dotfiles() {
     for i in "${dotfiles[@]}"; do
         if [[ -f ~/${i} ]]; then
@@ -216,28 +200,24 @@ copy_Directories() {
 
 # +----- Main -----------------------------------------------------------------+
 clear
-display_Text_File black ${cdir}/notice.txt
-if [[ "$(read_Antwoord_YN "Do you want to proceed?")" = "no" ]]; then
+__display_Text_File blue ${cdir}/setup-notice.txt
+if [[ "$(__read_Antwoord_YN "Do you want to proceed?")" = "no" ]]; then
     echo -e "\n Oh Boy, you should reconsider your decision."
     exit 1
 fi
 
-echo_Title "Make Your Choice"
-get_install_Zsh="$(read_Antwoord "Install Zsh dotfiles? ${YN}")"
-get_install_Bash="$(read_Antwoord "Install bash dotfiles? ${YN}")"
-get_install_Vim="$(read_Antwoord "Install Vim dotfiles? ${YN}")"
-echo_Title "Copying .dotfiles"
-create_BackupDirectory
-check_Directories_Exists
-declare -p check_directory_exists
+__echo_Title "Make Your Choice"
+get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install Zsh dotfiles?")"
+get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
+get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
+
+install_Dotfiles_Bash
 
 
 
-install_Zsh
 
-# install_Dotfiles
-# echo_title "Copying directories"
-# copy_Directories
-echo_Title "I'm done."
+
+
+__echo_Title "I'm done."
 echo -e "\n\n"
 exit 0
