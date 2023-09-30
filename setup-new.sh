@@ -146,10 +146,10 @@ install_Dotfiles_Bash() {
     fi
 }
 
-install_Dotfiles_Zsh() {
-    __echo_Left "Installing .dotfiles for Zsh"
-    if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
-    fi
+# install_Dotfiles_Zsh() {
+#     __echo_Left "Installing .dotfiles for Zsh"
+#     if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+#     fi
 
 }
 # 
