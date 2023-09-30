@@ -114,6 +114,7 @@ install_Dotfiles_Bash() {
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
             if [[ -f ${HOME}/${i} ]]; then
+                echo "mv ${HOME}/${i} ${backupdirectory}"
                 __echo_Left "Backing up: ${i}"
                 mv ${HOME}/${i} ${backupdirectory}
                 __echo_Result
