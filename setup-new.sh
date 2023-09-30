@@ -71,12 +71,11 @@ fi
 
 # +----- Variables ------------------------------------------------------------+
 
-declare -a dotfiles=(
+declare -a dotfiles_etc=(
     ".alias"
     ".inputrc"
     ".motd"
     ".screenrc"
-    ".tmux.conf"
     )
 
 declare -a directories=(
@@ -109,18 +108,27 @@ create_Backup_Directory() {
     echo "Your Backup Directory is:"
     echo "  ${backupdirectory}"
 }
+
+prepare_Config_Directory() {
+    __echo_Left "Installing: .config Directory"
+    mkdir -p ${HOME}/.config >> ${logfile} 2>&1
+    __echo_Result
+}
+
 install_Dotfiles_Bash() {
     __echo_Left "Installing .dotfiles for Bash"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
-            if [[ -f ${HOME}/${i} ]]; then
-                echo "mv ${HOME}/${i} ${backupdirectory}"
-                __echo_Left "Backing up: ${i}"
-                mv ${HOME}/${i} ${backupdirectory}
+            eval ${file}=${1}
+            # if [[ -f ${HOME}/${i} ]]; then
+            if [[ $(__check_File_Name ${file}) = 6 ]]; then
+                echo "mv ${HOME}/${file} ${backupdirectory}"
+                __echo_Left "Backing up: ${file}"
+                mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
                 __echo_Result
             fi
-            __echo_Left "Installing: ${i}"
-            cp -r ${cdir}/${i} ${HOME}/${i} >> ${logfile} 2>&1
+            __echo_Left "Installing: ${file}"
+            cp -r ${cdir}/${file} ${HOME}/${file} >> ${logfile} 2>&1
             __echo_Result
         done
     else
