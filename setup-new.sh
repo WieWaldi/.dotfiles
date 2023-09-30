@@ -117,12 +117,9 @@ prepare_Config_Directory() {
 
 install_Dotfiles_Bash() {
     __echo_Left "Installing .dotfiles for Bash"
-    __echo_Right "[Start]"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
             eval file=${i}
-            echo "File: ${file}"
-            echo "File: $(__check_File_Name ${HOME}/${file})"
             # if [[ -f ${HOME}/${i} ]]; then
             if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
                 echo "mv ${HOME}/${file} ${backupdirectory}"
