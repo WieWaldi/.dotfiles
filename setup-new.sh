@@ -120,7 +120,7 @@ install_Dotfiles_Bash() {
     __echo_Right"[Start]"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
-            eval file=${1}
+            eval file=${i}
             echo "File: ${file}"
             # if [[ -f ${HOME}/${i} ]]; then
             if [[ $(__check_File_Name ${file}) = 6 ]]; then
