@@ -115,7 +115,7 @@ install_Dotfiles_Bash() {
         for i in "${dotfiles_Bash[@]}"; do
             if [[ -f ${HOME}/${i} ]]; then
                 __echo_Left "Backing up: ${i}"
-                mv ${HOME}/${i} ${backupdirectory} >> ${logfile} 2>&1
+                mv ${HOME}/${i} ${backupdirectory}
                 __echo_Result
             fi
             __echo_Left "Installing: ${i}"
