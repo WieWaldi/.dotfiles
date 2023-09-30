@@ -132,7 +132,6 @@ install_Dotfiles_Bash() {
         for i in "${dotfiles_Bash[@]}"; do
             eval file=${i}
             if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
-                echo "mv ${HOME}/${file} ${backupdirectory}"
                 __echo_Left "Backing up: ${file}"
                 mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
                 __echo_Result
