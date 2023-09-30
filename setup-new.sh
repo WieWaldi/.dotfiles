@@ -113,7 +113,7 @@ prepare_Directories() {
     __echo_Left "Installing: .config Directory"
     if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
         __echo_Skipped
-    elif [[ $(__check_File_Name ${HOME}/.config) = 7 ]]; then
+    elif [[ $(__check_File_Name ${HOME}/.config) = 3 ]]; then
         mkdir -p ${HOME}/.config >> ${logfile} 2>&1
         __echo_Result
     else
