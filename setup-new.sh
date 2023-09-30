@@ -117,7 +117,7 @@ prepare_Config_Directory() {
 
 install_Dotfiles_Bash() {
     __echo_Left "Installing .dotfiles for Bash"
-    __echo_Right"[Start]"
+    __echo_Right "[Start]"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
             eval file=${i}
