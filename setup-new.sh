@@ -103,8 +103,8 @@ declare -a dotfiles_Bash=(
 # +----- Functions ------------------------------------------------------------+
 create_Backup_Directory() {
     __echo_Left "Creating Backup directory"
-    backupdirectory=".dotfiles_backup/${datetime}"
-    mkdir -p "${backupdirectory}" >> ${logfile} 2>&1
+    backupdirectory="${HOME}/.dotfiles_backup/${datetime}"
+    mkdir -p ${backupdirectory} >> ${logfile} 2>&1
     __echo_Result
     echo "Your Backup Directory is:"
     echo "  ${backupdirectory}"
