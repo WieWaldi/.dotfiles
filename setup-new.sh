@@ -173,10 +173,10 @@ install_Dotfiles_Zsh() {
             __echo_Left "Backing up: ~/.config/zsh"
             mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
             __echo_Result
-            __echo_Left "Installing: ~/.config/zsh"
-            cp -r ${cdir}/.config/zsh ${HOME}/.config >> ${logfile} 2>&1
-            __echo_Result
         fi
+        __echo_Left "Installing: ~/.config/zsh"
+        cp -r ${cdir}/.config/zsh ${HOME}/.config >> ${logfile} 2>&1
+        __echo_Result
     else
         __echo_Skipped
     fi
