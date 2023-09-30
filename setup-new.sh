@@ -171,7 +171,7 @@ install_Dotfiles_Zsh() {
         __echo_Result
         if [[ $(__check_File_Name ${HOME}/.config/zsh) = 1 ]]; then
             __echo_Left "Backing up: ~/.config/zsh"
-            mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
+            mv ${HOME}/.config/zsh ${backupdirectory} >> ${logfile} 2>&1
             __echo_Result
         fi
         __echo_Left "Installing: ~/.config/zsh"
