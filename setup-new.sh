@@ -120,9 +120,9 @@ prepare_Directories() {
         __echo_Failed
     fi
     __echo_Left "Installing: .local Directory"
-    if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
+    if [[ $(__check_File_Name ${HOME}/.local) = 1 ]]; then
         __echo_Skipped
-    elif [[ $(__check_File_Name ${HOME}/.config) = 7 ]]; then
+    elif [[ $(__check_File_Name ${HOME}/.local) = 3 ]]; then
         mkdir -p ${HOME}/.local >> ${logfile} 2>&1
         __echo_Result
     else
