@@ -88,9 +88,6 @@ declare -a config_directories=(
 
 declare -a dotfiles_Zsh=(
     ".zshenv"
-    ".zshrc"
-    ".zprofile"
-    ".zlogin"
 )
 
 declare -a dotfiles_Bash=(
@@ -109,6 +106,18 @@ create_Backup_Directory() {
     echo "  ${backupdirectory}"
 }
 
+prepare_Directory() {
+    __echo_Left "Preparing Directory: ${1}"
+    if [[ $(__check_File_Name ${HOME}/${1}) = 1 ]]; then
+        __echo_Skipped
+    elif [[ $(__check_File_Name ${HOME}/${1}) = 3 ]]; then
+        mkdir -p ${HOME}/${1} >> ${logfile} 2>&1
+        __echo_Result
+    else
+        __echo_Failed
+    fi
+
+}
 prepare_Directories() {
     __echo_Left "Installing: .config Directory"
     if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
@@ -131,16 +140,16 @@ prepare_Directories() {
 }
 
 install_Dotfiles_Bash() {
-    __echo_Left "Installing .dotfiles for Bash"
+    __echo_Left "Bash:"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
         for i in "${dotfiles_Bash[@]}"; do
             eval file=${i}
             if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
-                __echo_Left "Backing up: ${file}"
+                __echo_Left "Backing up: ~/${file}"
                 mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
                 __echo_Result
             fi
-            __echo_Left "Installing: ${file}"
+            __echo_Left "Installing: ~/${file}"
             cp -r ${cdir}/${file} ${HOME}/${file} >> ${logfile} 2>&1
             __echo_Result
         done
@@ -149,14 +158,45 @@ install_Dotfiles_Bash() {
     fi
 }
 
-# install_Dotfiles_Zsh() {
-#     __echo_Left "Installing .dotfiles for Zsh"
-#     if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
-#     fi
-# }
+install_Dotfiles_Zsh() {
+    __echo_Left "Zsh:"
+    if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+        if [[ $(__check_File_Name ${HOME}/.zshenv) = 6 ]]; then
+            __echo_Left "Backing up: ~/.zshenv"
+            mv ${HOME}/.zshenv ${backupdirectory} >> ${logfile} 2>&1
+            __echo_Result
+        fi
+        __echo_Left "Installing: ~/.zshenv"
+        cp -r ${cdir}/.zshenv ${HOME}/.zshenv >> ${logfile} 2>&1
+        __echo_Result
+        if [[ $(__check_File_Name ${HOME}/.config/zsh) = 1 ]]; then
+            __echo_Left "Backing up: ~/.config/zsh"
+            mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
+            __echo_Result
+            __echo_Left "Installing: ~/.config/zsh"
+            cp -r ${cdir}/.config/zsh ${HOME}/.config >> ${logfile} 2>&1
+            __echo_Result
+        fi
+    else
+        __echo_Skipped
+    fi
+}
 # 
-# install_Dotfiles_Vim() {
-# }
+install_Dotfiles_Vim() {
+    __echo_Left "Vim:"
+    if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+        if [[ $(__check_File_Name ${HOME}/.vim) = 1 ]]; then
+            __echo_Left "Backing up: ~/.vim"
+            mv ${HOME}/.vim ${backupdirectory} >> ${logfile} 2>&1
+            __echo_Result
+        fi
+        __echo_Left "Installing: ~/.vim"
+        cp -r ${cdir}/.vim ${HOME}/.vim >> ${logfile} 2>&1
+        __echo_Result
+    else
+        __echo_Skipped
+    fi
+}
 # 
 # install_Dir_config() {
 # }
@@ -239,6 +279,8 @@ get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 create_Backup_Directory
 prepare_Directories
 install_Dotfiles_Bash
+install_Dotfiles_Zsh
+install_Dotfiles_Vim
 
 
 
