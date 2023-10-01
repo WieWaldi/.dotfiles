@@ -129,7 +129,7 @@ create_Config_Directories() {
         for i in "${config_Directories[@]}"; do
             __echo_Left "Preparing Directory: ${i}"
             if [[ $(__check_File_Name ${HOME}/${i}) = 1 ]]; then
-                __echo_Skipped
+                __echo_Right "Already in Place"
             elif [[ $(__check_File_Name ${HOME}/${i}) = 3 ]]; then
                 mkdir -p ${HOME}/${i} >> ${logfile} 2>&1
                 __echo_Result
