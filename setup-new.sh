@@ -230,16 +230,15 @@ if [[ "$(__read_Antwoord_YN "Do you want to proceed?")" = "no" ]]; then
 fi
 
 __echo_Title "Make Your Choice"
-get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install Zsh dotfiles?")"
-get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
-get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
+get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install .dotfiles for Zsh?")"
+get_Dotfiles_Bash="$(__read_Antwoord_YN "Install .dotfiles for Bash?")"
+get_Dotfiles_Vim="$(__read_Antwoord_YN "Install .dotfiles for Vim?")"
 
 if [[ "${get_Dotfiles_Zsh}" = "yes" || \
-      "${get_Dotfiles_Bash}" = "yes" || \
-      "${get_Dotfiles_Vim}" = "yes" ]]; then
+      "${get_Dotfiles_Bash}" = "yes" ]]; then
     get_Backup_Directory="yes"
     get_Config_Directories="yes"
-    get_Install_Base="yes"
+    get_Dotfiles_Base="yes"
 fi
 if [[ "${get_Dotfiles_Vim}" = "yes" ]]; then
     get_Backup_Directory="yes"
