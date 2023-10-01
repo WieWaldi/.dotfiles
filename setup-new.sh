@@ -233,9 +233,9 @@ get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install Zsh dotfiles?")"
 get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
 get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 
-if [[ "${get_Dotfiles_Zsh}" = "yes" || /
-       ${get_Dotfiles_Bash} = "yes" || /
-       ${get_Dotfiles_Vim} = "yes" ]]; then
+if [[ "${get_Dotfiles_Zsh}" = "yes" || \
+       "${get_Dotfiles_Bash}" = "yes" || \
+       "${get_Dotfiles_Vim}" = "yes" ]]; then
     get_Backup_Directory="yes"
     get_Prepare_Directories="yes"
     get_Install_Base="yes"
