@@ -55,7 +55,6 @@ declare -a dotfiles_Base=(
     ".alias"
     ".inputrc"
     ".motd"
-    ".screenrc"
     ".config/bat"
     ".config/powershell"
     ".config/tmux"
@@ -87,14 +86,16 @@ declare -a dotfiles_Base=(
     ".local/bin/tmux-start.sh"
     ".local/bin/vmremote"
     ".local/bin/xclientprop.sh"
+    ".local/share/cowsay"
+    ".local/share/man/man1/cheat.1"
+    ".local/share/man/man1/cowsay.1"
+    ".local/share/man/man1/exa.1"
     )
 
 declare -a config_Directories=(
     ".config"
     ".local/bin"
-    ".local/share/cowsay"
     ".local/share/man/man1"
-    ".local/share/man_build"
     )
 
 declare -a dotfiles_Zsh=(
