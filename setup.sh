@@ -251,11 +251,6 @@ install_Dotfiles_Bash
 install_Dotfiles_Vim
 install_Dotfiles_Base
 
-
-
-
-
-
 __echo_Title "I'm done."
 echo -e "\n\n"
 exit 0
