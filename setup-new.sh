@@ -16,25 +16,6 @@
 # | Copyright © 2019 Waldemar Schroeer                                         |
 # |                  waldemar.schroeer(at)rz-amper.de                          |
 # +----------------------------------------------------------------------------+
-#
-#
-#
-#
-#
-#
-# +----- Help and Usage (Must start at line 25 and must stop with "######" ----+
-#
-# example.sh [options]
-#
-# This is an example on how to use functions from bash-framework.sh
-#
-# Options...
-#  -d, --demo           Run the demo, otherwise exit with an error message
-#  -h, --help           Print out help
-#  -w, --width          Width to use
-#  -o, --option         Just an option
-#
-#####
 
 # +----- Include bash-framework.sh --------------------------------------------+
 # set -o errexit
@@ -70,72 +51,94 @@ if [[ "${BASH_FRMWRK_VER}" -lt "${BASH_FRMWRK_MINVER}" ]]; then
 fi
 
 # +----- Variables ------------------------------------------------------------+
-
-declare -a dotfiles_etc=(
+declare -a dotfiles_Base=(
     ".alias"
     ".inputrc"
     ".motd"
     ".screenrc"
+    ".config/bat"
+    ".config/powershell"
+    ".config/tmux"
+    ".config/vifm"
+    ".local/bin/colortest-24bit.sh"
+    ".local/bin/colortest-256.sh"
+    ".local/bin/colortest-ansi-logo-1.sh"
+    ".local/bin/colortest-ansi-logo-2.sh"
+    ".local/bin/colortest-ansi.sh"
+    ".local/bin/colortest-bars.sh"
+    ".local/bin/colortest-gYw.sh"
+    ".local/bin/colortest-pac-man-1.sh"
+    ".local/bin/colortest-pac-man-2.sh"
+    ".local/bin/colortest-pac-man-3.sh"
+    ".local/bin/colortest-pac-man-hostfetch.sh"
+    ".local/bin/colortest-slim.sh"
+    ".local/bin/colortest-star.sh"
+    ".local/bin/colortest-support1.pl"
+    ".local/bin/colortest-support2.sh"
+    ".local/bin/colortest-view.sh"
+    ".local/bin/colortest-zig.sh"
+    ".local/bin/cowsay"
+    ".local/bin/exa"
+    ".local/bin/fuck"
+    ".local/bin/git-diff-wrapper.sh"
+    ".local/bin/lolcat"
+    ".local/bin/mailbomb.sh"
+    ".local/bin/rdp"
+    ".local/bin/tmux-start.sh"
+    ".local/bin/vmremote"
+    ".local/bin/xclientprop.sh"
     )
 
-declare -a config_directories=(
-    "/.config"
-    "/.local"
-    "/.ssh"
-    "/.vim"
-    "/Templates"
+declare -a config_Directories=(
+    ".config"
+    ".local/bin"
+    ".local/share/cowsay"
+    ".local/share/man/man1"
+    ".local/share/man_build"
     )
 
 declare -a dotfiles_Zsh=(
     ".zshenv"
-)
+    )
 
 declare -a dotfiles_Bash=(
     ".bash_functions"
     ".bash_logout"
     ".bash_profile"
     ".bashrc"
-)
+    )
+
 # +----- Functions ------------------------------------------------------------+
 create_Backup_Directory() {
-    __echo_Left "Creating Backup directory"
-    backupdirectory="${HOME}/.dotfiles_backup/${datetime}"
-    mkdir -p ${backupdirectory} >> ${logfile} 2>&1
-    __echo_Result
-    echo "Your Backup Directory is:"
-    echo "  ${backupdirectory}"
-}
-
-prepare_Directory() {
-    __echo_Left "Preparing Directory: ${1}"
-    if [[ $(__check_File_Name ${HOME}/${1}) = 1 ]]; then
-        __echo_Skipped
-    elif [[ $(__check_File_Name ${HOME}/${1}) = 3 ]]; then
-        mkdir -p ${HOME}/${1} >> ${logfile} 2>&1
+    __echo_Left "Backup Directory:"
+    if [[ "${get_Backup_Directory}" = "yes" ]]; then
+        __echo_Left "Creating Backup directory"
+        backupdirectory="${HOME}/.dotfiles_backup/${datetime}"
+        mkdir -p ${backupdirectory} >> ${logfile} 2>&1
         __echo_Result
+        echo "Your Backup Directory is:"
+        echo "  ${backupdirectory}"
     else
-        __echo_Failed
+        __echo_Skipped
     fi
-
 }
+
 prepare_Directories() {
-    __echo_Left "Installing: .config Directory"
-    if [[ $(__check_File_Name ${HOME}/.config) = 1 ]]; then
-        __echo_Skipped
-    elif [[ $(__check_File_Name ${HOME}/.config) = 3 ]]; then
-        mkdir -p ${HOME}/.config >> ${logfile} 2>&1
-        __echo_Result
+    __echo_Left "Preparing Directories:"
+    if [[ "${get_Prepare_Directories}" = "yes" ]]; then
+        for i in "${config_Directories[@]}"; do
+            __echo_Left "Preparing Directory: ${1}"
+            if [[ $(__check_File_Name ${HOME}/${1}) = 1 ]]; then
+                __echo_Skipped
+            elif [[ $(__check_File_Name ${HOME}/${1}) = 3 ]]; then
+                mkdir -p ${HOME}/${1} >> ${logfile} 2>&1
+                __echo_Result
+            else
+                __echo_Failed
+            fi
+        done
     else
-        __echo_Failed
-    fi
-    __echo_Left "Installing: .local Directory"
-    if [[ $(__check_File_Name ${HOME}/.local) = 1 ]]; then
         __echo_Skipped
-    elif [[ $(__check_File_Name ${HOME}/.local) = 3 ]]; then
-        mkdir -p ${HOME}/.local >> ${logfile} 2>&1
-        __echo_Result
-    else
-        __echo_Failed
     fi
 }
 
@@ -146,7 +149,7 @@ install_Dotfiles_Bash() {
             eval file=${i}
             if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
                 __echo_Left "Backing up: ~/${file}"
-                mv ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
+                cp -r ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
                 __echo_Result
             fi
             __echo_Left "Installing: ~/${file}"
@@ -163,7 +166,7 @@ install_Dotfiles_Zsh() {
     if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
         if [[ $(__check_File_Name ${HOME}/.zshenv) = 6 ]]; then
             __echo_Left "Backing up: ~/.zshenv"
-            mv ${HOME}/.zshenv ${backupdirectory} >> ${logfile} 2>&1
+            cp -r ${HOME}/.zshenv ${backupdirectory} >> ${logfile} 2>&1
             __echo_Result
         fi
         __echo_Left "Installing: ~/.zshenv"
@@ -171,7 +174,7 @@ install_Dotfiles_Zsh() {
         __echo_Result
         if [[ $(__check_File_Name ${HOME}/.config/zsh) = 1 ]]; then
             __echo_Left "Backing up: ~/.config/zsh"
-            mv ${HOME}/.config/zsh ${backupdirectory} >> ${logfile} 2>&1
+            cp -r ${HOME}/.config/zsh ${backupdirectory} >> ${logfile} 2>&1
             __echo_Result
         fi
         __echo_Left "Installing: ~/.config/zsh"
@@ -181,13 +184,13 @@ install_Dotfiles_Zsh() {
         __echo_Skipped
     fi
 }
-# 
+
 install_Dotfiles_Vim() {
     __echo_Left "Vim:"
     if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
         if [[ $(__check_File_Name ${HOME}/.vim) = 1 ]]; then
             __echo_Left "Backing up: ~/.vim"
-            mv ${HOME}/.vim ${backupdirectory} >> ${logfile} 2>&1
+            cp -r ${HOME}/.vim ${backupdirectory} >> ${logfile} 2>&1
             __echo_Result
         fi
         __echo_Left "Installing: ~/.vim"
@@ -197,70 +200,24 @@ install_Dotfiles_Vim() {
         __echo_Skipped
     fi
 }
-# 
-# install_Dir_config() {
-# }
-# 
-# install_Dir_local() {
-# }
-# 
-install_Dotfiles() {
-    for i in "${dotfiles[@]}"; do
-        if [[ -f ~/${i} ]]; then
-            echo -n -e "Moving ${i} to ${backupdir}\r"
-            mv ~/${i} $backupdir
-            echo_OK
-        fi
-        echo -n -e "Copying $i\r"
-        cp ${cdir}/${i} ~
-        echo_OK
-    done
-}
 
-install_Zsh() {
-    if [[ "${get_install_Zsh}" = "yes" ]]; then
-        if [[ "${check_directory_exists[${HOME}/.config]}" = "yes" ]]; then
-            echo "Dir ${check_directory_exists[${HOME}/.config]} ist da."
-        else
-            echo "Dir ${check_directory_exists[${HOME}/.config]} ist nicht da."
-        fi
-    fi
-}
-
-install_ZshTTT() {
-    if [[ "${get_install_Zsh}" = "yes" ]]; then
-        for i in "${dotfiles_Zsh[@]}"; do
-            if [[ -f ~/${i} ]]; then
-                echo_Left "Moving ${i} to backup directory"
-                mv ~/${i} $backupdir
-                if [[ ${?} -eq 0 ]]; then echo_OK; else echo_Failed; fi
+install_Dotfiles_Base() {
+    __echo_Left "Base:"
+    if [[ "${get_Dotfiles_Base}" = "yes" ]];then
+        for i in "${dotfiles_Base[@]}"; do
+            eval file=${i}
+            if [[ $(__check_File_Name ${HOME}/${file}) = 1 || $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
+                __echo_Left "Backing up: ~/${file}"
+                cp -r ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
+                __echo_Result
             fi
+            __echo_Left "Installing: ~/${file}"
+            cp -r ${cdir}/${file} ${HOME}/${file} >> ${logfile} 2>&1
+            __echo_Result
         done
-        echo_Left "Copying .zshenv to home directory"
-        cp ${cdir}/.zshenv ${HOME}
-        if [[ ${?} -eq 0 ]]; then echo_OK; else echo_Failed; fi
-        if [[ -d "${HOME}/.config/zsh" ]]; then
-            echo_Left "Moving .config/zsh to ${backupdir}"
-            mv ${HOME}/.config/zsh $backupdir
-            if [[ ${?} -eq 0 ]]; then echo_OK; else echo_Failed; fi
-        fi
-        echo_Left "Copying .config/zsh to ${HOME}/.config"
-        cp -r ${cdir}/.config/zsh ${HOME}/.config
-        if [[ ${?} -eq 0 ]]; then echo_OK; else echo_Failed; fi
+    else
+        __echo_Skipped
     fi
-}
-
-copy_Directories() {
-    for i in "${directories[@]}"; do
-        if [[ -d ~/${i} ]]; then
-            echo -n -e "Moving ${i} to ${backupdir}\r"
-            mv ~/${i} $backupdir
-            echo_OK
-        fi
-        echo -n -e "Copying $i\r"
-        cp -r ${cdir}/${i} ~
-        echo_OK
-    done
 }
 
 # +----- Main -----------------------------------------------------------------+
@@ -276,10 +233,18 @@ get_Dotfiles_Zsh="$(__read_Antwoord_YN "Install Zsh dotfiles?")"
 get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
 get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 
+if [[ "${get_Dotfiles_Zsh}" = "yes" || /
+       ${get_Dotfiles_Bash} = "yes" || /
+       ${get_Dotfiles_Vim} = "yes" ]]; then
+    get_Backup_Directory="yes"
+    get_Prepare_Directories="yes"
+    get_Install_Base="yes"
+fi
+
 create_Backup_Directory
 prepare_Directories
-install_Dotfiles_Bash
 install_Dotfiles_Zsh
+install_Dotfiles_Bash
 install_Dotfiles_Vim
 
 
