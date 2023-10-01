@@ -28,10 +28,14 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Environment ----------------------------------------------------------+
+export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_STATE_HOME="${HOME}/.local/state"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export OPENAI_API_KEY="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"
 
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
@@ -49,17 +53,17 @@ export prompt_symbol_exit_0=""
 export prompt_symbol_exit_1=""
 
 # Prompt Color Theme: Blue Oyster
-# export prompt_segment1_bg="140"
-# export prompt_segment1_fg="91"
-# export prompt_segment2_bg="91"
-# export prompt_segment2_fg="255"
-# export prompt_segment3_bg="53"
-# export prompt_segment3_fg="255"
+export prompt_segment1_bg="140"
+export prompt_segment1_fg="91"
+export prompt_segment2_bg="91"
+export prompt_segment2_fg="255"
+export prompt_segment3_bg="53"
+export prompt_segment3_fg="255"
 
 # Prompt Color Theme: Solarized light
-export prompt_segment1_bg="14"
-export prompt_segment1_fg="black"
-export prompt_segment2_bg="10"
-export prompt_segment2_fg="white"
-export prompt_segment3_bg="8"
-export prompt_segment3_fg="white"
+# export prompt_segment1_bg="14"
+# export prompt_segment1_fg="black"
+# export prompt_segment2_bg="10"
+# export prompt_segment2_fg="white"
+# export prompt_segment3_bg="8"
+# export prompt_segment3_fg="white"
