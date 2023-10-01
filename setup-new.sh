@@ -123,9 +123,9 @@ create_Backup_Directory() {
     fi
 }
 
-prepare_Directories() {
+create_Config_Directories() {
     __echo_Left "Config Directories:"
-    if [[ "${get_Prepare_Directories}" = "yes" ]]; then
+    if [[ "${get_Config_Directories}" = "yes" ]]; then
         for i in "${config_Directories[@]}"; do
             __echo_Left "Preparing Directory: ${i}"
             if [[ $(__check_File_Name ${HOME}/${i}) = 1 ]]; then
@@ -235,15 +235,18 @@ get_Dotfiles_Bash="$(__read_Antwoord_YN "Install bash dotfiles?")"
 get_Dotfiles_Vim="$(__read_Antwoord_YN "Install Vim dotfiles?")"
 
 if [[ "${get_Dotfiles_Zsh}" = "yes" || \
-       "${get_Dotfiles_Bash}" = "yes" || \
-       "${get_Dotfiles_Vim}" = "yes" ]]; then
+      "${get_Dotfiles_Bash}" = "yes" || \
+      "${get_Dotfiles_Vim}" = "yes" ]]; then
     get_Backup_Directory="yes"
-    get_Prepare_Directories="yes"
+    get_Config_Directories="yes"
     get_Install_Base="yes"
+fi
+if [[ "${get_Dotfiles_Vim}" = "yes" ]]; then
+    get_Backup_Directory="yes"
 fi
 
 create_Backup_Directory
-prepare_Directories
+create_Config_Directories
 install_Dotfiles_Zsh
 install_Dotfiles_Bash
 install_Dotfiles_Vim
