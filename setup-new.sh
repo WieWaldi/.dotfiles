@@ -145,15 +145,15 @@ prepare_Directories() {
 install_Dotfiles_Bash() {
     __echo_Left "Bash:"
     if [[ "${get_Dotfiles_Bash}" = "yes" ]];then
+        get_Dotfiles_Base="yes"
         for i in "${dotfiles_Bash[@]}"; do
-            eval file=${i}
-            if [[ $(__check_File_Name ${HOME}/${file}) = 6 ]]; then
-                __echo_Left "Backing up: ~/${file}"
-                cp -r ${HOME}/${file} ${backupdirectory} >> ${logfile} 2>&1
+            if [[ $(__check_File_Name ${HOME}/${i}) = 6 ]]; then
+                __echo_Left "Backing up: ~/${i}"
+                cp -r ${HOME}/${i} ${backupdirectory} >> ${logfile} 2>&1
                 __echo_Result
             fi
-            __echo_Left "Installing: ~/${file}"
-            cp -r ${cdir}/${file} ${HOME}/${file} >> ${logfile} 2>&1
+            __echo_Left "Installing: ~/${i}"
+            cp -r ${cdir}/${i} ${HOME}/${i} >> ${logfile} 2>&1
             __echo_Result
         done
     else
@@ -164,6 +164,7 @@ install_Dotfiles_Bash() {
 install_Dotfiles_Zsh() {
     __echo_Left "Zsh:"
     if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+        get_Dotfiles_Base="yes"
         if [[ $(__check_File_Name ${HOME}/.zshenv) = 6 ]]; then
             __echo_Left "Backing up: ~/.zshenv"
             cp -r ${HOME}/.zshenv ${backupdirectory} >> ${logfile} 2>&1
@@ -246,6 +247,7 @@ prepare_Directories
 install_Dotfiles_Zsh
 install_Dotfiles_Bash
 install_Dotfiles_Vim
+install_Dotfiles_Base
 
 
 
