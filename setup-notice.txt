@@ -1,0 +1,29 @@
++------------------------------------------------------------------------------+
+|    _      ___    _      __     __   ___        __     __  ____ __            |
+|   | | /| / (_)__| | /| / /__ _/ /__/ (_)   ___/ /__  / /_/ _(_) /__ ___      |
+|   | |/ |/ / / -_) |/ |/ / _ `/ / _  / /  _/ _  / _ \/ __/ _/ / / -_|_-<      |
+|   |__/|__/_/\__/|__/|__/\_,_/_/\_,_/_/  (_)_,_/\___/\__/_//_/_/\__/___/      |
+|                                                                              |
+|   This setup script will put WieWaldi's .dotfiles into your home directory.  |
+|   You should be scared to loose some or even all of your personal dotfiles.  |
+|   The setup script will try to backup all of your precious files prior       |
+|   overwriting them. However, you should consider creating a backup anyway.   |
+|                                                                              |
+|   You may choose what parts will be installed.                               |
+|                                                                              |
+|      .dotfiles for Zsh                                                       |
+|      .dotfiles for Bash                                                      |
+|      .dotfiles for Vim                                                       |
+|                                                                              |
+|   If you choose any of Zsh or Bash then Base .dotfiles will be installed     |
+|   as well and .config directories will be created in case they are not       |
+|   in place yet. Base .dotfiles contain config files for the following:       |
+|                                                                              |
+|      .dotfiles for Bat                                                       |
+|      .dotfiles for Poershell                                                 |
+|      .dotfiles for tmux                                                      |
+|      .dotfiles for vifm                                                      |
+|                                                                              |
+|   Copyright © 2019 Waldemar Schroeer                                         |
+|                    waldemar.schroeer(at)rz-amper.de                          |
++------------------------------------------------------------------------------+
