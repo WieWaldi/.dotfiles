@@ -9,6 +9,6 @@
 #  --theme="GitHub"
 #  --theme="Monokai Extended Light"
 #  --theme="OneHalfLight"
---theme="ansi-light"
+--theme="ansi"
 --paging=auto
 --style=plain
