@@ -124,14 +124,14 @@ create_Backup_Directory() {
 }
 
 prepare_Directories() {
-    __echo_Left "Preparing Directories:"
+    __echo_Left "Config Directories:"
     if [[ "${get_Prepare_Directories}" = "yes" ]]; then
         for i in "${config_Directories[@]}"; do
-            __echo_Left "Preparing Directory: ${1}"
-            if [[ $(__check_File_Name ${HOME}/${1}) = 1 ]]; then
+            __echo_Left "Preparing Directory: ${i}"
+            if [[ $(__check_File_Name ${HOME}/${i}) = 1 ]]; then
                 __echo_Skipped
-            elif [[ $(__check_File_Name ${HOME}/${1}) = 3 ]]; then
-                mkdir -p ${HOME}/${1} >> ${logfile} 2>&1
+            elif [[ $(__check_File_Name ${HOME}/${i}) = 3 ]]; then
+                mkdir -p ${HOME}/${i} >> ${logfile} 2>&1
                 __echo_Result
             else
                 __echo_Failed
@@ -187,7 +187,7 @@ install_Dotfiles_Zsh() {
 
 install_Dotfiles_Vim() {
     __echo_Left "Vim:"
-    if [[ "${get_Dotfiles_Zsh}" = "yes" ]];then
+    if [[ "${get_Dotfiles_Vim}" = "yes" ]];then
         if [[ $(__check_File_Name ${HOME}/.vim) = 1 ]]; then
             __echo_Left "Backing up: ~/.vim"
             cp -r ${HOME}/.vim ${backupdirectory} >> ${logfile} 2>&1
