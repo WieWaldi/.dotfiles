@@ -32,6 +32,10 @@ if [[ "$sessionexist" = "" ]]; then
         tmux send-keys -t $session:1 'clear' C-m
         tmux send-keys -t $session:1 '.local/share/fancy-motd/motd.sh' C-m
         tmux send-keys -t $session:1 '.local/bin/colortest-pac-man-3.sh' C-m
+        tmux send-keys -t $session:8 'cd ~/Repos/WieWaldi' C-m
+        tmux send-keys -t $session:8 'clear' C-m
+        tmux send-keys -t $session:9 'cd ~/Repos/WieWaldi' C-m
+        tmux send-keys -t $session:9 'clear' C-m
         ;;
     
     ScratchPad1)
