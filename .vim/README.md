@@ -10,20 +10,20 @@
 ![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
 ## Mappings  
- - `leader` `c` `p` Toggles paste mode
- - `leader` `c` `s` Toggles mySurround
- - `leader` `c` `t` Toggles Soft/Hard Tab
- - `leader` `n` NERDTreeToggle
- - `leader` `f` Put line to figglet
- - `leader` `t` `m` Toggle Table Mode
- - `Ctrl` `h` :tabprevious
- - `Ctrl` `l` :tabnext
- - `F2` Toggle cursor line
- - `F3` Toggle cursor column
- - `up` is mapped to `ddkP`
- - `down` is mapped to `ddp`
- - `#` is mapped to `:s/^/# /<CR>`
- - `"` is mapped to `:s/^/" /<CR>`
+ - `<leader>` `<c>``<p>` Toggles paste mode
+ - `<leader>` `<c>``<s>` Toggles mySurround
+ - `<leader>` `<c>``<t>` Toggles Soft/Hard Tab
+ - `<leader>` `<n>` NERDTreeToggle
+ - `<leader>` `<f>` NERDTreeFind
+ - `<leader>` `<t>` `<m>` Toggle Table Mode
+ - `<Ctrl>` `<h>` :tabprevious
+ - `<Ctrl>` `<l>` :tabnext
+ - `<F2>` Toggle cursor line
+ - `<F3>` Toggle cursor column
+ - `<up>` is mapped to `ddkP`
+ - `<down>` is mapped to `ddp`
+ - `<#>` is mapped to `:s/^/# /<CR>`
+ - `<">` is mapped to `:s/^/" /<CR>`
 
 #### Links/URLs/Credits  
 The following projects are part of this repository.  
