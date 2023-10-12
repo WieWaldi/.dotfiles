@@ -18,7 +18,8 @@ sessionexist=$(tmux list-session | grep $session)
 
 if [[ "$sessionexist" = "" ]]; then
     case "${session}" in
-        Login)
+
+    Login)
         tmux new-session -d -s $session
         tmux rename-window -t $session:1 ' Master'
         tmux new-window -t $session:2 -n ' Slave'
@@ -36,6 +37,15 @@ if [[ "$sessionexist" = "" ]]; then
         tmux send-keys -t $session:8 'clear' C-m
         tmux send-keys -t $session:9 'cd ~/Repos/WieWaldi' C-m
         tmux send-keys -t $session:9 'clear' C-m
+        ;;
+    
+    Login-Simple)
+        tmux new-session -d -s $session
+        tmux rename-window -t $session:1 ' Master'
+        tmux new-window -t $session:2 -n ' Slave'
+        tmux new-window -t $session:3 -n ' etc'
+        tmux send-keys -t $session:1 'clear' C-m
+        tmux send-keys -t $session:1 '.local/bin/colortest-pac-man-3.sh' C-m
         ;;
     
     ScratchPad1)
