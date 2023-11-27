@@ -125,6 +125,12 @@ st.
 **[Ctrl]-[w] [=]**
 : Rearange all windows.
 
+**[z] [R]**
+: Unfold all folds
+
+**[z] [M]**
+: Fold all folds
+
 # My Vim Mappings
 
 **[leader] [c] [f]**
@@ -181,6 +187,64 @@ will force the buffer to close even when it is not saved.
 
 **["]**
 : is mapped to :s/^/" /<CR>
+
+# Vim NERDTree
+
+**[m]**
+: Filesystem Menu
+
+**[m] [a] Filename**
+: Bring up Filesystem menu, then press [a] and type in the filename.
+
+**[m] [a] Directory**
+: Bring up Filesystem menu, then press [a] and type in the name of the directory
+followed by /.
+
+# Git Workflow
+
+This is about my Git Workflow using a master and a development branch. All
+modifications are done in the development branch and then merged into the master
+branch. 'No fast forward' ist the key word! More to read on the following sites.
+
+https://nvie.com/posts/a-successful-git-branching-model/  
+https://github.com/nvie/gitflow  
+https://stackoverflow.com/questions/4470523/create-a-branch-in-git-from-another-branch  
+
+**git checkout -b development master**
+: First of all you have to have a 'development' branch. This will create a new
+branch called 'development' branched off from the 'master' branch.
+
+**git checkout -b newfeature development**
+: When starting work on a new feature, branch off from the develop branch.
+Edit files, add and commit. Then push with the -u (short for --set-upstream) option:
+
+**git push -u origin myfeature**
+: Finished features may be merged into the develop branch to definitely add them
+to the upcoming release:
+
+**git checkout development**
+: Switch back to the 'development' branch.
+
+**git merge --no-ff myfeature**
+: Merge from 'myfeature' branch into 'development' branch.
+
+**git branch -d myfeature**
+: Delete not needed 'myfeature' branch.
+
+**git push origin development**
+: Push 'development' branch to remote repository.
+
+**git push origin --delete myfeature**
+: Delete not needed 'myfeature' branch at remote repository.
+
+**git checkout master**
+: Switch back to 'master' branch.
+
+**git merge --no-ff development**
+: Merge from 'development' branch into 'master' branch.
+
+**git push origin master**
+: Push 'master' branch to remote repository.
 
 # AUTHORS
 Written by Waldemar Schroeer
