@@ -27,24 +27,21 @@
 # |                                                                            |
 # +----------------------------------------------------------------------------+
 
-# +----- Environment ----------------------------------------------------------+
+# +----- Environment (XDG) ----------------------------------------------------+
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
+# +----- Environment (Zsh) ----------------------------------------------------+
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
 export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 
-# export vi_mode_nrm_symbol=" "
-# export vi_mode_ins_symbol=" "
-
-export prompt_symbol_vimode_ins=""
-export prompt_symbol_vimode_nrm=""
+export vi_mode_nrm_symbol=" "
+export vi_mode_ins_symbol=" "
 export prompt_symbol_exit_0=""
 export prompt_symbol_exit_1=""
 
@@ -63,3 +60,14 @@ export prompt_segment2_bg="10"
 export prompt_segment2_fg="white"
 export prompt_segment3_bg="8"
 export prompt_segment3_fg="white"
+
+# +----- Environment (llm-term) -----------------------------------------------+
+# export OPENAI_API_KEY="xxx"
+# export OPENAI_MODEL="gpt-3.5-turbo"
+# export OPENAI_MODEL="gpt-4"          # Defaults to "gpt-3.5-turbo"
+# export OPENAI_SYSTEM_MESSAGE="You are a helpful assistant who talks like a pirate."
+
+# +----- Environment (etc) ----------------------------------------------------+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# +----- End ------------------------------------------------------------------+
