@@ -19,8 +19,8 @@
 |   as well and .config directories will be created in case they are not       |
 |   in place yet. Base .dotfiles contain config files for the following:       |
 |                                                                              |
-|      .dotfiles for Bat                                                       |
-|      .dotfiles for Poershell                                                 |
+|      .dotfiles for bat                                                       |
+|      .dotfiles for Powershell                                                |
 |      .dotfiles for tmux                                                      |
 |      .dotfiles for vifm                                                      |
 |                                                                              |
