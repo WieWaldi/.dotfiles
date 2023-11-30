@@ -229,6 +229,7 @@ augroup END
 augroup Templates                           " Templates and Skeletons
     autocmd!
     autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c
+    autocmd BufNewFile *.conf 0r ~/.vim/templates/skeleton.conf
     autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
     autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
