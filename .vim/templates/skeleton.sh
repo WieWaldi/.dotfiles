@@ -39,7 +39,7 @@
 # +----- Include bash-framework.sh --------------------------------------------+
 # set -o errexit
 # set -o pipefail
-export BASH_FRMWRK_MINVER=3
+export BASH_FRMWRK_MINVER=4
 export LANG="en_US.UTF-8"
 export base_dir="$(dirname "$(readlink -f "$0")")"
 export cdir=$(pwd)
@@ -70,12 +70,6 @@ if [[ "${BASH_FRMWRK_VER}" -lt "${BASH_FRMWRK_MINVER}" ]]; then
 fi
 
 # +----- Variables ------------------------------------------------------------+
-# 塚 﨑 晴 﨓  
-# ﱮ          
-#    
-#                    
-#  
-#                 
 
 # +----- Functions ------------------------------------------------------------+
 output_Variable() {
@@ -139,6 +133,10 @@ if [[ "$(__read_Antwoord_YN "Do you want to proceed?")" = "no" ]]; then
     __exit_Error 10 "You don't want to proceed!"
 fi
 
+ThisExample1="$(__read_Line "Read Example")"
+__echo_Left "This Example:"
+__echo_Right "${ThisExample1}"
+
 __echo_Title "Example Start"
 __echo_Left "Let me start up."
 __echo_OK
@@ -157,6 +155,10 @@ if [[ "${GoAhead}" = "yes" ]]; then
 else
     __echo_Skipped
 fi
+
+__echo_Left "Copy affe"
+cp affe /tmp >/dev/null 2>&1
+__echo_Result
 
 GoAhead="$(__read_Antwoord_YN "Check File Name?")"
 if [[ "${GoAhead}" = "yes" ]]; then
