@@ -14,6 +14,7 @@ if ! [[ -d $HISTFILE:h ]]; then
     mkdir -p $HISTFILE:h
 fi
 
+setopt globdots
 setopt HIST_FCNTL_LOCK
 setopt appendhistory autocd extendedglob notify
 setopt EXTENDED_HISTORY

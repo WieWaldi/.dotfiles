@@ -28,22 +28,47 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Environment (XDG) ----------------------------------------------------+
+export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CONFIG_HOME="${HOME}/.config"
-export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_STATE_HOME="${HOME}/.local/state"
 
+# +----- Environment (llm-term) -----------------------------------------------+
+# export OPENAI_API_KEY="xxx"
+# export OPENAI_MODEL="gpt-3.5-turbo"
+# export OPENAI_MODEL="gpt-4"          # Defaults to "gpt-3.5-turbo"
+# export OPENAI_SYSTEM_MESSAGE="You are a helpful assistant who talks like a pirate."
+
+# +----- Environment (etc) ----------------------------------------------------+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # +----- Environment (Zsh) ----------------------------------------------------+
+export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
+export FZF_ALT_C_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules' --type d"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
 export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 
-export vi_mode_nrm_symbol=" "
-export vi_mode_ins_symbol=" "
-export prompt_symbol_exit_0=""
-export prompt_symbol_exit_1=""
+export prompt_symbol_vimode_ins=">i<"
+export prompt_symbol_vimode_nrm=">n<"
+# export prompt_symbol_vimode_ins=""
+# export prompt_symbol_vimode_nrm=""
+
+export prompt_symbol_exit_0=">0<"
+export prompt_symbol_exit_1=">1<"
+# export prompt_symbol_exit_0=""
+# export prompt_symbol_exit_1=""
+
+export prompt_symbol_disk_0="(HD)"
+# export prompt_symbol_disk_0=" "
+export prompt_symbol_disk_1="(HD+)"
+# export prompt_symbol_disk_1=" "
+export prompt_symbol_disk_3="(-HD-)"
+# export prompt_symbol_disk_3=" "
 
 # Prompt Color Theme: Blue Oyster
 # export prompt_segment1_bg="140"
@@ -60,14 +85,5 @@ export prompt_segment2_bg="10"
 export prompt_segment2_fg="white"
 export prompt_segment3_bg="8"
 export prompt_segment3_fg="white"
-
-# +----- Environment (llm-term) -----------------------------------------------+
-# export OPENAI_API_KEY="xxx"
-# export OPENAI_MODEL="gpt-3.5-turbo"
-# export OPENAI_MODEL="gpt-4"          # Defaults to "gpt-3.5-turbo"
-# export OPENAI_SYSTEM_MESSAGE="You are a helpful assistant who talks like a pirate."
-
-# +----- Environment (etc) ----------------------------------------------------+
-export _JAVA_AWT_WM_NONREPARENTING=1
 
 # +----- End ------------------------------------------------------------------+
