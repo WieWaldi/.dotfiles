@@ -34,6 +34,7 @@ export XDG_DATA_DIRS="/usr/local/share:/usr/share"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_STATE_HOME="${HOME}/.local/state"
+export XDG_PICTURES_DIR="${HOME}/Pictures"
 
 # +----- Environment (llm-term) -----------------------------------------------+
 # export OPENAI_API_KEY="xxx"
@@ -45,14 +46,13 @@ export XDG_STATE_HOME="${HOME}/.local/state"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 # +----- Environment (Zsh) ----------------------------------------------------+
-export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
-export FZF_ALT_C_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules' --type d"
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export HISTFILE="${XDG_DATA_HOME}/zsh/history"
 export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 
+# +----- Environment for Prompt -----------------------------------------------+
 export prompt_symbol_vimode_ins=">i<"
 export prompt_symbol_vimode_nrm=">n<"
 # export prompt_symbol_vimode_ins=""
@@ -85,5 +85,17 @@ export prompt_segment2_bg="10"
 export prompt_segment2_fg="white"
 export prompt_segment3_bg="8"
 export prompt_segment3_fg="white"
+
+# +----- Qt 5 and Qt 6 --------------------------------------------------------+
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1
+export QT_SCREEN_SCALE_FACTORS="1;1;1"
+export GDK_SCALE=1
+export GDK_DPI_SCALE=1
+
+# +----- fzf ------------------------------------------------------------------+
+export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
+export FZF_ALT_C_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules' --type d"
 
 # +----- End ------------------------------------------------------------------+
