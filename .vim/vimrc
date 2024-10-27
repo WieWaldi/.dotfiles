@@ -233,6 +233,7 @@ augroup Templates                           " Templates and Skeletons
     autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
     autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
+    autocmd BufNewFile *.sent 0r ~/.vim/templates/skeleton.sent
 augroup END
 
 "======== Custom Mappings - Normal ============================================
@@ -253,6 +254,7 @@ nnoremap <F4> :cal ToggleAppearance()<CR>
 nnoremap <leader>b :ls<CR>:buffer <Space>
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>cc :ColorHighlight<CR>
 nnoremap <leader>cs :cal ToggleSurround()<CR>
 nnoremap <leader>cp :cal TogglePaste()<CR>
 nnoremap <leader>ct :cal ToggleTab()<CR>
