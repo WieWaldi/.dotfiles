@@ -7,34 +7,44 @@
 
 "======== Color Theme =========================================================
 function! MyHighlights() abort
-    highlight LineNr        cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
-    highlight TabLine       cterm=NONE  ctermfg=133  ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
-    highlight TabLineFill   cterm=NONE  ctermfg=53   ctermbg=53  gui=underline  guifg=#657b83  guibg=#eee8d5  guisp=#657b83
-    highlight TabLineSel    cterm=NONE  ctermfg=255  ctermbg=53  gui=underline,reverse  guifg=#93a1a1  guibg=#073642  guisp=#657b83
-    highlight VertSplit     cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
-    highlight StatusLine    cterm=NONE  ctermfg=133  ctermbg=53  guifg=#93a1a1  guibg=#eee8d5  gui=NONE
-    highlight StatusLineNC  cterm=NONE  ctermfg=255  ctermbg=53  guifg=#93a1a2  guibg=#eee8d6  gui=NONE
-    highlight ColorColumn   ctermbg=230
-    highlight CursorLine    cterm=bold,underline
-    highlight CursorLineNR  cterm=bold,italic  ctermfg=255  ctermbg=53
-    highlight EndOfBuffer   cterm=NONE
-    highlight User0         ctermfg=255 ctermbg=53
-    highlight User1         ctermfg=255 ctermbg=53
-    highlight User2         ctermfg=255 ctermbg=91
-    highlight User7         ctermfg=53 ctermbg=91
-    highlight User8         ctermfg=91 ctermbg=140
-    highlight User9         ctermfg=140 ctermbg=NONE
-    highlight SpellBad      cterm=Reverse ctermfg=NONE ctermbg=NONE term=Reverse gui=Undercurl guisp=Red
-    highlight SpellCap      cterm=Underline ctermfg=NONE ctermbg=NONE term=Reverse gui=Undercurl guisp=Red
-    highlight SpellLocal    cterm=Underline ctermfg=NONE ctermbg=NONE term=Reverse gui=Undercurl guisp=Red
-    highlight SpellRare     cterm=Underline ctermfg=NONE ctermbg=NONE term=Reverse gui=Undercurl guisp=Red
-    highlight Normal        guibg=NONE ctermbg=NONE
+    highlight LineNr        ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f  cterm=NONE gui=NONE
+    highlight TabLine       ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f  cterm=NONE gui=underline
+    highlight TabLineFill   ctermfg=53      ctermbg=53      guifg=#5f005f   guibg=#5f005f  cterm=NONE gui=underline
+    highlight TabLineSel    ctermfg=255     ctermbg=53      guifg=#93a1a1   guibg=#5f005f  cterm=NONE gui=underline,reverse
+    highlight VertSplit     ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f  cterm=NONE gui=NONE
+    highlight StatusLine    ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f  cterm=NONE gui=NONE
+    highlight StatusLineNC  ctermfg=255     ctermbg=53      guifg=#93a1a2   guibg=#5f005f  cterm=NONE gui=NONE
+    highlight ColorColumn                   ctermbg=230                     guibg=#ffffd7
+    highlight CursorLine                                                                    cterm=bold,underline  gui=bold,underline
+    highlight CursorLineNR  ctermfg=255     ctermbg=53      guifg=#93a1a2   guibg=#5f005f   cterm=bold,italic
+    highlight EndOfBuffer   ctermfg=NONE    ctermbg=NONE                                    cterm=NONE
+    highlight User0         ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
+    highlight User1         ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
+    highlight User2         ctermfg=255     ctermbg=91      guifg=#eeeeee   guibg=#8700af   cterm=NONE gui=NONE
+    highlight User7         ctermfg=53      ctermbg=91      guifg=#5f005f   guibg=#8700af
+    highlight User8         ctermfg=91      ctermbg=140     guifg=#8700af   guibg=#af87d7
+    highlight User9         ctermfg=140     ctermbg=NONE    guifg=#af87d7
+    highlight SpellBad      ctermfg=NONE    ctermbg=NONE    term=Reverse gui=Undercurl guisp=Red cterm=Reverse
+    highlight SpellCap      ctermfg=NONE    ctermbg=NONE    term=Reverse gui=Undercurl guisp=Red cterm=Underline
+    highlight SpellLocal    ctermfg=NONE    ctermbg=NONE    term=Reverse gui=Undercurl guisp=Red cterm=Underline
+    highlight SpellRare     ctermfg=NONE    ctermbg=NONE    term=Reverse gui=Undercurl guisp=Red cterm=Underline
+    highlight Normal        ctermfg=NONE    ctermbg=NONE
     highlight! link SignColumn LineNr
+endfunction
+
+function! MinimapHighlights() abort
+    highlight minimapCursor ctermfg=255  ctermbg=53 guibg=#5F5F5F guifg=#FFFF87
+    highlight minimapRange  ctermfg=255 ctermbg=91 guibg=#4F4F4F guifg=#FFFF87
 endfunction
 
 augroup MyColors
     autocmd!
     autocmd ColorScheme * call MyHighlights()
+augroup END
+
+augroup MyMinimap
+    autocmd!
+    autocmd VimEnter * call MinimapHighlights()
 augroup END
 
 set background=light
@@ -59,7 +69,7 @@ set backspace=2                                         " Same as :set backspace
 set incsearch                                           " Find the next match as we type the search
 set ignorecase                                          " Ignore case in search patterns
 set smartcase                                           " Override the 'ignorecase' option
-set nohlsearch                                          " No hilight of search string
+" set nohlsearch                                          " No hilight of search string
 set noswapfile                                          " Don't create swap files
 set nobackup                                            " Don't create backup files
 set ruler                                               " Show ruler on the left side
@@ -93,6 +103,14 @@ let g:indentLine_color_term = 91                        " Customize conceal colo
 let g:indentLine_conceallevel = 2                       " indentLine will not function if conceallevel is not set to 1 or 2.
 let g:indentLine_setConceal = 1                         " Keep your conceal setting, put this line to 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:minimap_width = 8                                 " the width of the minimap window in characters
+let g:minimap_auto_start = 0                            " if, set minimap will show at startup
+let g:minimap_auto_start_win_enter = 0                  " if, set with g:minimap_auto_start minimap shows on WinEnter
+let g:minimap_left = 0                                  " if set, minimap window will append left
+let g:minimap_highlight_range = 1                       " if set, minimap will highlight range of visible lines
+let g:minimap_highlight_search = 1                      " if set, minimap will highlight searched patterns
+let g:minimap_git_colors = 1                            " if set, minimap will highlight range of changes as reported by git
+let g:minimap_enable_highlight_colorgroup = 0           " if set, minimap will create an autocommand to set highlights on color scheme changes.
 
 "======== Vim Table Mode ======================================================
 function! s:isAtStartOfLine(mapping)
@@ -233,10 +251,12 @@ augroup Templates                           " Templates and Skeletons
     autocmd BufNewFile *.php 0r ~/.vim/templates/skeleton.php
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
     autocmd BufNewFile *.txt 0r ~/.vim/templates/skeleton.txt
-    autocmd BufNewFile *.sent 0r ~/.vim/templates/skeleton.sent
 augroup END
 
-"======== Custom Mappings - Normal ============================================
+"======== My Mappings - Normal ================================================
+nnoremap <esc><esc> :silent! nohls<cr>
+nnoremap J <PageDown>zz
+nnoremap K <PageUP>zz
 nnoremap Q :qa!<CR>
 nnoremap # :s/^/# /<CR>
 nnoremap " :s/^/" /<CR>
@@ -262,8 +282,12 @@ nnoremap <leader>cw :cal ToggleWrap()<CR>
 nnoremap <leader>cf <cmd>.!figlet -f small<cr>
 nnoremap <leader>q :bp<cr>:bd #<cr>
 nnoremap <leader>Q :bp<cr>:bd #!<cr>
+nnoremap <leader>mm :Minimap<cr>
+nnoremap <leader>mr :MinimapRefresh<cr>
+nnoremap <leader>mc :MinimapClose<cr>
 nnoremap <leader>vim :e ~/.vim/vimrc<cr>
 
+"======== My Mappings - Insert ================================================
 imap <C-L> <C-X><C-L>
 
 "======== Status Line =========================================================
