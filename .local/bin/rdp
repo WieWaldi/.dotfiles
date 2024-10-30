@@ -1,15 +1,19 @@
 #!/bin/sh
 #
-# +-------------------------------------------------------------------------+
-# | rdp (wrapper for xfreerdp)                                              |
-# +-------------------------------------------------------------------------+
-# | Copyright © 2019 Waldemar Schroeer                                      |
-# |                  waldemar.schroeer(at)rz-amper.de                       |
-# +-------------------------------------------------------------------------+
+# +----------------------------------------------------------------------------+
+# | rdp (wrapper for xfreerdp)                                                 |
+# +----------------------------------------------------------------------------+
+# | Copyright © 2019 Waldemar Schroeer                                         |
+# |                  waldemar.schroeer(at)rz-amper.de                          |
+# +----------------------------------------------------------------------------+
 
-# /bin/pkill compton
+# +----- Main -----------------------------------------------------------------+
 
-# /bin/xfreerdp --ignore-certificate -g 2400x1400 -d domain.com -u username -p password $1 &
-# /bin/xfreerdp --ignore-certificate -g 2400x1400 -a 8 -D -x m -z -u username -p password -t 3391 host.domain.com &
+# /usr/bin/xfreerdp /cert-ignore /d:example.com /u:john.doe /p:$(cat ~/.config/password_store/password_1) /size:3000x1900 /scale:140 /v:hostname.example.com
 
-# ~/.local/bin/compton &
+# /usr/bin/xfreerdp /cert-ignore /d:example.com /u:john.doe /p:$(cat ~/.config/password_store/password_1) /size:2400x1300 /scale:140 /v:hostname.example.com
+
+# /usr/bin/xfreerdp /cert-ignore /d:example.com /u:john.doe /p:secret /size:3000x1900 /scale:140 /v:hostname.example.com
+
+# +----- End ------------------------------------------------------------------+
+exit 0
