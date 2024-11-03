@@ -59,6 +59,7 @@ declare -a dotfiles_Base=(
     ".config/powershell"
     ".config/tmux"
     ".config/vifm"
+    ".local/bin/code-minimap"
     ".local/bin/colortest-24bit.sh"
     ".local/bin/colortest-256.sh"
     ".local/bin/colortest-ansi-logo-1.sh"
