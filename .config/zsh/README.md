@@ -44,3 +44,4 @@ directory`.
 [github.com/zsh-users](https://github.com/zsh-users/zsh/blob/f9e9dce5443f323b340303596406f9d3ce11d23a/Misc/vcs_info-examples) vcs_info Examples  
 [github.com/leath-dub](https://github.com/leath-dub/dotfiles/tree/master/.config/zsh) Some guys dotfiles  
 [arjanvandergaag.nl](https://arjanvandergaag.nl/blog/customize-zsh-prompt-with-vcs-info.html) Customize your ZSH prompt with vcs_info  
+[olets.dev](https://olets.dev/posts/my-zshrc-zsh-configuration-annotated/) My .zshrc Zsh Configuration, Annotated  
