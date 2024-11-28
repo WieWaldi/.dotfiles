@@ -29,7 +29,7 @@ zstyle ':vcs_info:*+*:*' debug false
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '!'
 zstyle ':vcs_info:*' stagedstr '+'
-zstyle ':vcs_info:git*' formats "%b %F{green}%m%u%c"
+zstyle ':vcs_info:git*' formats "%b %F{220}%m%u%c"
 zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-st git-remotebranch
 
 # +----- Functions ------------------------------------------------------------+
@@ -119,7 +119,7 @@ build_prompt_fancy() {
 }
 build_rprompt_fancy() {
     prompt_rsegment ${prompt_segment8_bg} ${prompt_segment8_fg} "${prompt_symbol_clock_1} %T"
-    prompt_rsegment ${prompt_segment4_bg} ${prompt_segment4_fg} "${vcs_info_msg_0_}"
+    prompt_rsegment ${prompt_segment4_bg} ${prompt_segment4_fg} " ${vcs_info_msg_0_}"
     prompt_rsegment ${prompt_segment0_bg} ${prompt_segment0_fg} "${prompt_symbol_vimode}"
     prompt_rsegend
 }
