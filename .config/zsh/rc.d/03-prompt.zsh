@@ -14,6 +14,8 @@ prompt_symbol_user_root="${prompt_symbol_user_root:-}"
 prompt_symbol_exit_0="${prompt_symbol_exit_0:-}"
 prompt_symbol_exit_1="${prompt_symbol_exit_1:-}"
 prompt_symbol_workingdir="${prompt_workingdir_symbol:- }"
+prompt_symbol_pwd_writable_0="${prompt_symbol_pwd_writable_0:-󱘵 }"
+prompt_symbol_pwd_writable_1="${prompt_symbol_pwd_writable_1:-󱘩 }"
 prompt_symbol_vimode="${prompt_symbol_vimode_ins}"
 CURRENT_BG='NONE'
 
@@ -79,17 +81,46 @@ build_prompt_2line() {
     echo -n "┌[%n@%m]──[%(5~|%-1~/…/%3~|%4~)]──[%T]\n└────╼"
 }
 
+# The Blue Oyster Rainbow 2
+# build_prompt_fancy() {
+#     prompt_segment ${prompt_segment0_bg} ${prompt_segment0_fg} "${prompt_symbol_user} %n@%m" 
+#     prompt_segment ${prompt_segment1_bg} ${prompt_segment1_fg} ""
+#     prompt_segment ${prompt_segment2_bg} ${prompt_segment2_fg} ""
+#     prompt_segment ${prompt_segment3_bg} ${prompt_segment3_fg} ""
+#     prompt_segment ${prompt_segment4_bg} ${prompt_segment4_fg} ""
+#     prompt_segment ${prompt_segment5_bg} ${prompt_segment5_fg} "${prompt_symbol_pwd_writable} ${workingdir}"
+#     prompt_segment ${prompt_segment6_bg} ${prompt_segment6_fg} ""
+#     prompt_segment ${prompt_segment7_bg} ${prompt_segment7_fg} ""
+#     prompt_segment ${prompt_segment8_bg} ${prompt_segment8_fg} ""
+#     prompt_segment ${prompt_segment9_bg} ${prompt_segment9_fg} ""
+#     prompt_segment ${prompt_segment10_bg} ${prompt_segment10_fg} ""
+#     prompt_segment ${prompt_segment11_bg} ${prompt_segment11_fg} "${prompt_symbol_exit}"
+#     prompt_segend
+# }
+# build_rprompt_fancy() {
+#     prompt_rsegment ${prompt_segment1_bg} ${prompt_segment1_fg} "${prompt_symbol_clock_1} %T"
+#     prompt_rsegment ${prompt_segment2_bg} ${prompt_segment2_fg} "${vcs_info_msg_0_}"
+#     prompt_rsegment ${prompt_segment3_bg} ${prompt_segment3_fg} "${prompt_symbol_vimode}"
+#     prompt_rsegend
+# }
+
+#The Blue Oyster Gradient 2
 build_prompt_fancy() {
-    prompt_segment ${prompt_segment3_bg} ${prompt_segment3_fg} "${prompt_symbol_user}%n@%m" 
-    prompt_segment ${prompt_segment2_bg} ${prompt_segment2_fg} "${prompt_symbol_workingdir}${workingdir}"
-    prompt_segment ${prompt_segment1_bg} ${prompt_segment1_fg} "${prompt_symbol_exit}"
+    prompt_segment ${prompt_segment0_bg} ${prompt_segment0_fg} "${prompt_symbol_user} %n@%m" 
+    prompt_segment ${prompt_segment1_bg} ${prompt_segment1_fg} ""
+    prompt_segment ${prompt_segment2_bg} ${prompt_segment2_fg} ""
+    prompt_segment ${prompt_segment3_bg} ${prompt_segment3_fg} ""
+    prompt_segment ${prompt_segment4_bg} ${prompt_segment4_fg} "${prompt_symbol_pwd_writable} ${workingdir}"
+    prompt_segment ${prompt_segment5_bg} ${prompt_segment5_fg} ""
+    prompt_segment ${prompt_segment6_bg} ${prompt_segment6_fg} ""
+    prompt_segment ${prompt_segment7_bg} ${prompt_segment7_fg} ""
+    prompt_segment ${prompt_segment8_bg} ${prompt_segment8_fg} "${prompt_symbol_exit}"
     prompt_segend
 }
-
 build_rprompt_fancy() {
-    prompt_rsegment ${prompt_segment1_bg} ${prompt_segment1_fg} " %T"
-    prompt_rsegment ${prompt_segment2_bg} ${prompt_segment2_fg} "${vcs_info_msg_0_}"
-    prompt_rsegment ${prompt_segment3_bg} ${prompt_segment3_fg} "${prompt_symbol_vimode}"
+    prompt_rsegment ${prompt_segment8_bg} ${prompt_segment8_fg} "${prompt_symbol_clock_1} %T"
+    prompt_rsegment ${prompt_segment4_bg} ${prompt_segment4_fg} "${vcs_info_msg_0_}"
+    prompt_rsegment ${prompt_segment0_bg} ${prompt_segment0_fg} "${prompt_symbol_vimode}"
     prompt_rsegend
 }
 
