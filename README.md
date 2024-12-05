@@ -3,7 +3,7 @@
 ### .dotfiles by WieWaldi
 *My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
 [![MIT Licence](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/licence_mit.svg)](https://opensource.org/licenses/mit-license.php)
-![Maintainded](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/maintained.svg)
+![Maintained](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/maintained_yes-green.svg)
 
 <br />
 
