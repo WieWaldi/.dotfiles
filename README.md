@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/WieWaldi/badges/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
 ### .dotfiles by WieWaldi
-> *My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
+*My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
 
 [![MIT Licence](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/licence_mit.svg)](https://opensource.org/licenses/mit-license.php)
 
