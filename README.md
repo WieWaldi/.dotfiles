@@ -1,9 +1,9 @@
-<img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
+<img src="https://raw.githubusercontent.com/WieWaldi/badges/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
 ### .dotfiles by WieWaldi
 > *My personal set of .dotfiles for bash, Zsh, tmux, screen, Vim and even PowerShell.*
 
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![MIT Licence](https://https://raw.githubusercontent.com/WieWaldi/badges/master/badges/license_mit.svg)](https://opensource.org/licenses/mit-license.php)
 
 <br />
 
@@ -36,17 +36,8 @@ git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
 ~/.dotfiles/setup.sh
 ```
 
-## Links/URLs/Credits  
-[indentLine](https://github.com/Yggdroot/indentLine) - Displaying thin vertical lines at each indentation level.  
-[NERDTree](https://github.com/preservim/nerdtree) - The NERDTree is a file system explorer for the Vim editor.  
-[vim-devicons](https://github.com/ryanoasis/vim-devicons) - Adds filetype glyphs (icons) to various vim plugins.  
-[vim-gitgutter](https://github.com/airblade/vim-gitgutter) - A Vim plugin which shows a git diff in the sign column.  
-[vim-numbertoggle](https://github.com/jeffkreeftmeijer/vim-numbertoggle) - numbertoggle switches to absolute line numbers.  
-[vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - An awesome automatic table creator & formatter  
-[nicknisi/dotfiles](https://github.com/nicknisi/dotfiles) - Good inspiration and starting point.  
-
 ## Version
 The option to create releases on GitHub is pretty nice. I really do like it since it give me easy access to all the files
 without git cloning the complete repository.  
 
-Version 1.0
+Version 2.3
