@@ -1,11 +1,9 @@
-<img src="https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
+<img src="https://raw.githubusercontent.com/WieWaldi/badges/master/img/RZ-Amper_Logo_135x135.png" align="left" width="135px" height="135px" />
 
 ### .vim directory by WieWaldi
-> *My personal Vim setup. A Solarized Color Theme and other colorful stuff.*
-
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-
-<br />
+*My personal Vim setup. A Solarized Color Theme and other colorful stuff.*  
+[![MIT Licence](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/licence_mit.svg)](https://opensource.org/licenses/mit-license.php)
+![Maintained](https://raw.githubusercontent.com/WieWaldi/badges/master/badges/maintained_yes-green.svg)
 
 ![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
@@ -14,7 +12,7 @@
  - `<leader>` `<c>``<s>` Toggles mySurround
  - `<leader>` `<c>``<t>` Toggles Soft/Hard Tab
  - `<leader>` `<n>` NERDTreeToggle
- - `<leader>` `<f>` NERDTreeFind
+ - `<leader>` `<f>` :Files
  - `<leader>` `<t>` `<m>` Toggle Table Mode
  - `<Ctrl>` `<h>` :tabprevious
  - `<Ctrl>` `<l>` :tabnext
