@@ -92,17 +92,39 @@ set noshowmode                                          " Don't show mode on las
 set statusline=                                         " Clear status line
 set fillchars=fold:-                                    " Characters to fill the statuslines and vertical separators
 set hidden                                              " Switch buffers without saving
+set title                                               " Set window title
+set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70      " Format window title
 " set t_ti= t_te=                                         " Don't reset screen
 " set mouse+=a                                            " Enable the use of the mouse
 " set smartindent                                         " Do smart autoindenting when starting a new line
-
 let g:mapleader = "\<Space>"                            " <Space> as leader
 let g:maplocalleader = ','                              " , as local leader
+
+"======== NERDTree ============================================================
+let g:fzf_colors =                                                                         
+    \ { 'fg':      ['fg', 'Normal'],                                                           
+      \ 'bg':      ['bg', 'Normal'],                                                           
+      \ 'hl':      ['fg', 'Comment'],                                                          
+      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],                             
+      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],                                       
+      \ 'hl+':     ['fg', 'Statement'],                                                        
+      \ 'info':    ['fg', 'PreProc'],                                                          
+      \ 'border':  ['fg', 'Ignore'],                                                           
+      \ 'prompt':  ['fg', 'Conditional'],                                                      
+      \ 'pointer': ['fg', 'Exception'],                                                        
+      \ 'marker':  ['fg', 'Keyword'],                                                          
+      \ 'spinner': ['fg', 'Label'],                                                            
+      \ 'header':  ['fg', 'Comment'] } 
+"======== NERDTree ============================================================
 let NERDTreeShowHidden=1                                " Show hidden files in NERDTree
+
+"======== IndentLine ==========================================================
 let g:indentLine_color_term = 91                        " Customize conceal color
 let g:indentLine_conceallevel = 2                       " indentLine will not function if conceallevel is not set to 1 or 2.
 let g:indentLine_setConceal = 1                         " Keep your conceal setting, put this line to 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"======== Minimap =============================================================
 let g:minimap_width = 8                                 " the width of the minimap window in characters
 let g:minimap_auto_start = 0                            " if, set minimap will show at startup
 let g:minimap_auto_start_win_enter = 0                  " if, set with g:minimap_auto_start minimap shows on WinEnter
@@ -271,8 +293,10 @@ nnoremap <C-k> :bprevious!<CR>
 nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
 nnoremap <F4> :cal ToggleAppearance()<CR>
-nnoremap <leader>b :ls<CR>:buffer <Space>
-nnoremap <leader>f :NERDTreeFind<CR>
+" nnoremap <leader>b :ls<CR>:buffer <Space>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>gf :GFiles<CR>
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>cc :ColorHighlight<CR>
 nnoremap <leader>cs :cal ToggleSurround()<CR>
