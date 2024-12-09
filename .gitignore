@@ -1,5 +1,6 @@
 .gitconfig
 .local/share/man_build/cheat.1
+*log
 .ssh.source
 .ssh.source/*
 .ssh.tar.gz
