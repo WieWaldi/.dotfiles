@@ -136,6 +136,13 @@ export GDK_SCALE=1
 export GDK_DPI_SCALE=1
 
 # +----- fzf ------------------------------------------------------------------+
+FZF_DEFAULT_OPTS="--layout=reverse --info=inline --multi "
+FZF_DEFAULT_OPTS+="--tmux left,70%,70% "
+FZF_DEFAULT_OPTS+="--margin=0 --padding=2 "
+FZF_DEFAULT_OPTS+="--preview 'bat --color=always {}' --preview-window right:50% "
+FZF_DEFAULT_OPTS+="--color=bg+:53,bg:7,border:136,preview-bg:15 "
+
+export FZF_DEFAULT_OPTS
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
 export FZF_ALT_C_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules' --type d"
 
