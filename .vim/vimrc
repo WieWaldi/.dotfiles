@@ -6,17 +6,17 @@
 " +----------------------------------------------------------------------------+
 
 "======== Color Scheme ========================================================
-set background=light
+" set background=light
 colorscheme TheBlueOyster
+" autocmd VimEnter * colorscheme TheBlueOyster
 
 "======== Default Settings ====================================================
 filetype plugin indent on                               " Respect indent rules based on file types
 setlocal cm=blowfish2                                   " Sets encryption method to blowfish2
 syntax on                                               " Sets syntax highlighting on
-" set spell spelllang=en_us
 set complete+=kspell
 set spellfile=~/.vim/spell/en.utf-8.add
-set path=.,,**                                          " Set path to current directory
+" set path=.,,**                                          " Set path to current directory
 set undodir=~/.vim/undodir                              " Write undo directory to ~/.vim/
 set undofile                                            " Create undo file
 set viminfo+=n~/.vim/viminfo                            " Write viminfo to ~/.vim/
@@ -26,16 +26,15 @@ set cursorline                                          " Highlight current line
 set autoindent                                          " Do autoindenting when starting a new line
 set backspace=2                                         " Same as :set backspace=indent,eol,start
 set incsearch                                           " Find the next match as we type the search
-set ignorecase                                          " Ignore case in search patterns
-set smartcase                                           " Override the 'ignorecase' option
-" set nohlsearch                                          " No hilight of search string
+set ignorecase                                          " Case-insensitive search by default
+set smartcase                                           " Use case-sensitive search if there is a capital letter in the search expression
 set noswapfile                                          " Don't create swap files
 set nobackup                                            " Don't create backup files
 set ruler                                               " Show ruler on the left side
 set colorcolumn=81                                      " Show color column on the right side
-" set t_Co=256                                            " Tell the term has 256 colors
 set list                                                " List mode
 set listchars=eol:↲,tab:▸-                              " Strings to use in list mode
+set fillchars+=vert:\                                   " No character for Vertical Split
 set nowrap                                              " Dont wrap lines
 set scrolloff=25                                        " Minimal number of screen lines to keep above and below the cursor
 set sidescrolloff=7                                     " The minimal number of screen columns to keep to the left
@@ -47,15 +46,16 @@ set splitright                                          " New Windows from a ver
 set splitbelow                                          " New Windows from a horizontal split will be put to the bottom
 set laststatus=2                                        " Always show status line
 set noshowmode                                          " Don't show mode on last line
-set statusline=                                         " Clear status line
-" set fillchars=fold:-                                    " Characters to fill the statuslines and vertical separators
 set hidden                                              " Switch buffers without saving
 set title                                               " Set window title
 set titlestring=VIM:\ %-25.55F\ %a%r%m titlelen=70      " Format window title
-set termguicolors
+set termguicolors                                       " Use gui hihglighs in the terminal
+" set t_Co=256                                            " Tell the term has 256 colors
 " set t_ti= t_te=                                         " Don't reset screen
 " set mouse+=a                                            " Enable the use of the mouse
 " set smartindent                                         " Do smart autoindenting when starting a new line
+set spell spelllang=en_us                               " Language for spell checker
+" set nohlsearch                                          " No hilight of search string
 let g:mapleader = "\<Space>"                            " <Space> as leader
 let g:maplocalleader = ','                              " , as local leader
 
@@ -63,9 +63,9 @@ let g:maplocalleader = ','                              " , as local leader
 let g:fzf_colors =
     \ { 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
-      \ 'hl':      ['fg', 'Comment'],
-      \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+      \ 'hl':      ['fg', 'Pmenu'],
+      \ 'fg+':     ['fg', 'Pmenu', 'Pmenu', 'Normal'],
+      \ 'bg+':     ['fg', 'PmenuSel', 'Pmenu'],
       \ 'hl+':     ['fg', 'Statement'],
       \ 'info':    ['fg', 'PreProc'],
       \ 'border':  ['fg', 'Ignore'],
@@ -74,6 +74,21 @@ let g:fzf_colors =
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
+
+" let g:fzf_colors =
+"     \ { 'fg':      ['fg', 'Normal'],
+"       \ 'bg':      ['bg', 'Normal'],
+"       \ 'hl':      ['fg', 'Comment'],
+"       \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"       \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"       \ 'hl+':     ['fg', 'Statement'],
+"       \ 'info':    ['fg', 'PreProc'],
+"       \ 'border':  ['fg', 'Ignore'],
+"       \ 'prompt':  ['fg', 'Conditional'],
+"       \ 'pointer': ['fg', 'Exception'],
+"       \ 'marker':  ['fg', 'Keyword'],
+"       \ 'spinner': ['fg', 'Label'],
+"       \ 'header':  ['fg', 'Comment'] }
 
 "======== NERDTree ============================================================
 let NERDTreeShowHidden=1                                " Show hidden files in NERDTree
@@ -108,103 +123,6 @@ inoreabbrev <expr> <bar><bar>
 inoreabbrev <expr> __
           \ <SID>isAtStartOfLine('__') ?
           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
-"======== Toggle Soft Tabs ====================================================
-let b:my_tab=4
-execute "set shiftwidth=".b:my_tab
-execute "set softtabstop=".b:my_tab
-execute "set tabstop=".b:my_tab
-set expandtab
-
-function! ToggleTab()
-    if &expandtab
-        execute "set shiftwidth=".b:my_tab
-        execute "set softtabstop=0"
-        set noexpandtab
-        echo "I'm not expanding Tabs from now on."
-    else
-        execute "set shiftwidth=".b:my_tab
-        execute "set softtabstop=".b:my_tab
-        set expandtab
-        echo "I'm expanding Tabs from now on."
-    endif
-endfunction
-
-"======== Toggle Surround ======================================================
-let b:mySurround="nosurround"
-function! ToggleSurround()
-    if b:mySurround=="surround"
-        let b:mySurround="nosurround"
-        execute 'iunmap "'
-        execute 'iunmap ('
-        execute 'iunmap ['
-        execute 'iunmap {'
-        execute 'iunmap {<CR>'
-        execute 'iunmap {;<CR>'
-        execute 'iunmap <expr> )'
-        echo "I'm not surrounding from now on."
-    else
-        let b:mySurround="surround"
-        execute 'inoremap " ""<left>'
-        execute 'inoremap ( ()<left>'
-        execute 'inoremap [ []<left>'
-        execute 'inoremap { {}<left>'
-        execute 'inoremap {<CR> {<CR>}<ESC>O'
-        execute 'inoremap {;<CR> {<CR>};<ESC>O'
-        execute 'inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"'
-        echo "I'm surrounding from now on."
-    endif
-endfunction
-
-"======== Toggle Paste ========================================================
-let b:myPaste="nopaste"
-function! TogglePaste()
-    if b:myPaste=="nopaste"
-        let b:myPaste="paste"
-        set paste
-        echo "Paste now."
-    else
-        let b:myPaste="nopaste"
-        set nopaste
-        echo "Don't paste now."
-    endif
-endfunction
-
-"======== Toggle Wrap =========================================================
-let b:myWrap="nowrap"
-function! ToggleWrap()
-    if b:myWrap=="nowrap"
-        let b:myWrap="wrap"
-        set wrap linebreak nolist
-        set textwidth=80
-        echo "I'm going to wrap some lines."
-    else
-        let b:myWrap="nowrap"
-        set wrap! linebreak! nolist!
-        set textwidth=0
-        echo "I'm not wrapping lines anymore."
-    endif
-endfunction
-
-"======== Toggle Appearance ===================================================
-let b:myAppearance="full"
-function! ToggleAppearance()
-    if b:myAppearance=="full"
-        let b:myAppearance="slim"
-        set list!
-        set relativenumber! number! ruler!
-        set conceallevel=0
-        redraw!
-        echo "Slim View."
-    else
-        let b:myAppearance="full"
-        set list!
-        set relativenumber! number! ruler!
-        set conceallevel=2
-        redraw!
-        echo "Full View."
-    endif
-endfunction
 
 "======== Autocommands ========================================================
 " autocmd! redhat BufReadPost *
@@ -253,7 +171,6 @@ nnoremap <C-k> :bprevious!<CR>
 nnoremap <F2> :set cursorline! <CR>
 nnoremap <F3> :set cursorcolumn!<CR>
 nnoremap <F4> :cal ToggleAppearance()<CR>
-" nnoremap <leader>b :ls<CR>:buffer <Space>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>gf :GFiles<CR>
@@ -270,6 +187,9 @@ nnoremap <leader>mm :Minimap<cr>
 nnoremap <leader>mr :MinimapRefresh<cr>
 nnoremap <leader>mc :MinimapClose<cr>
 nnoremap <leader>vim :e ~/.vim/vimrc<cr>
+nnoremap <leader>hc :call popup_clear()<cr>
+nnoremap <leader>hm :call MyExtShowFile('~/.vim/map')<cr>
+" nnoremap <leader>b :ls<CR>:buffer <Space>
 
 "======== My Mappings - Insert ================================================
 imap <C-L> <C-X><C-L>
@@ -297,24 +217,20 @@ let g:currentmode={
     \ "t"       : "Terminal"
     \}
 
-set statusline+=%#StatusColor1#\ \ :                                   " Show commitment
-set statusline+=%#StatusColor1#\ %n\                                    " Buffer number
-set statusline+=%#StatusColor1#\ %<%F%m%r%h%w\                          " File path, modified, readonly, helpfile, preview
-set statusline+=%#StatusColor7#                                        " Separator 
-set statusline+=%#StatusColor2#\                                       " Static file icon
-set statusline+=%#StatusColor2#\ %Y\                                    " Print file type
-set statusline+=%#StatusColor2#\ %{''.(&fenc!=''?&fenc:&enc).''}        " Print encoding type
-set statusline+=%#StatusColor8#                                        " Separator 
-set statusline+=%#StatusColor8#\                                       " Static file icon
-set statusline+=\ %{&ff}                                  " Print file format (dos/unix..)
-set statusline+=%#StatusColor9#                                        " Separator 
-set statusline+=%=                                          " Right Side
-set statusline+=%#StatusColor9#                                        " Separator 
-set statusline+=%#StatusColor8#\ \ %02v\                               " Print colomn number
-set statusline+=%#StatusColor8#                                        " Separator 
-set statusline+=%#StatusColor2#\ \ %02l/%L\ %3p%%\                   " Print line number / total lines and percentage of document
-set statusline+=%#StatusColor7#                                        " Separator 
-set statusline+=%#StatusColor1#\ %{toupper(g:currentmode[mode()])}\     " Print the current mode
+set statusline=
+set statusline+=%#StatusSegCol0#\\:\ %n\ %<%F%m%r%h%w                   " Show commitment, Buffer number, File path and attributes
+set statusline+=%#StatusSepCol0#                                        " Separator 
+set statusline+=%#StatusSegCol1#\\ %Y\ %{''.(&fenc!=''?&fenc:&enc).''}  " Static file icon, File Type and Encoding
+set statusline+=%#StatusSepCol1#                                        " Separator 
+set statusline+=%#StatusSegCol2#\ %{&ff}                              " Static file icon, Unix/DOS
+set statusline+=%#StatusSepCol2#                                        " Separator 
+set statusline+=%=                                                       " Right Side
+set statusline+=%#StatusSepCol7#                                        " Separator 
+set statusline+=%#StatusSegCol7#\ \ %02v                                " Print colomn number
+set statusline+=%#StatusSepCol8#                                        " Separator 
+set statusline+=%#StatusSegCol8#\ \ %02l/%L\ %3p%%                    " Print line number / total lines and percentage of document
+set statusline+=%#StatusSepCol9#                                        " Separator 
+set statusline+=%#StatusSegCol9#\%{toupper(g:currentmode[mode()])}       " Print the current mode
 
 "======== EOF =================================================================
 " vim:foldmethod=marker:foldlevel=0
