@@ -18,12 +18,12 @@
 highlight clear
 let colors_name = 'TheBlueOyster'
 highlight Normal                                  cterm=NONE               ctermfg=NONE    ctermbg=NONE    guifg=NONE      guibg=NONE      gui=NONE
-highlight ColorColumn                             cterm=NONE               ctermbg=230                                     guibg=#ded8c5   gui=NONE
+highlight ColorColumn                             cterm=NONE               ctermbg=230                                     guibg=#eee8d5   gui=NONE
 highlight Comment                                 cterm=NONE               ctermfg=14                      guifg=#93a1a1                   gui=italic
 highlight ConId                                   cterm=NONE               ctermfg=3                       guifg=#b58900                   gui=NONE
-highlight Conceal                                 cterm=NONE               ctermfg=4       ctermbg=15      guifg=#268bd2   guibg=#fdf6e3   gui=NONE
+highlight Conceal                                 cterm=NONE               ctermfg=4       ctermbg=NONE    guifg=#268bd2   guibg=NONE      gui=NONE
 highlight Constant                                cterm=NONE               ctermfg=6                       guifg=#2aa198                   gui=NONE
-highlight Cursor                                  cterm=NONE               ctermfg=15      ctermbg=11      guifg=#fdf6e3   guibg=#657b83   gui=NONE
+highlight Cursor                                  cterm=NONE               ctermfg=15      ctermbg=11      guifg=#000000   guibg=#00ff00   gui=NONE
 highlight CursorColumn                            cterm=NONE               ctermbg=7                                       guibg=#ded8c5   gui=NONE
 highlight CursorLine                              cterm=bold,underline     ctermbg=7                                       guibg=#eee8d5   gui=bold,underline
 highlight CursorLineNr                            cterm=bold,italic        ctermfg=255     ctermbg=53      guifg=#5f005f   guibg=#eee8d5   gui=bold,italic
@@ -44,28 +44,26 @@ highlight MatchParen                              cterm=NONE               cterm
 highlight ModeMsg                                 cterm=NONE               ctermfg=4                       guifg=#268bd2                   gui=NONE
 highlight MoreMsg                                 cterm=NONE               ctermfg=4                       guifg=#268bd2                   gui=NONE
 highlight NonText                                 cterm=NONE               ctermfg=12                      guifg=#839496                   gui=NONE
-highlight Pmenu                                   cterm=reverse            ctermfg=11      ctermbg=7       guifg=#657b83   guibg=#eee8d5   gui=reverse
-highlight PmenuSbar                               cterm=reverse            ctermfg=0       ctermbg=11      guifg=#073642   guibg=#657b83   gui=reverse
-highlight PmenuSel                                cterm=reverse            ctermfg=14      ctermbg=0       guifg=#93a1a1   guibg=#073642   gui=reverse
-highlight PmenuThumb                              cterm=reverse            ctermfg=11      ctermbg=15      guifg=#657b83   guibg=#fdf6e3   gui=reverse
+highlight Pmenu                                   cterm=NONE               ctermfg=53      ctermbg=140     guifg=#5f005f   guibg=#af87d7   gui=NONE
+highlight PmenuSbar                               cterm=NONE               ctermfg=140     ctermbg=53      guifg=#af87d7   guibg=#5f005f   gui=NONE
+highlight PmenuSel                                cterm=NONE               ctermfg=230     ctermbg=53      guifg=#fdf6e3   guibg=#5f005f   gui=NONE
+highlight PmenuThumb                              cterm=NONE               ctermfg=230     ctermbg=91      guifg=#fdf6e3   guibg=#8700af   gui=NONE
 highlight PreProc                                 cterm=NONE               ctermfg=9                       guifg=#cb4b16                   gui=NONE
 highlight Question                                cterm=NONE               ctermfg=6                       guifg=#2aa198                   gui=NONE
 highlight Search                                  cterm=reverse            ctermfg=3       ctermbg=NONE    guifg=#b58900   guibg=NONE      gui=reverse
-highlight SignColumn                              cterm=NONE               ctermfg=11      ctermbg=NONE    guifg=#657b83   guibg=NONE      gui=NONE
+highlight SignColumn                              cterm=NONE               ctermfg=11      ctermbg=NONE    guifg=#657b83   guibg=#5f005f   gui=NONE
 highlight Special                                 cterm=NONE               ctermfg=1                       guifg=#dc322f                   gui=NONE
 highlight SpecialKey                              cterm=NONE               ctermfg=12      ctermbg=7       guifg=#839496   guibg=#eee8d5   gui=NONE
-highlight SpellBad                                cterm=undercurl          ctermfg=NONE    ctermbg=NONE                                    gui=undercurl   guisp=#dc322f
-highlight SpellCap                                cterm=undercurl          ctermfg=NONE    ctermbg=NONE                                    gui=undercurl   guisp=#6c71c4
-highlight SpellLocal                              cterm=undercurl          ctermfg=NONE    ctermbg=NONE                                    gui=undercurl   guisp=#b58900
-highlight SpellRare                               cterm=undercurl          ctermfg=NONE    ctermbg=NONE                                    gui=undercurl   guisp=#2aa198
+highlight SpellBad                                cterm=underline,italic   ctermfg=NONE    ctermbg=NONE                                    gui=underline,italic   guisp=#dc322f
+highlight SpellCap                                cterm=underline,italic   ctermfg=NONE    ctermbg=NONE                                    gui=underline,italic   guisp=#6c71c4
+highlight SpellLocal                              cterm=underline,italic   ctermfg=NONE    ctermbg=NONE                                    gui=underline,italic   guisp=#b58900
+highlight SpellRare                               cterm=underline,italic   ctermfg=NONE    ctermbg=NONE                                    gui=underline,italic   guisp=#2aa198
 highlight Statement                               cterm=NONE               ctermfg=2                       guifg=#719e07                   gui=NONE
 highlight StatusLine                              cterm=NONE               ctermfg=133     ctermbg=53      guifg=#fdf6e3   guibg=#5f005f   gui=NONE        guisp=NONE   term=NONE
 highlight StatusLineNC                            cterm=NONE               ctermfg=NONE    ctermbg=NONE    guifg=#fdf6e3   guibg=#5f005f   gui=NONE        guisp=NONE   term=NONE
-" highlight StatusLineNC                                                                                                     guibg=#5f005f   gui=reverse
-" highlight StatusLineNC                            cterm=NONE               ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f   gui=NONE        guisp=NONE   term=NONE
-highlight TabLine                                 cterm=NONE               ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f   gui=underline   guisp=#657b83
-highlight TabLineFill                             cterm=NONE               ctermfg=53      ctermbg=53      guifg=#5f005f   guibg=#5f005f   gui=underline   guisp=#657b83
-highlight TabLineSel                              cterm=NONE               ctermfg=14      ctermbg=0       guifg=#93a1a1   guibg=#5f005f   gui=underline,reverse guisp=#657b83
+highlight TabLine                                 cterm=NONE               ctermfg=133     ctermbg=53      guifg=#af5faf   guibg=#5f005f   gui=NONE         guisp=#657b83
+highlight TabLineFill                             cterm=NONE               ctermfg=53      ctermbg=53      guifg=#5f005f   guibg=#5f005f   gui=NONE         guisp=#657b83
+highlight TabLineSel                              cterm=NONE               ctermfg=230     ctermbg=53      guifg=#fdf6e3   guibg=#5f005f   gui=NONE         guisp=#657b83
 highlight Title                                   cterm=NONE               ctermfg=9                       guifg=#cb4b16                   gui=NONE
 highlight Todo                                    cterm=bold               ctermfg=5       ctermbg=15      guifg=#d33682   guibg=NONE      gui=bold
 highlight Type                                    cterm=NONE               ctermfg=3                       guifg=#b58900                   gui=NONE
@@ -75,7 +73,7 @@ highlight VertSplit                               cterm=NONE               cterm
 highlight Visual                                  cterm=reverse            ctermfg=14      ctermbg=15      guifg=#93a1a1   guibg=#fdf6e3   gui=reverse
 highlight VisualNOS                               cterm=reverse            ctermbg=7                                       guibg=#eee8d5   gui=reverse
 highlight WarningMsg                              cterm=NONE               ctermfg=9                       guifg=#dc322f                   gui=NONE
-highlight WildMenu                                cterm=reverse            ctermfg=0       ctermbg=7       guifg=#073642   guibg=#eee8d5   gui=reverse
+highlight WildMenu                                cterm=NONE               ctermfg=535     ctermbg=140     guifg=#073642   guibg=#af87d7   gui=reverse
 highlight cPreCondit                              cterm=NONE               ctermfg=9                       guifg=#cb4b16                   gui=NONE
 highlight gitcommitBranch                         cterm=NONE               ctermfg=5                       guifg=#d33682                   gui=NONE
 highlight gitcommitComment                        cterm=NONE               ctermfg=14                      guifg=#93a1a1                   gui=italic
@@ -215,20 +213,24 @@ highlight vimHiLink                               cterm=NONE               cterm
 highlight vimIsCommand                            cterm=NONE               ctermfg=12                      guifg=#839496                   gui=NONE
 highlight vimSynMtchOpt                           cterm=NONE               ctermfg=3                       guifg=#b58900                   gui=NONE
 highlight vimSynType                              cterm=NONE               ctermfg=6                       guifg=#2aa198                   gui=NONE
-highlight minimapCursor                           cterm=NONE               ctermfg=255     ctermbg=53      guibg=#5F5F5F   guifg=#FFFF87
-highlight minimapRange                            cterm=NONE               ctermfg=255     ctermbg=91      guibg=#4F4F4F   guifg=#FFFF87
-highlight User0                                   cterm=NONE               ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
-highlight User1                                   cterm=NONE               ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
-highlight User2                                   cterm=NONE               ctermfg=255     ctermbg=91      guifg=#eeeeee   guibg=#8700af   cterm=NONE gui=NONE
-highlight User7                                   cterm=NONE               ctermfg=53      ctermbg=91      guifg=#5f005f   guibg=#8700af
-highlight User8                                   cterm=NONE               ctermfg=91      ctermbg=140     guifg=#8700af   guibg=#af87d7
-highlight User9                                   cterm=NONE               ctermfg=140     ctermbg=NONE    guifg=#af87d7   guibg=NONE
-highlight StatusColor0                            cterm=NONE               ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
-highlight StatusColor1                            cterm=NONE               ctermfg=255     ctermbg=53      guifg=#eeeeee   guibg=#5f005f   cterm=NONE gui=NONE
-highlight StatusColor2                            cterm=NONE               ctermfg=255     ctermbg=91      guifg=#eeeeee   guibg=#8700af   cterm=NONE gui=NONE
-highlight StatusColor7                            cterm=NONE               ctermfg=53      ctermbg=91      guifg=#5f005f   guibg=#8700af   cterm=NONE gui=NONE
-highlight StatusColor8                            cterm=NONE               ctermfg=91      ctermbg=140     guifg=#8700af   guibg=#af87d7   cterm=NONE gui=NONE
-highlight StatusColor9                            cterm=NONE               ctermfg=140     ctermbg=NONE    guifg=#af87d7   guibg=NONE
+highlight minimapCursor                           cterm=NONE               ctermfg=255     ctermbg=53      guibg=#5f005f   guifg=#FFFF87
+highlight minimapRange                            cterm=NONE               ctermfg=255     ctermbg=91      guibg=#8700af   guifg=#FFFF87
+highlight StatusSegCol0                           cterm=NONE               ctermfg=230     ctermbg=53      guifg=#fdf6e3   guibg=#5f005f   cterm=NONE gui=NONE
+highlight StatusSepCol0                           cterm=NONE               ctermfg=53      ctermbg=91      guifg=#5f005f   guibg=#8700af   cterm=NONE gui=NONE
+highlight StatusSegCol1                           cterm=NONE               ctermfg=230     ctermbg=91      guifg=#fdf6e3   guibg=#8700af   cterm=NONE gui=NONE
+highlight StatusSepCol1                           cterm=NONE               ctermfg=91      ctermbg=140     guifg=#8700af   guibg=#af87d7   cterm=NONE gui=NONE
+highlight StatusSegCol2                           cterm=NONE               ctermfg=235     ctermbg=140     guifg=#5f005f   guibg=#af87d7   cterm=NONE gui=NONE
+highlight StatusSepCol2                           cterm=NONE               ctermfg=140     ctermbg=NONE    guifg=#af87d7   guibg=NONE      cterm=NONE gui=NONE
+highlight StatusSegCol7                           cterm=NONE               ctermfg=235     ctermbg=140     guifg=#5f005f   guibg=#af87d7   cterm=NONE gui=NONE
+highlight StatusSepCol7                           cterm=NONE               ctermfg=140     ctermbg=NONE    guifg=#af87d7   guibg=NONE      cterm=NONE gui=NONE
+highlight StatusSegCol8                           cterm=NONE               ctermfg=230     ctermbg=91      guifg=#fdf6e3   guibg=#8700af   cterm=NONE gui=NONE
+highlight StatusSepCol8                           cterm=NONE               ctermfg=91      ctermbg=140     guifg=#8700af   guibg=#af87d7   cterm=NONE gui=NONE
+highlight StatusSegCol9                           cterm=NONE               ctermfg=230     ctermbg=53      guifg=#fdf6e3   guibg=#5f005f   cterm=NONE gui=NONE
+highlight StatusSepCol9                           cterm=NONE               ctermfg=53      ctermbg=91      guifg=#5f005f   guibg=#8700af   cterm=NONE gui=NONE
+highlight MyExtShowFile                           cterm=NONE               ctermfg=241     ctermbg=254     guifg=#839496   guibg=#eee8d5   cterm=NONE gui=NONE
+highlight NERDTreeClosable                        cterm=NONE               ctermfg=53      ctermbg=NONE    guifg=#5f005f   guibg=NONE      cterm=NONE gui=NONE
+highlight NERDTreeOpenable                        cterm=NONE               ctermfg=53      ctermbg=NONE    guifg=#5f005f   guibg=NONE      cterm=NONE gui=NONE
+highlight NERDTreeFlags                           cterm=NONE               ctermfg=53      ctermbg=NONE    guifg=#8700af   guibg=NONE      cterm=NONE gui=NONE
 highlight EndOfBuffer                             cterm=NONE               ctermfg=NONE    ctermbg=NONE    guifg=NONE      guibg=NONE      gui=NONE
 
 hi link Boolean                    Constant
