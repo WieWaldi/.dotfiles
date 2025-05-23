@@ -79,6 +79,7 @@ declare -a dotfiles_Base=(
     ".local/bin/colortest-zig.sh"
     ".local/bin/cowsay"
     ".local/bin/exa"
+    ".local/bin/fd"
     ".local/bin/fuck"
     ".local/bin/fzf"
     ".local/bin/git-diff-wrapper.sh"
