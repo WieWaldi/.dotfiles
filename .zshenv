@@ -51,6 +51,71 @@ export HISTFILE="${XDG_DATA_HOME}/zsh/history"
 export SAVEHIST=$(( 100 * 1000 ))
 export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
+export OVERRIDEPROMPT="no"                                                      # Set to "yes" to allow the prompt to be overridden by a failsafe prompt in case of errors in the prompt configuration. This can help prevent a broken prompt from rendering the shell unusable.
+
+_os=$(uname -s)
+case $_os in
+    Linux)
+        export _grep="/bin/grep"
+        export _sed="/bin/sed"
+        export _awk="/bin/awk"
+        export _id="/bin/id"
+        ;;
+    Darwin)
+        echo "Unsupported OS: $_os"
+        export _grep="/bin/grep"
+        export _sed="/bin/sed"
+        export _awk="/bin/awk"
+        export _id="/bin/id"
+        ;;
+    SunOS)
+        if [[ -f /opt/csw/bin/ggrep ]]; then                                    # On Solaris, the default grep is very old and lacks some features, so we use GNU grep from CSW instead, if available.
+            export _grep="/opt/csw/bin/ggrep"
+        else
+            export _grep="/bin/grep"
+        fi
+        if [[ -f /opt/csw/bin/gsed ]]; then                                     # On Solaris, the default sed is very old and lacks some features, so we use GNU sed from CSW instead, if available.  
+            export _sed="/opt/csw/bin/gsed"
+        else
+            export _sed="/bin/sed"
+        fi
+        if [[ -f /opt/csw/bin/gawk ]]; then                                     # On Solaris, the default awk is very old and lacks some features, so we use GNU awk from CSW instead, if available.
+            export _awk="/opt/csw/bin/gawk"
+        else
+            export _awk="/bin/awk"
+        fi
+        if [[ -f /usr/xpg4/bin/id ]]; then                                      # On Solaris 11.4, the default id in /bin/id is broken, so we need to use the one from /usr/xpg4/bin/id instead.
+            export _id="/usr/xpg4/bin/id"
+        else
+            export _id="/bin/id"
+        fi
+        ;;
+    FreeBSD)
+        if [[ -f /usr/local/bin/ggrep ]]; then                                  # On FreeBSD, the default grep is very old and lacks some features, so we use GNU grep from ports instead, if available.
+            export _grep="/usr/local/bin/ggrep"
+        else
+            export _grep="/usr/bin/grep"
+        fi
+        if [[ -f /usr/local/bin/gsed ]]; then                                   # On FreeBSD, the default sed is very old and lacks some features, so we use GNU sed from ports instead, if available.  
+            export _sed="/usr/local/bin/gsed"
+        else
+            export _sed="/usr/bin/sed"
+        fi
+        if [[ -f /usr/local/bin/gawk ]]; then                                   # On FreeBSD, the default awk is very old and lacks some features, so we use GNU awk from ports instead, if available.
+            export _awk="/usr/local/bin/gawk"
+        else
+            export _awk="/usr/bin/awk"
+        fi
+        export _id="/usr/bin/id"
+        ;;
+    *)
+        echo "Unsupported OS: $_os"
+        export _grep="/bin/grep"
+        export _sed="/bin/sed"
+        export _awk="/bin/awk"
+        export _id="/bin/id"
+        ;;
+esac
 
 # +----- Environment for Prompt -----------------------------------------------+
 export prompt_symbol_vimode_ins=""

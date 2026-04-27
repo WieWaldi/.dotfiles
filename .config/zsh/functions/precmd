@@ -37,7 +37,7 @@ workingdir="${workingdir//Repos/ }"
 workingdir="${workingdir//Templates/ }"
 
 W="${workingdir}"
-if [[ $(echo ${W} | grep -o '/' | wc -l) -gt ${dirsplit} ]]; then
+if [[ $(echo ${W} | ${_grep} -o '/' | wc -l) -gt ${dirsplit} ]]; then
     workingdir=$(echo $W | cut -d'/' -f1-$dirsplit | xargs -I{} echo {}"/../${W##*/}")
 fi
 

@@ -35,7 +35,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-st git-remotebranc
 # +----- Functions ------------------------------------------------------------+
 +vi-git-untracked() {
     if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-        git status --porcelain | grep '^??' &> /dev/null ; then
+        git status --porcelain | ${_grep} '^??' &> /dev/null ; then
         # This will show the marker if there are any untracked files in repo.
         # If instead you want to show the marker only if there are untracked
         # files in $PWD, use:
@@ -66,7 +66,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked git-st git-remotebranc
 }
 
 get_usersymbol() {
-    if [[ $(id -u) = 0 ]]; then
+    if [[ $(${_id} -u) = 0 ]]; then
         prompt_symbol_user="${prompt_symbol_user_root}"
     else
         prompt_symbol_user="${prompt_symbol_user_norm}"
