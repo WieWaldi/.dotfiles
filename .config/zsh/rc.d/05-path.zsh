@@ -25,7 +25,7 @@ if [[ -d "${HOME}/.local/bin" ]]; then
 fi
 if [[ -d "/opt/csw/bin" ]]; then
     path=(
-        opt/csw/bin
+        /opt/csw/bin
         $path
     )
 fi
