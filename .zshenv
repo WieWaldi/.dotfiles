@@ -53,7 +53,7 @@ export HISTSIZE=$(( 1.2 * SAVEHIST ))
 export HISTTIMEFORMAT="[%F %T] "
 export OVERRIDEPROMPT="no"                                                      # Set to "yes" to allow the prompt to be overridden by a failsafe prompt in case of errors in the prompt configuration. This can help prevent a broken prompt from rendering the shell unusable.
 
-_os=$(uname -s)
+export _os=$(uname -s)
 case $_os in
     Linux)
         export _grep="/bin/grep"

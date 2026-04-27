@@ -23,3 +23,15 @@ if [[ -d "${HOME}/.local/bin" ]]; then
         $path
     )
 fi
+if [[ -d "/opt/csw/bin" ]]; then
+    path=(
+        opt/csw/bin
+        $path
+    )
+fi
+if [[ -d "/usr/local/bin" ]]; then
+    path=(
+        usr/local/bin
+        $path
+    )
+fi
