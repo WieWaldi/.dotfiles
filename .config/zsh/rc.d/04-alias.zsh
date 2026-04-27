@@ -27,9 +27,9 @@ case $_os in
         ;;
     SunOS)
         if [[ -f /opt/csw/bin/gls ]]; then                                      # On Solaris, the default ls is very old and lacks some features, so we use GNU ls from CSW instead, if available.
-            alias ll='gls -lghm --color=auto --group-directories-first'
+            alias ll='gls -lagh --color=auto --group-directories-first'
         else
-            alias ll='ls -lghm'
+            alias ll='ls -lagh'
         fi
         if [[ -f /opt/csw/bin/ggrep ]]; then                                    # On Solaris, the default grep is very old and lacks some features, so we use GNU grep from CSW instead, if available.
             alias grep='/opt/csw/bin/ggrep -i --color=auto'
