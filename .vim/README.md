@@ -33,3 +33,5 @@ The following projects are part of this repository.
  - [vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - An awesome automatic table creator & formatter  
  - [minimap.vim](https://github.com/wfxr/minimap.vim) - Blazing fast minimap for vim  
  - [code-minimap](https://github.com/wfxr/code-minimap) - This tool is for generating text minimaps  
+ - [copilot.vim](https://github.com/github/copilot.vim) - GitHub Copilot plugin for Vim, Neovim, and Visual Studio Code's Vim extension.
+ - [Copilot Chat for Vim](https://github.com/DanBradbury/copilot-chat.vim) - Chat with GitHub Copilot in Vim, powered by OpenAI's GPT-4.
