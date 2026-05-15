@@ -38,4 +38,4 @@ git clone https://github.com/WieWaldi/.dotfiles.git ~/.dotfiles
 The option to create releases on GitHub is pretty nice. I really do like it since it give me easy access to all the files
 without git cloning the complete repository.  
 
-Version 2.3
+Version 2.5
