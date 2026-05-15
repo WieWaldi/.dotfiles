@@ -201,14 +201,29 @@ export GDK_SCALE=1
 export GDK_DPI_SCALE=1
 
 # +----- fzf ------------------------------------------------------------------+
-FZF_DEFAULT_OPTS="--layout=reverse --info=inline --multi "
-FZF_DEFAULT_OPTS+="--tmux left,70%,70% "
-FZF_DEFAULT_OPTS+="--margin=0 --padding=2 "
-FZF_DEFAULT_OPTS+="--preview 'bat --color=always {}' --preview-window right:50% "
-FZF_DEFAULT_OPTS+="--color=bg+:#5f005f,bg:#eee8d5,border:#b58900,preview-bg:#fdf6e3 "
-
-export FZF_DEFAULT_OPTS
 export FZF_CTRL_T_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
 export FZF_ALT_C_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules' --type d"
 
+FZF_DEFAULT_OPTS="--style=full --info=inline --multi "
+FZF_DEFAULT_OPTS+="--border --margin=0%,10% --padding 1,2 "
+FZF_DEFAULT_OPTS+="--preview 'bat --color=always {}' --preview-window right:50% "
+FZF_DEFAULT_OPTS+="--color=bg+:#5f005f,bg:#eee8d5,border:#b58900,preview-bg:#fdf6e3 "
+export FZF_DEFAULT_OPTS
+
+FZF_CTRL_T_OPTS="--bind 'focus:transform-header:file --brief {}' "
+FZF_CTRL_T_OPTS+="--border-label ' Select File Path ' --input-label ' Input ' --header-label ' File Type ' "
+export FZF_CTRL_T_OPTS
+
+FZF_ALT_C_OPTS="--no-preview "
+export FZF_ALT_C_OPTS
+
+FZF_CTRL_R_OPTS="--no-preview "
+FZF_CTRL_R_OPTS+="--border-label ' Command History ' --input-label ' Input ' "
+export FZF_CTRL_R_OPTS
+
+FZF_CTRL_P_OPTS="--no-preview --reverse "
+FZF_CTRL_P_OPTS+="--border-label ' Command Picker ' --input-label ' Input ' --header-label ' File Type ' "
+export FZF_CTRL_P_OPTS
+
+FZF_CCD_OPTS="--no-preview --reverse "
 # +----- End ------------------------------------------------------------------+

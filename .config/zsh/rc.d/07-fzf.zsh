@@ -9,6 +9,7 @@
 # +----------------------------------------------------------------------------+
 
 # +----- FuzzyFinder ----------------------------------------------------------+
+[[ -o interactive ]] || return 0
 
 #     ____      ____
 #    / __/___  / __/
@@ -22,11 +23,6 @@
 # - $FZF_CTRL_R_OPTS
 # - $FZF_ALT_C_COMMAND
 # - $FZF_ALT_C_OPTS
-
-[[ -o interactive ]] || return 0
-
-
-# +----- Key bindings ---------------------------------------------------------+
 
 # The code at the top and the bottom of this file is the same as in completion.zsh.
 # Refer to that file for explanation.
@@ -47,10 +43,10 @@ else
 fi
 
 'builtin' 'emulate' 'zsh' && 'builtin' 'setopt' 'no_aliases'
-
 {
 
-# CTRL-T - Paste the selected file path(s) into the command line
+# +----- CTRL-T ---------------------------------------------------------------+
+#        Paste the selected file path(s) into the command line
 __fsel() {
   local cmd="${FZF_CTRL_T_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
     -o -type f -print \
@@ -82,7 +78,8 @@ bindkey -M emacs '^T' fzf-file-widget
 bindkey -M vicmd '^T' fzf-file-widget
 bindkey -M viins '^T' fzf-file-widget
 
-# ALT-C - cd into the selected directory
+# +----- ALT-C ----------------------------------------------------------------+
+#        cd into the selected directory
 fzf-cd-widget() {
   local cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
     -o -type d -print 2> /dev/null | cut -b3-"}"
@@ -105,7 +102,8 @@ bindkey -M emacs '\ec' fzf-cd-widget
 bindkey -M vicmd '\ec' fzf-cd-widget
 bindkey -M viins '\ec' fzf-cd-widget
 
-# CTRL-R - Paste the selected command from history into the command line
+# +----- CTRL-R ---------------------------------------------------------------+
+#        Paste the selected command from history into the command line
 fzf-history-widget() {
   local selected num
   setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
@@ -125,6 +123,26 @@ zle     -N            fzf-history-widget
 bindkey -M emacs '^R' fzf-history-widget
 bindkey -M vicmd '^R' fzf-history-widget
 bindkey -M viins '^R' fzf-history-widget
+
+# +----- CTRL-P ---------------------------------------------------------------+
+#        Picks a command from ~/.config/zsh/.cmdpick and pastes it into the command line
+fzf-cmdpick-widget() {
+  local selected
+  setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+  selected=( $(command cat ~/.config/zsh/.cmdpick 2> /dev/null |
+    FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} ${FZF_DEFAULT_OPTS-} --bind=ctrl-z:ignore ${FZF_CTRL_P_OPTS-} --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+  local ret=$?
+  if [ -n "$selected" ]; then
+    BUFFER="$selected"
+    zle end-of-line
+  fi
+  zle reset-prompt
+  return $ret
+}
+zle     -N            fzf-cmdpick-widget
+bindkey -M emacs '^P' fzf-cmdpick-widget
+bindkey -M vicmd '^P' fzf-cmdpick-widget
+bindkey -M viins '^P' fzf-cmdpick-widget
 
 } always {
   eval $__fzf_key_bindings_options
