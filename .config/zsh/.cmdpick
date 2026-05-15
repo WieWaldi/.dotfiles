@@ -1,0 +1,6 @@
+ssh wiewaldi@rza-dns1.rz-amper.de
+ssh root@rza-dns1.rz-amper.de
+ssh wiewaldi@rza-dns2.rz-amper.de
+ssh root@rza-dns2.rz-amper.de
+ssh wiewaldi@rza-dns3.rz-amper.de
+ssh root@rza-dns3.rz-amper.de
