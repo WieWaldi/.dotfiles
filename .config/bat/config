@@ -12,3 +12,5 @@
 --theme="ansi"
 --paging=auto
 --style=plain
+--decorations=always
+--style=full
