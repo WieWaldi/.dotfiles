@@ -9,18 +9,35 @@
 # +----------------------------------------------------------------------------+
 
 # +----- Aliases --------------------------------------------------------------+
+alias gits='git status'
+alias gitm='git status && git commit -m "Minor changes" && git push'
+alias gitp='git pull'
+alias gitdiff='git diff --no-ext-diff -w "$@" | vim -R –'
+alias vi='TERM=xterm vim -X'
+alias s='su - root'
+alias cp='cp -ir'
+alias rm='rm -rf'
+alias mkdir='mkdir -p'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias l='LC_ALL=C ls --color=auto --group-directories-first -lh'
+alias ll='LC_ALL=C ls --color=auto --group-directories-first -lah'
+
+if command -v exa &> /dev/null; then
+    alias l='exa -lghm --icons --group-directories-first --git'
+    alias ll='exa -laghm --icons --group-directories-first --git'
+fi
+if command -v eza &> /dev/null; then
+    alias l='eza -lghm --icons --group-directories-first --git'
+    alias ll='eza -laghm --icons --group-directories-first --git'
+fi
+if command -v bat &> /dev/null; then
+    alias cat='bat'
+fi
+
 case $_os in
     Linux)
-        if command -v exa &> /dev/null; then
-            alias l='exa -lghm --icons --group-directories-first --git'
-            alias ll='exa -laghm --icons --group-directories-first --git'
-        else
-            alias l='LC_ALL=C ls --color=auto --group-directories-first -lh'
-            alias ll='LC_ALL=C ls --color=auto --group-directories-first -lah'
-        fi
-        if command -v bat &> /dev/null; then
-            alias cat='bat'
-        fi
         ;;
     Darwin)
         echo "I don't really care about macOS."
@@ -52,17 +69,4 @@ case $_os in
     *)
         ;;
 esac
-
-
-alias gits='git status'
-alias gitm='git status && git commit -m "Minor changes" && git push'
-alias gitp='git pull'
-alias gitdiff='git diff --no-ext-diff -w "$@" | vim -R –'
-alias vi='TERM=xterm vim -X'
-alias s='su - root'
-alias cp='cp -ir'
-alias rm='rm -rf'
-alias mkdir='mkdir -p'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+# +----- End ------------------------------------------------------------------+
