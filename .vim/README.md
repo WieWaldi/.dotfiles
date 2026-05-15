@@ -8,20 +8,46 @@
 ![screenshot_vim.png](https://raw.githubusercontent.com/WieWaldi/.dotfiles/master/img/screenshot_vim.png)
 
 ## Mappings  
- - `<leader>` `<c>``<p>` Toggles paste mode
- - `<leader>` `<c>``<s>` Toggles mySurround
- - `<leader>` `<c>``<t>` Toggles Soft/Hard Tab
- - `<leader>` `<n>` NERDTreeToggle
- - `<leader>` `<f>` :Files
- - `<leader>` `<t>` `<m>` Toggle Table Mode
- - `<Ctrl>` `<h>` :tabprevious
- - `<Ctrl>` `<l>` :tabnext
- - `<F2>` Toggle cursor line
- - `<F3>` Toggle cursor column
- - `<up>` is mapped to `ddkP`
- - `<down>` is mapped to `ddp`
- - `<#>` is mapped to `:s/^/# /<CR>`
- - `<">` is mapped to `:s/^/" /<CR>`
+| Mapping     | Command                               | Description                  |
+|-------------|---------------------------------------|------------------------------|
+| <Esc><Esc>  | :silent! nohls<cr>                    | Remove Search Highlight      |
+| J           | <PageDown>zz                          | Page Down and Center         |
+| K           | <PageUP>zz                            | Page Up and Center           |
+| Q           | :qa!<CR>                              | Just Exit without asking     |
+| #           | :s/^/# /<CR>                          | Inser # at beginning of line |
+| "           | :s/^/" /<CR>                          | Inser " at beginning of line |
+| <Down>      | ddp                                   | Move line down               |
+| <Up>        | ddkP                                  | Move line up                 |
+| <Left>      | <C-w>h                                | Move to left window          |
+| <Right>     | <C-w>l                                | Move to right window         |
+| <Ctrl> h    | :tabprevious<CR>                      | Tab previous                 |
+| <Ctrl> l    | :tabnext<CR>                          | Tab next                     |
+| <Ctrl> j    | :bnext!<CR>                           | Buffer next                  |
+| <Ctrl> k    | :bprevious!<CR>                       | Buffer previous              |
+| <F2>        | :set cursorline! <CR>                 | Cursor line toggle           |
+| <F3>        | :set cursorcolumn!<CR>                | Cursor column toggle         |
+| <F4>        | :cal ToggleAppearance()<CR>           | Slim View - Full View        |
+| <Space> b   | :Buffers<CR>                          | Buffers - fzf                |
+| <Space> f   | :Files<CR>                            | Files - fzf                  |
+| <Space> gf  | :GFiles<CR>                           | Git Files - fzf              |
+| <Space> n   | :NERDTreeToggle<CR>                   | NerdTree                     |
+| <Space> cc  | :ColorHighlight<CR>                   | ColorHighlight               |
+| <Space> cs  | :cal ToggleSurround()<CR>             | Surround                     |
+| <Space> cp  | :cal TogglePaste()<CR>                | Paste                        |
+| <Space> ct  | :cal ToggleTab()<CR>                  | Tab                          |
+| <Space> cw  | :cal ToggleWrap()<CR>                 | Wrap lines                   |
+| <Space> cf  | <cmd>.!figlet -f small<cr>            | Replace line with Figlet     |
+| <Space> q   | :bp<cr>:bd #<cr>                      | Buffer Close                 |
+| <Space> Q   | :bp<cr>:bd #!<cr>                     | Buffer Close without saving  |
+| <Space> mm  | :Minimap<cr>                          | Minimap                      |
+| <Space> mr  | :MinimapRefresh<cr>                   | Minimap refresh              |
+| <Space> mc  | :MinimapClose<cr>                     | Minimap close                |
+| <Space> vim | :e ~/.vim/vimrc<cr>                   | Edit vimrc                   |
+| <Space> hc  | :call popup_clear()<cr>               | Close all PopUps             |
+| <Space> hh  | :call MyExtShowFile('~/.vim/map')<cr> | You got it already           |
+| <Space> ps  | :CopilotChatSubmit<cr>                | Submit your chat to CoPilot  |
+| <Space> pc  | :CopilotChatToggle<cr>                | Toggle CoPilot Chat Window   |
+| <Space> tm  | :TableModeToggle<cr> >                | Toggle Table Mode            |
 
 #### Links/URLs/Credits  
 The following projects are part of this repository.  

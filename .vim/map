@@ -32,4 +32,7 @@
   <Space> mc     -->     :MinimapClose<cr>                          Minimap close
   <Space> vim    -->     :e ~/.vim/vimrc<cr>                        Edit vimrc
   <Space> hc     -->     :call popup_clear()<cr>                    Close all PopUps
-  <Space> hm     -->     :call MyExtShowFile('~/.vim/map')<cr>      You got it already
+  <Space> hh     -->     :call MyExtShowFile('~/.vim/map')<cr>      You got it already
+  <Space> ps     -->     :CopilotChatSubmit<cr>                     Submit your chat to CoPilot
+  <Space> pc     -->     :CopilotChatToggle<cr>                     Toggle CoPilot Chat Window
+  <Space> tm     -->     :TableModeToggle<cr> >                     Toggle Table Mode

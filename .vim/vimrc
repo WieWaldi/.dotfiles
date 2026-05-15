@@ -6,9 +6,7 @@
 " +----------------------------------------------------------------------------+
 
 "======== Color Scheme ========================================================
-" set background=light
 colorscheme TheBlueOyster
-" autocmd VimEnter * colorscheme TheBlueOyster
 
 "======== Default Settings ====================================================
 filetype plugin indent on                               " Respect indent rules based on file types
@@ -74,21 +72,6 @@ let g:fzf_colors =
       \ 'marker':  ['fg', 'Keyword'],
       \ 'spinner': ['fg', 'Label'],
       \ 'header':  ['fg', 'Comment'] }
-
-" let g:fzf_colors =
-"     \ { 'fg':      ['fg', 'Normal'],
-"       \ 'bg':      ['bg', 'Normal'],
-"       \ 'hl':      ['fg', 'Comment'],
-"       \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-"       \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-"       \ 'hl+':     ['fg', 'Statement'],
-"       \ 'info':    ['fg', 'PreProc'],
-"       \ 'border':  ['fg', 'Ignore'],
-"       \ 'prompt':  ['fg', 'Conditional'],
-"       \ 'pointer': ['fg', 'Exception'],
-"       \ 'marker':  ['fg', 'Keyword'],
-"       \ 'spinner': ['fg', 'Label'],
-"       \ 'header':  ['fg', 'Comment'] }
 
 "======== NERDTree ============================================================
 let NERDTreeShowHidden=1                                " Show hidden files in NERDTree
@@ -187,9 +170,11 @@ nnoremap <leader>Q :bp<cr>:bd #!<cr>
 nnoremap <leader>mm :Minimap<cr>
 nnoremap <leader>mr :MinimapRefresh<cr>
 nnoremap <leader>mc :MinimapClose<cr>
+nnoremap <leader>ps :CopilotChatSubmit<cr>
+nnoremap <leader>pc :CopilotChatToggle<cr>
 nnoremap <leader>vim :e ~/.vim/vimrc<cr>
 nnoremap <leader>hc :call popup_clear()<cr>
-nnoremap <leader>hm :call MyExtShowFile('~/.vim/map')<cr>
+nnoremap <leader>hh :call MyExtShowFile('~/.vim/map')<cr>
 " nnoremap <leader>b :ls<CR>:buffer <Space>
 
 "======== My Mappings - Insert ================================================
